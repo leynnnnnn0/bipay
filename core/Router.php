@@ -36,7 +36,23 @@ class Router
 
     public function renderView($view)
     {
-        return require Application::$ROOT_PATH . "\\view\\$view.php";
+        $viewLayout = $this->viewLayout();
+        $viewContent = $this->viewContent($view);
+        return str_replace("{{Main Content}}", $viewContent, $viewLayout);
+    }
+
+    public function viewContent($view)
+    {
+        ob_start();
+        require Application::$ROOT_PATH . "\\view\\$view.php";
+        return ob_get_clean();
+    }
+
+    public function viewLayout()
+    {
+        ob_start();
+        require Application::$ROOT_PATH . "\\view\\layout\\main.php";
+        return ob_get_clean();
     }
 
 
