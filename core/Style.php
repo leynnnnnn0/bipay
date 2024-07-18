@@ -4,14 +4,9 @@ namespace app\core;
 
 class Style
 {
-    public Request $request;
-    function __construct(Request $request)
+    public function sideBarButton(string $route): bool|string
     {
-        $this->request = $request;
-    }
-    public function sideBarButton(string $route)
-    {
-        $uri = $this->request->url();
+        $uri = Request::url();
         if($route === $uri)
         {
             return 'bg-gray-300';

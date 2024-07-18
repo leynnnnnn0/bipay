@@ -1,7 +1,5 @@
 <?php
 
-use app\core\Application;
-
 class M0002_addTableEmployeesToDb
 {
     public function up()
@@ -20,13 +18,16 @@ class M0002_addTableEmployeesToDb
             email VARCHAR(255) NOT NULL,
             phoneNumber VARCHAR(10) NOT NULL
         )";
-        $database = Application::$application->database;
-        $statement = $database->pdo->query($query);
+        $database = app\core\Application::$application->database;
+        $statement = $database->pdo->prepare($query);
         $statement->execute();
     }
 
     public function down()
     {
-
+        $query = "DROP TABLE employees";
+        $database = Application::$application->database;
+        $statement = $database->pdo->query($query);
+        $statement->execute();
     }
 }

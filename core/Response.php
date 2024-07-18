@@ -2,10 +2,18 @@
 
 namespace app\core;
 
+use JetBrains\PhpStorm\NoReturn;
+
 class Response
 {
-    public function setStatusCode(int $status)
+    public static function setStatusCode(int $status): void
     {
         http_response_code($status);
+    }
+
+    public static function redirect(string $url): void
+    {
+        header('Location: ' . $url);
+        exit;
     }
 }

@@ -35,7 +35,7 @@ abstract class Model
                     $this->addError($key, "Please input a valid email address");
             }
         }
-        debug($this->errors);
+        return empty($this->errors);
     }
 
 

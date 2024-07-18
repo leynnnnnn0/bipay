@@ -18,9 +18,9 @@ class Application
         self::$application = $this;
         $this->request = new Request();
         $this->response = new Response();
-        $this->router = new Router($this->request, $this->response);
+        $this->router = new Router();
         $this->controller = new Controller();
-        $this->style = new Style($this->request);
+        $this->style = new Style();
         $this->database = new Database($config['database']);
     }
 

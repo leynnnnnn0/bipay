@@ -4,6 +4,7 @@ namespace app\controller;
 
 use app\core\Controller;
 use app\core\Request;
+use app\core\Response;
 use app\model\EmployeeModel;
 
 class PageController extends Controller
@@ -18,14 +19,18 @@ class PageController extends Controller
         return $this->render('jobDesk');
     }
 
-    public function employee(Request $request)
+    public function employee()
     {
         $employeeModel = new EmployeeModel();
-        if($request->method() === 'POST')
+        if(Request::method() === 'POST')
         {
-            $employeeModel->loadPhoto($_FILES);
             $employeeModel->loadData($_POST);
-            $employeeModel->validate();
+            $employeeModel->loadPhoto($_FILES);
+            if($employeeModel->validate())
+            {
+                Response::redirect('dashboard');
+            }
+            return $this->render('employee');
         }
         return $this->render('employee');
     }

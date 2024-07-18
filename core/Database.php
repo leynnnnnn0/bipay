@@ -38,7 +38,7 @@ class Database
         }
         if(empty($migrationsList))
         {
-            $this->log("No migrations applied");
+            $this->log("No migration to apply.");
             return;
         }
         $this->insertMigrations($migrationsList);
