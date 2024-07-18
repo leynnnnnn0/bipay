@@ -10,4 +10,5 @@ $app = new Application(dirname(__DIR__));
 $app->router->get('/', [PageController::class, 'dashboard']);
 $app->router->get('/job-desk', [PageController::class, 'jobDesk']);
 $app->router->get('/employee', [PageController::class, 'employee']);
+$app->router->get('/leave', [PageController::class, 'leave']);
 $app->run();

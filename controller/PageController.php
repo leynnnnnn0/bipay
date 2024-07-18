@@ -21,4 +21,9 @@ class PageController extends Controller
         return $this->render('employee');
     }
 
+    public function leave()
+    {
+        return $this->render('leave');
+    }
+
 }
