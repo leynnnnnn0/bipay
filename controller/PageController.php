@@ -11,4 +11,9 @@ class PageController extends Controller
         return $this->render('dashboard');
     }
 
+    public function jobDesk()
+    {
+        return $this->render('jobDesk');
+    }
+
 }
