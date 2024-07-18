@@ -15,14 +15,14 @@
         </div>
         <div class="flex gap-2 items-center">
             <div class="flex items-center w-24 gap-1">
-                <span class="text-xl text-green-700 bg-green-100 rounded-md h-10 w-10 flex items-center justify-center"><i class="bi bi-box-arrow-in-up-left"></i></span>
+                <span class="text-xl text-green-700 bg-green-100 rounded-md h-10 w-10 flex items-center justify-center cursor-pointer"><i class="bi bi-box-arrow-in-up-left"></i></span>
                 <div class="">
                     <p class="text-[10px] text-gray-700 font-semibold">7:14 AM</p>
                     <p class="text-[10px] text-gray-500 font-semibold">Punch in</p>
                 </div>
             </div>
             <div class="flex items-center w-24 gap-1">
-                <span class="text-xl text-red-700 bg-red-100 rounded-md h-10 w-10 flex items-center justify-center"><i class="bi bi-box-arrow-in-up-right"></i></span>
+                <span class="text-xl text-red-700 bg-red-100 rounded-md h-10 w-10 flex items-center justify-center cursor-pointer"><i class="bi bi-box-arrow-in-up-right"></i></span>
                 <div class="">
                     <p class="text-[10px] text-gray-700 font-semibold">5:00 PM</p>
                     <p class="text-[10px] text-gray-500 font-semibold">Punch out</p>
@@ -57,24 +57,24 @@
                 <h1 class="text-gray-800 font-semibold text-xs">This week</h1>
                 <div class="flex justify-between p-2 gap-2">
                     <div class="bg-gray-200 rounded-lg p-4 flex-1">
-                        <h1 class="text-black font-bold text-xs">8:00 am</h1>
-                        <p class="text-xs text-gray-500">Time start</p>
+                        <h1 class="text-black font-bold text-xs whitespace-nowrap">8:00 am</h1>
+                        <p class="text-xs text-gray-500 whitespace-nowrap">Time start</p>
                     </div>
                     <div class="bg-gray-200 rounded-lg p-4 flex-1">
-                        <h1 class="text-black font-bold text-xs">10:00 am</h1>
-                        <p class="text-xs text-gray-500">First break</p>
+                        <h1 class="text-black font-bold text-xs whitespace-nowrap">10:00 am</h1>
+                        <p class="text-xs text-gray-500 whitespace-nowrap">First break</p>
                     </div>
                     <div class="bg-gray-200 rounded-lg p-4 flex-1">
-                        <h1 class="text-black font-bold text-xs">12:00 pm</h1>
-                        <p class="text-xs text-gray-500">Meal break</p>
+                        <h1 class="text-black font-bold text-xs whitespace-nowrap">12:00 pm</h1>
+                        <p class="text-xs text-gray-500 whitespace-nowrap">Meal break</p>
                     </div>
                     <div class="bg-gray-200 rounded-lg p-4 flex-1">
-                        <h1 class="text-black font-bold text-xs">3:00 pm</h1>
-                        <p class="text-xs text-gray-500">Second break</p>
+                        <h1 class="text-black font-bold text-xs whitespace-nowrap">3:00 pm</h1>
+                        <p class="text-xs text-gray-500 whitespace-nowrap">Second break</p>
                     </div>
                     <div class="bg-gray-200 rounded-lg p-4 flex-1">
-                        <h1 class="text-black font-bold text-xs">5:00 pm</h1>
-                        <p class="text-xs text-gray-500">Time end</p>
+                        <h1 class="text-black font-bold text-xs whitespace-nowrap">5:00 pm</h1>
+                        <p class="text-xs text-gray-500 whitespace-nowrap">Time end</p>
                     </div>
                 </div>
             </div>
@@ -82,24 +82,24 @@
                 <h1 class="text-gray-800 font-semibold text-xs">Next Week</h1>
                 <div class="flex justify-between p-2 gap-2">
                     <div class="bg-gray-200 rounded-lg p-4 flex-1">
-                        <h1 class="text-black font-bold text-xs">8:00 am</h1>
-                        <p class="text-xs text-gray-500">Time start</p>
+                        <h1 class="text-black font-bold text-xs whitespace-nowrap">8:00 am</h1>
+                        <p class="text-xs text-gray-500 whitespace-nowrap">Time start</p>
                     </div>
                     <div class="bg-gray-200 rounded-lg p-4 flex-1">
-                        <h1 class="text-black font-bold text-xs">10:00 am</h1>
-                        <p class="text-xs text-gray-500">First break</p>
+                        <h1 class="text-black font-bold text-xs whitespace-nowrap">10:00 am</h1>
+                        <p class="text-xs text-gray-500 whitespace-nowrap">First break</p>
                     </div>
                     <div class="bg-gray-200 rounded-lg p-4 flex-1">
-                        <h1 class="text-black font-bold text-xs">12:00 pm</h1>
-                        <p class="text-xs text-gray-500">Meal break</p>
+                        <h1 class="text-black font-bold text-xs whitespace-nowrap">12:00 pm</h1>
+                        <p class="text-xs text-gray-500 whitespace-nowrap">Meal break</p>
                     </div>
                     <div class="bg-gray-200 rounded-lg p-4 flex-1">
-                        <h1 class="text-black font-bold text-xs">3:00 pm</h1>
-                        <p class="text-xs text-gray-500">Second break</p>
+                        <h1 class="text-black font-bold text-xs whitespace-nowrap">3:00 pm</h1>
+                        <p class="text-xs text-gray-500 whitespace-nowrap">Second break</p>
                     </div>
                     <div class="bg-gray-200 rounded-lg p-4 flex-1">
-                        <h1 class="text-black font-bold text-xs">5:00 pm</h1>
-                        <p class="text-xs text-gray-500">Time end</p>
+                        <h1 class="text-black font-bold text-xs whitespace-nowrap">5:00 pm</h1>
+                        <p class="text-xs text-gray-500 whitespace-nowrap">Time end</p>
                     </div>
                 </div>
             </div>

@@ -10,6 +10,7 @@ class Application
     public Request $request;
     public Controller $controller;
     public Response $response;
+    public Style $style;
     function __construct(string $rootPath)
     {
         self::$ROOT_PATH = $rootPath;
@@ -18,6 +19,7 @@ class Application
         $this->response = new Response();
         $this->router = new Router($this->request, $this->response);
         $this->controller = new Controller();
+        $this->style = new Style($this->request);
     }
 
     public function run()

@@ -1,14 +1,117 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <script src="https://cdn.tailwindcss.com?plugins=forms"></script>
-    <title>Bipay</title>
-</head>
-<body>
-    <h1>Job Desk</h1>
-</body>
-</html>
+<div class="flex flex-col gap-5 h-full w-full">
+    <h1 class="font-bold text-xl text-gray-800">Job Desk</h1>
+    <main class="flex gap-5 h-full w-full">
+        <section class="flex flex-col gap-5 bg-white rounded-lg w-64 p-5">
+            <!--        Personal Information-->
+            <div class="container flex items-center gap-2 bg-white">
+                <img class="h-10 w-10 rounded-full" src="/image/speed.jpg" alt="profile">
+                <div>
+                    <h1 class="text-black font-bold text-sm">Darren Hawtkins</h1>
+                    <p class="text-gray-500 text-[12px]">Streamer</p>
+                </div>
+            </div>
+<!--            Info-->
+            <div class="container">
+                <div class="flex flex-col gap-5">
+                    <h1 class="text-sm text-black font-semibold">Info</h1>
+                    <div class="container flex items-center gap-2 bg-white">
+                        <span class="h-8 w-8 rounded-lg bg-gray-200 flex items-center justify-center text-black">
+                            <i class="bi bi-clipboard"></i>
+                        </span>
+                        <div>
+                            <h1 class="text-black font-semibold text-sm">Admin & HRM</h1>
+                            <p class="text-gray-500 text-[10px]">Department</p>
+                        </div>
+                    </div>
+                    <div class="container flex items-center gap-2 bg-white">
+                        <span class="h-8 w-8 rounded-lg bg-gray-200 flex items-center justify-center text-black">
+                            <i class="bi bi-wallet2"></i>
+                        </span>
+                        <div>
+                            <h1 class="text-green-500 font-semibold text-sm">$20,000</h1>
+                            <p class="text-gray-500 text-[10px]">Salary</p>
+                        </div>
+                    </div>
+                    <div class="container flex items-center gap-2 bg-white">
+                        <span class="h-8 w-8 rounded-lg bg-gray-200 flex items-center justify-center text-black">
+                            <i class="bi bi-clock"></i>
+                        </span>
+                        <div>
+                            <h1 class="text-black font-semibold text-sm">Regular</h1>
+                            <p class="text-gray-500 text-[10px]">Work Shift</p>
+                        </div>
+                    </div>
+                    <div class="container flex items-center gap-2 bg-white">
+                        <span class="h-8 w-8 rounded-lg bg-gray-200 flex items-center justify-center text-black">
+                            <i class="bi bi-calendar"></i>
+                        </span>
+                        <div>
+                            <h1 class="text-black font-semibold text-sm">12 February 2023</h1>
+                            <p class="text-gray-500 text-[10px]">Joining Date</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--  Contact -->
+            <div class="container">
+                <div class="flex flex-col gap-5">
+                    <h1 class="text-sm text-black font-semibold">Contact</h1>
+                    <div class="container flex items-center gap-2 bg-white">
+                        <span class="h-8 w-8 rounded-lg bg-gray-200 flex items-center justify-center text-black">
+                            <i class="bi bi-envelope"></i>
+                        </span>
+                        <div>
+                            <h1 class="text-black font-semibold text-sm">ishowspeed@gmail.com</h1>
+                            <p class="text-gray-500 text-[10px]">email</p>
+                        </div>
+                    </div>
+                    <div class="container flex items-center gap-2 bg-white">
+                        <span class="h-8 w-8 rounded-lg bg-gray-200 flex items-center justify-center text-black">
+                            <i class="bi bi-phone"></i>
+                        </span>
+                        <div>
+                            <h1 class="text-text font-semibold text-sm">+63927887832</h1>
+                            <p class="text-gray-500 text-[10px]">Phone</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--  Contact -->
+            <div class="container">
+                <div class="flex flex-col gap-5">
+                    <h1 class="text-sm text-black font-semibold">Address</h1>
+                    <div class="container flex items-center gap-2 bg-white">
+                        <span class="h-8 w-8 rounded-lg bg-gray-200 flex items-center justify-center text-black">
+                            <i class="bi bi-geo-alt"></i>
+                        </span>
+                        <div>
+                            <h1 class="text-black font-semibold text-sm">Cincinatti</h1>
+                            <p class="text-gray-500 text-[10px]">City</p>
+                        </div>
+                    </div>
+                    <div class="container flex items-center gap-2 bg-white">
+                        <span class="h-8 w-8 rounded-lg bg-gray-200 flex items-center justify-center text-black">
+                            <i class="bi bi-map"></i>
+                        </span>
+                        <div>
+                            <h1 class="text-text font-semibold text-sm">Ohio</h1>
+                            <p class="text-gray-500 text-[10px]">State</p>
+                        </div>
+                    </div>
+                    <div class="container flex items-center gap-2 bg-white">
+                        <span class="h-8 w-8 rounded-lg bg-gray-200 flex items-center justify-center text-black">
+                            <i class="bi bi-globe-americas"></i>
+                        </span>
+                        <div>
+                            <h1 class="text-text font-semibold text-sm">The United States</h1>
+                            <p class="text-gray-500 text-[10px]">Country</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="flex-1 bg-white rounded-lg flex items-center justify-center">
+            <h1 class="text-black text-xl font-bold">COMING SOON....</h1>
+        </section>
+    </main>
+</div>

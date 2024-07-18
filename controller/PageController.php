@@ -16,4 +16,9 @@ class PageController extends Controller
         return $this->render('jobDesk');
     }
 
+    public function employee()
+    {
+        return $this->render('employee');
+    }
+
 }
