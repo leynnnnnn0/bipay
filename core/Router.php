@@ -18,6 +18,11 @@ class Router
         $this->routes['GET'][$path] = $callback;
     }
 
+    public function post($path, $callback)
+    {
+        $this->routes['POST'][$path] = $callback;
+    }
+
     public function resolve()
     {
         $uri = $this->request->url();
@@ -31,7 +36,7 @@ class Router
         Application::$application->controller = new $callback[0]();
         $callback[0] = Application::$application->controller;
 
-        return call_user_func($callback);
+        return call_user_func($callback, $this->request);
     }
 
     public function renderView($view)

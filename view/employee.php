@@ -1,4 +1,7 @@
-<div class="flex flex-col gap-5 h-full">
+<div class="flex flex-col gap-5 h-full relative">
+    <div id="addEmployeeContainer" class="hidden">
+        <?php require_once \app\core\Application::$ROOT_PATH . "/view/partial/addEmployeeForm.php"?>
+    </div>
     <div class="flex items-center justify-between">
         <h1 class="text-gray-800 text-xl text-black font-bold">All Employee</h1>
         <button id="addEmployeeButton" class="bg-indigo-900 text-white text-xs text-semibold rounded-lg px-3 h-7 text-center"><span><i class="bi bi-plus"></i></span> Add Employee</button>
