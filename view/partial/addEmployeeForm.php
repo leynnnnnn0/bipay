@@ -1,5 +1,5 @@
 <div id="addEmployeeContainer" class="absolute h-full w-full flex items-center justify-center drop-shadow-2xl">
-    <form class="container flex flex-col gap-1 bg-white rounded-lg w-[750px]" method="POST">
+    <form id="addEmployeeForm" class="container flex flex-col gap-1 bg-white rounded-lg w-[750px]" enctype="multipart/form-data">
         <div class="container border-b border-gray-300 p-5">
             <h1 class="font-bold text-gray-800 text-2xl">New Employee Form</h1>
             <p class="text-gray-500 font-medium text-sm">Fill out the form carefully or <span class="underline text-indigo-900">Upload Employee File</span></p>
@@ -9,25 +9,27 @@
             <h1 class="text-gray-800 font-medium text-md">Employee Name</h1>
             <div class="grid grid-cols-3 gap-2">
                 <div class="container flex flex-col gap-2">
+                    <label for="firstName" class="text-gray-500 text-xs">First Name</label>
                     <input class="border border-gray-300 rounded-md"
                            id="firstName"
                            name="firstName"
                            type="text">
-                    <label for="firstName" class="text-gray-500 text-xs">First Name</label>
+                    <p id="firstNameError" class="text-red-500 text-xs"></p>
                 </div>
                 <div class="container flex flex-col gap-2">
+                    <label for="middleName" class="text-gray-500 text-xs">Middle Name</label>
                     <input class="border border-gray-300 rounded-md"
                            name="middleName"
                            id="middleName"
                            type="text">
-                    <label for="middleName" class="text-gray-500 text-xs">Middle Name</label>
                 </div>
                 <div class="container flex flex-col gap-2">
+                    <label for="lastName" class="text-gray-500 text-xs">Last Name</label>
                     <input class="border border-gray-300 rounded-md"
                            name="lastName"
                            id="lastName"
                            type="text">
-                    <label for="lastName" class="text-gray-500 text-xs">Last Name</label>
+                    <p id="lastNameError" class="text-red-500 text-xs"></p>
                 </div>
             </div>
             <!--        Second Row-->
@@ -106,33 +108,37 @@
                 <h1 class="text-gray-800 font-medium text-md">Address</h1>
                 <div class="container flex flex-col gap-2">
                     <div class="container flex flex-col gap-2">
+                        <label for="streetAddress" class="text-gray-500 text-xs">Street Address</label>
                         <input class="border border-gray-300 rounded-md"
                                name="streetAddress"
                                id="streetAddress"
                                type="text">
-                        <label for="streetAddress" class="text-gray-500 text-xs">Street Address</label>
+                        <p id="streetAddressError" class="text-red-500 text-sm"></p>
                     </div>
                     <div class="grid grid-cols-3 gap-3">
                         <div class="container flex flex-col gap-2">
+                            <label for="city" class="text-gray-500 text-xs">City</label>
                             <input class="border border-gray-300 rounded-md"
                                    name="city"
                                    id="city"
                                    type="text">
-                            <label for="city" class="text-gray-500 text-xs">City</label>
+                            <p id="cityError" class="text-red-500 text-sm"></p>
                         </div>
                         <div class="container flex flex-col gap-2">
+                            <label for="state" class="text-gray-500 text-xs">State</label>
                             <input class="border border-gray-300 rounded-md"
                                    name="state"
                                    id="state"
                                    type="text">
-                            <label for="state" class="text-gray-500 text-xs">State</label>
+                            <p id="stateError" class="text-red-500 text-sm"></p>
                         </div>
                         <div class="container flex flex-col gap-2">
+                            <label for="zipCode" class="text-gray-500 text-xs">Zip Code</label>
                             <input class="border border-gray-300 rounded-md"
                                    name="zipCode"
                                    id="zipCode"
                                    type="text">
-                            <label for="zipCode" class="text-gray-500 text-xs">Zip Code</label>
+                            <p id="zipCodeError" class="text-red-500 text-sm"></p>
                         </div>
                     </div>
                 </div>
@@ -143,27 +149,27 @@
                 <h1 class="text-gray-800 font-medium text-md">Contact</h1>
                 <div class="grid grid-cols-2 gap-2">
                     <div class="container flex flex-col gap-2">
+                        <label for="email" class="text-gray-500 text-xs">Email</label>
                         <input class="border border-gray-300 rounded-md"
                                id="email"
                                name="email"
                                type="email">
-                        <label for="email" class="text-gray-500 text-xs">Email</label>
+                        <p id="emailError" class="text-red-500 text-sm"></p>
                     </div>
                     <div class="container flex flex-col gap-2">
+                        <label for="phoneNumber" class="text-gray-500 text-xs">Phone Number</label>
                         <input class="border border-gray-300 rounded-md"
                                id="phoneNumber"
                                name="phoneNumber"
                                type="text">
-                        <label for="phoneNumber" class="text-gray-500 text-xs">Phone Number</label>
+                        <p id="phoneNumberError" class="text-red-500 text-sm"></p>
                     </div>
                 </div>
             </div>
         </div>
-
-
         <div class="container flex justify-end items-center p-5 gap-3">
             <span id="addEmployeeCancelButton" class="cursor-pointer px-4 py-2 rounded-lg text-semibold text-sm border border-gray-500 text-gray-500">Cancel</span>
-            <button id="submitEmployeeButton" class="px-4 py-2 rounded-lg text-semibold text-sm bg-indigo-900 text-white">Submit</button>
+            <button type="submit" class="px-4 py-2 rounded-lg text-semibold text-sm bg-indigo-900 text-white">Submit</button>
         </div>
     </form>
 </div>

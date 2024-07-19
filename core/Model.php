@@ -44,9 +44,9 @@ abstract class Model
                 if(is_array($error)) $error = $error[0];
                 if($error === FormError::REQUIRED && empty($value))
                     $this->addError($key, "This field is required");
-
+//                || !preg_match('/^9{10}$/', $value)
                 if($error === FormError::VALID_PHONE_NUMBER)
-                    if(!is_numeric($value) || !preg_match('/^9{10}$/', $value))
+                    if(!is_numeric($value))
                         $this->addError($key, "Please input a valid phone number");
 
                 if($error === FormError::VALID_EMAIL && !filter_var($value, FILTER_VALIDATE_EMAIL))

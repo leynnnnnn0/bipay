@@ -1,44 +1,52 @@
 document.addEventListener("DOMContentLoaded", () => {
+    let errors = [];
     const addEmployeeButton = document.getElementById("addEmployeeButton");
     const addEmployeeContainer = document.getElementById("addEmployeeContainer");
     const addEmployeeCancelButton = document.getElementById("addEmployeeCancelButton");
-    const firstNameField = document.getElementById("firstName");
-    const lastNameField = document.getElementById("lastName");
-    const streetAddressField = document.getElementById("streetAddress");
-    const cityField = document.getElementById("city");
-    const stateField = document.getElementById("state");
-    const zipCodeField = document.getElementById("zipCode");
-    const emailField = document.getElementById("email");
-    const phoneNumberField = document.getElementById("phoneNumber");
-    inputFieldValidation(firstNameField);
-    inputFieldValidation(lastNameField);
-    inputFieldValidation(streetAddressField);
-    inputFieldValidation(cityField);
-    inputFieldValidation(stateField);
-    inputFieldValidation(zipCodeField);
-    inputFieldValidation(emailField);
-    inputFieldValidation(phoneNumberField);
+    const addEmployeeForm = document.getElementById("addEmployeeForm");
+
     addEmployeeButton.addEventListener('click', () => {
-        addEmployeeContainer.classList.remove('hidden');
+        addEmployeeContainer.classList.toggle('hidden');
     });
     addEmployeeCancelButton.addEventListener('click', () => {
-        addEmployeeContainer.classList.add('hidden');
+        addEmployeeContainer.classList.toggle('hidden');
     });
 
-
+    addEmployeeForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const formData = new FormData(addEmployeeForm);
+          fetch('/employee', {
+            method: 'POST',
+            body: formData
+        })
+             .then(response => response.json())
+             .then(result => {
+                 return result;
+             })
+             .then(errors => {
+                 displayErrorMessage(errors.firstName, "firstName");
+                 displayErrorMessage(errors.lastName, "lastName");
+                 displayErrorMessage(errors.streetAddress, "streetAddress");
+                 displayErrorMessage(errors.city, "city");
+                 displayErrorMessage(errors.state, "state");
+                 displayErrorMessage(errors.zipCode, "zipCode");
+                 displayErrorMessage(errors.email, "email");
+                 displayErrorMessage(errors.phoneNumber, "phoneNumber");
+             })
+             .catch(err => console.log(err));
+    });
 });
 
-const inputFieldValidation = (inputField) => {
-    inputField.addEventListener("focusout", () => {
-        let inputFieldValue = inputField.value;
-        if(inputFieldValue.length > 1){
-            inputField.classList.remove("border-red-500");
-
-        }else {
-            inputField.classList.add("border-red-500");
-        }
-    })
+const displayErrorMessage = (error, element) => {
+    if(error){
+        document.getElementById(element + "Error").innerText = error[0];
+        document.getElementById(element).classList.add("border-red-500");
+    }else {
+        document.getElementById(element + "Error").innerText = "";
+        document.getElementById(element).classList.remove("border-red-500");
+    }
 }
+
 
 
 

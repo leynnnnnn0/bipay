@@ -33,9 +33,8 @@ class PageController extends Controller
                 debug($employeeModel->insertAndSave());
                 Response::redirect('dashboard');
             }
-            debug($employeeModel->errors);
-            $errors = $employeeModel->errors;
-            return $this->render('employee', $errors);
+            return json_encode($employeeModel->errors);
+
         }
         return $this->render('employee');
     }
