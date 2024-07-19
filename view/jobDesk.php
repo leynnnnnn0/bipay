@@ -1,3 +1,9 @@
+<?php
+use app\model\EmployeeModel;
+/**
+ * @var $model EmployeeModel
+ */
+?>
 <div class="flex flex-col gap-5 h-full w-full">
     <h1 class="font-bold text-xl text-gray-800">Job Desk</h1>
     <main class="flex gap-5 h-full w-full">
@@ -6,7 +12,7 @@
             <div class="container flex items-center gap-2 bg-white">
                 <img class="h-10 w-10 rounded-full" src="/image/speed.jpg" alt="profile">
                 <div>
-                    <h1 class="text-black font-bold text-sm">Darren Hawtkins</h1>
+                    <h1 class="text-black font-bold text-sm"><?= $model['firstName'] . " " . $model['lastName'] ?></h1>
                     <p class="text-gray-500 text-[12px]">Streamer</p>
                 </div>
             </div>
@@ -61,7 +67,7 @@
                             <i class="bi bi-envelope"></i>
                         </span>
                         <div>
-                            <h1 class="text-black font-semibold text-sm">ishowspeed@gmail.com</h1>
+                            <h1 class="text-black font-semibold text-sm"><?= $model['email'] ?></h1>
                             <p class="text-gray-500 text-[10px]">email</p>
                         </div>
                     </div>
@@ -70,7 +76,7 @@
                             <i class="bi bi-phone"></i>
                         </span>
                         <div>
-                            <h1 class="text-text font-semibold text-sm">+63927887832</h1>
+                            <h1 class="text-text font-semibold text-sm">+63<?= $model['phoneNumber'] ?></h1>
                             <p class="text-gray-500 text-[10px]">Phone</p>
                         </div>
                     </div>
@@ -85,7 +91,7 @@
                             <i class="bi bi-geo-alt"></i>
                         </span>
                         <div>
-                            <h1 class="text-black font-semibold text-sm">Cincinatti</h1>
+                            <h1 class="text-black font-semibold text-sm"><?= $model['city'] ?></h1>
                             <p class="text-gray-500 text-[10px]">City</p>
                         </div>
                     </div>
@@ -94,7 +100,7 @@
                             <i class="bi bi-map"></i>
                         </span>
                         <div>
-                            <h1 class="text-text font-semibold text-sm">Ohio</h1>
+                            <h1 class="text-text font-semibold text-sm"><?= $model['state'] ?></h1>
                             <p class="text-gray-500 text-[10px]">State</p>
                         </div>
                     </div>

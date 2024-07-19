@@ -19,7 +19,9 @@ class PageController extends Controller
 
     public function jobDesk(): bool|array|string
     {
-        return $this->render('jobDesk');
+        $employeeModel = new EmployeeModel();
+        $employee = $employeeModel->fetchById('1');
+        return $this->render('jobDesk', ['model' =>  $employee]);
     }
 
     public function employee(): bool|array|string
