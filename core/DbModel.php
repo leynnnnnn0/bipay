@@ -17,7 +17,6 @@ abstract class DbModel extends Model
         $statement = $database->pdo->prepare($query);
         foreach ($properties as $property) {
             $statement->bindValue(":$property", $this->{$property});
-            var_dump($this->{$property});
         }
         $statement->execute();
         return $statement->rowCount() > 0;

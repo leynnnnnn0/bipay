@@ -30,8 +30,8 @@ class PageController extends Controller
             $employeeModel->loadData($_POST, $_FILES);
             if($employeeModel->validate())
             {
-                debug($employeeModel->insertAndSave());
-                Response::redirect('dashboard');
+                if($employeeModel->insertAndSave())
+                    return json_encode(['success' => true]);
             }
             return json_encode($employeeModel->errors);
 

@@ -23,15 +23,19 @@ document.addEventListener("DOMContentLoaded", () => {
              .then(result => {
                  return result;
              })
-             .then(errors => {
-                 displayErrorMessage(errors.firstName, "firstName");
-                 displayErrorMessage(errors.lastName, "lastName");
-                 displayErrorMessage(errors.streetAddress, "streetAddress");
-                 displayErrorMessage(errors.city, "city");
-                 displayErrorMessage(errors.state, "state");
-                 displayErrorMessage(errors.zipCode, "zipCode");
-                 displayErrorMessage(errors.email, "email");
-                 displayErrorMessage(errors.phoneNumber, "phoneNumber");
+             .then(error => {
+                 if(error.success) {
+                     addEmployeeContainer.classList.toggle('hidden');
+                     return;
+                 }
+                 displayErrorMessage(error.firstName, "firstName");
+                 displayErrorMessage(error.lastName, "lastName");
+                 displayErrorMessage(error.streetAddress, "streetAddress");
+                 displayErrorMessage(error.city, "city");
+                 displayErrorMessage(error.state, "state");
+                 displayErrorMessage(error.zipCode, "zipCode");
+                 displayErrorMessage(error.email, "email");
+                 displayErrorMessage(error.phoneNumber, "phoneNumber");
              })
              .catch(err => console.log(err));
     });
