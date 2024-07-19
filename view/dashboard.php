@@ -1,3 +1,8 @@
+<?php
+    /**
+     * @var $name
+    **/
+?>
 <div class="flex flex-col gap-5 h-full">
 <!--    First container-->
     <div class="flex justify-between">
@@ -10,7 +15,7 @@
 <!--    Second Container-->
     <div class="flex justify-between items-center bg-white rounded-lg p-3">
         <div class="container">
-            <h1 class="text-md font-bold text-black">Good to see you, Darren &#128075;</h1>
+            <h1 class="text-md font-bold text-black">Good to see you, <?= $name ?> &#128075;</h1>
             <p class="text-[12px] text-gray-500">You came 25 minutes early today.</p>
         </div>
         <div class="flex gap-2 items-center">

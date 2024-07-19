@@ -10,9 +10,9 @@ class Controller
 
     }
 
-    public function render($view)
+    public function render($view, $params = []): bool|array|string
     {
-        return Application::$application->router->renderView($view);
+        return Application::$application->router->renderView($view, $params);
     }
 
 }

@@ -33,15 +33,16 @@ class Router
         return call_user_func($callback);
     }
 
-    public function renderView($view): array|bool|string
+    public function renderView($view, $params = []): array|bool|string
     {
         $viewLayout = $this->viewLayout();
-        $viewContent = $this->viewContent($view);
+        $viewContent = $this->viewContent($view, $params);
         return str_replace("{{Main Content}}", $viewContent, $viewLayout);
     }
 
-    public function viewContent($view): bool|string
+    public function viewContent($view, $params = []): bool|string
     {
+        extract($params);
         ob_start();
         require Application::$ROOT_PATH . "\\view\\$view.php";
         return ob_get_clean();

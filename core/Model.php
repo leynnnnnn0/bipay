@@ -8,16 +8,34 @@ abstract class Model
 {
     public array $errors = [];
     abstract public function attributes(): array;
-    public function loadData($data) : void
+    public function loadData($data, $file = []) : void
     {
         foreach($data as $key => $value) {
             if(property_exists($this, $key)) {
                 $this->$key = $value;
             }
         }
+        if(property_exists($this, 'dateOfBirth'))
+        {
+            $dateOfBirth = "$this->birthYear/$this->birthMonth/$this->birthDate";
+            $this->dateOfBirth = date("Y-m-d", strtotime($dateOfBirth));
+        }
+        if(!empty($file)) {
+            $valid = ["jpg", "jpeg", "png"];
+            $type = explode('/', $file['photo']['type'])[1];
+            if(!in_array($type, $valid)) {
+                $this->addError('photo', "Please input a valid photo");
+                return;
+            }
+            if(property_exists($this, 'photo'))
+            {
+                $this->photo = $file['photo']['name'];
+            }
+        }
     }
 
-    public function validate()
+
+    public function validate(): bool
     {
         foreach($this->attributes() as $key => $errors)
         {
@@ -39,9 +57,14 @@ abstract class Model
     }
 
 
-    public function addError(string $key, string $message)
+    public function addError(string $key, string $message): void
     {
         $this->errors[$key][] = $message;
+    }
+
+    public function getFirstError($key): string | false
+    {
+        return $this->errors[$key][0] ?? false;
     }
 
 

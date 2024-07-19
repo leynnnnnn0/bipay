@@ -3,15 +3,19 @@
 namespace app\model;
 
 use app\constant\FormError;
-use app\core\Model;
+use app\core\DbModel;
 
-class EmployeeModel extends Model
+class EmployeeModel extends DbModel
 {
     public string $photo = '';
     public string $firstName = '';
     public string $middleName = '';
     public string $lastName = '';
     public string $dateOfBirth = '';
+    public string $birthMonth = '';
+    public string $birthDate = '';
+    public string $birthYear = '';
+    public string $gender = '';
     public string $streetAddress = '';
     public string $city = '';
     public string $state = '';
@@ -19,16 +23,6 @@ class EmployeeModel extends Model
     public string $email = '';
     public string $phoneNumber = '';
 
-    public function loadPhoto($file): void
-    {
-        $valid = ["jpg", "jpeg", "png"];
-        $type = explode('/', $file['photo']['type'])[1];
-        if(!in_array($type, $valid)) {
-            $this->addError('photo', "Please input a valid photo");
-            return;
-        }
-        $this->photo = $file['photo']['name'];
-    }
 
     public function attributes(): array
     {
@@ -38,6 +32,7 @@ class EmployeeModel extends Model
             'middleName' => [],
             'lastName' => [FormError::REQUIRED],
             'dateOfBirth' => [FormError::REQUIRED, FormError::VALID_DATE],
+            'gender' => [FormError::REQUIRED],
             'streetAddress' => [FormError::REQUIRED],
             'city' => [FormError::REQUIRED],
             'state' => [FormError::REQUIRED],
@@ -45,5 +40,10 @@ class EmployeeModel extends Model
             'email' => [FormError::REQUIRED, FormError::VALID_EMAIL, [FormError::UNIQUE, 'email' => self::class]],
             'phoneNumber' => [FormError::REQUIRED, FormError::VALID_PHONE_NUMBER]
         ];
+    }
+
+    function tableName(): string
+    {
+        return "employees";
     }
 }

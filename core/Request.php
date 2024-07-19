@@ -4,7 +4,7 @@ namespace app\core;
 
 class Request
 {
-    public static function url()
+    public static function url(): bool|array|int|string|null
     {
         return parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
     }

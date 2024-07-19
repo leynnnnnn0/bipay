@@ -12,6 +12,7 @@ class Application
     public Response $response;
     public Style $style;
     public Database $database;
+    public Session $session;
     function __construct(string $rootPath, $config)
     {
         self::$ROOT_PATH = $rootPath;
@@ -22,6 +23,7 @@ class Application
         $this->controller = new Controller();
         $this->style = new Style();
         $this->database = new Database($config['database']);
+        $this->session = new Session();
     }
 
     public function run()
