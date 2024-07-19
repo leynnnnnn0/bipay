@@ -23,7 +23,6 @@ class EmployeeModel extends DbModel
     public string $email = '';
     public string $phoneNumber = '';
 
-
     public function attributes(): array
     {
         return [

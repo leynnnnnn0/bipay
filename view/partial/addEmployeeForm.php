@@ -169,7 +169,10 @@
         </div>
         <div class="container flex justify-end items-center p-5 gap-3">
             <span id="addEmployeeCancelButton" class="cursor-pointer px-4 py-2 rounded-lg text-semibold text-sm border border-gray-500 text-gray-500">Cancel</span>
-            <button type="submit" class="px-4 py-2 rounded-lg text-semibold text-sm bg-indigo-900 text-white">Submit</button>
+            <button type="submit"
+                    class="px-4 py-2 rounded-lg text-semibold text-sm bg-indigo-900 text-white transition ease-in-out duration-300 hover:bg-indigo-500">
+                Submit
+            </button>
         </div>
     </form>
 </div>

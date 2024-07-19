@@ -20,6 +20,14 @@ abstract class DbModel extends Model
         }
         $statement->execute();
         return $statement->rowCount() > 0;
+    }
 
+    public function fetchAll(): array
+    {
+        $tableName = $this->tableName();
+        $query = "SELECT * FROM $tableName";
+        $statement = Application::$application->database->pdo->prepare($query);
+        $statement->execute();
+        return $statement->fetchAll();
     }
 }

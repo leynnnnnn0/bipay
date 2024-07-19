@@ -36,7 +36,8 @@ class PageController extends Controller
             return json_encode($employeeModel->errors);
 
         }
-        return $this->render('employee');
+        $employees = $employeeModel->fetchAll();
+        return $this->render('employee', ['model' => $employees]);
     }
 
     public function leave(): bool|array|string

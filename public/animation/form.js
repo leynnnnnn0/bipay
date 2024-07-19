@@ -30,7 +30,11 @@ document.addEventListener("DOMContentLoaded", () => {
                          title: "Success!",
                          text: "New Employee Added!",
                          icon: "success"
-                     });
+                     }).then(result => {
+                         window.location.reload();
+                         console.log("RELOAD");
+                         }
+                     );
                      return;
                  }
                  displayErrorMessage(error.firstName, "firstName");
