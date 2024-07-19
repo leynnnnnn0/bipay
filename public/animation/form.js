@@ -26,6 +26,11 @@ document.addEventListener("DOMContentLoaded", () => {
              .then(error => {
                  if(error.success) {
                      addEmployeeContainer.classList.toggle('hidden');
+                     Swal.fire({
+                         title: "Success!",
+                         text: "New Employee Added!",
+                         icon: "success"
+                     });
                      return;
                  }
                  displayErrorMessage(error.firstName, "firstName");
