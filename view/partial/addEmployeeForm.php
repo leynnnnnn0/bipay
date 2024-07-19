@@ -163,7 +163,7 @@
 
         <div class="container flex justify-end items-center p-5 gap-3">
             <span id="addEmployeeCancelButton" class="cursor-pointer px-4 py-2 rounded-lg text-semibold text-sm border border-gray-500 text-gray-500">Cancel</span>
-            <button class="px-4 py-2 rounded-lg text-semibold text-sm bg-indigo-900 text-white">Submit</button>
+            <button id="submitEmployeeButton" class="px-4 py-2 rounded-lg text-semibold text-sm bg-indigo-900 text-white">Submit</button>
         </div>
     </form>
 </div>
