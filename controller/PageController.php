@@ -11,10 +11,9 @@ class PageController extends Controller
 {
     public function dashboard(): bool|array|string
     {
-        $params = [
-            "name" => "Speed"
-        ];
-        return $this->render('dashboard', $params);
+        $employeeModel = new EmployeeModel();
+        $employee = $employeeModel->fetchById('1');
+        return $this->render('dashboard', ['model' => $employee]);
     }
 
     public function jobDesk(): bool|array|string

@@ -62,10 +62,6 @@ abstract class Model
         $this->errors[$key][] = $message;
     }
 
-    public function getFirstError($key): string | false
-    {
-        return $this->errors[$key][0] ?? false;
-    }
 
 
 }
