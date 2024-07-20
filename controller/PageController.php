@@ -3,6 +3,7 @@
 namespace app\controller;
 
 use app\core\Controller;
+use app\core\FileReader;
 use app\core\Request;
 use app\core\Response;
 use app\model\EmployeeModel;
@@ -28,8 +29,14 @@ class PageController extends Controller
         $employeeModel = new EmployeeModel();
         if(Request::method() === 'POST' && $_FILES['file'])
         {
-            var_dump($_FILES);
-            exit;
+            $userData = FileReader::readAndExplode($_FILES['file']['tmp_name']);
+            $employeeModel->loadData($userData);
+            if($employeeModel->validate())
+            {
+                if($employeeModel->insertAndSave())
+                    return json_encode(['success' => true]);
+            }
+            return json_encode($employeeModel->errors);
         }
         if(Request::method() === 'POST')
         {

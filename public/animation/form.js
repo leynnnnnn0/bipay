@@ -32,7 +32,6 @@ document.addEventListener("DOMContentLoaded", () => {
                          icon: "success"
                      }).then(result => {
                          window.location.reload();
-                         console.log("RELOAD");
                          }
                      );
                      return;
@@ -74,10 +73,29 @@ fileInput.addEventListener("change", (event) => {
         method: 'POST',
         body: formData
     })
-        .then(response => response.text())
+        .then(response => {
+            return response.json()
+        })
         .then(result => {
-            console.log(result);
-        }).catch(err => console.log(err));
+            return result;
+        }).then(error => {
+        if(error.success) {
+            Swal.fire({
+                title: "Success!",
+                text: "New Employee Added!",
+                icon: "success"
+            }).then(result => {
+                    window.location.reload();
+                }
+            );
+            return;
+        }
+        Swal.fire({
+            title: "Can't Upload Employee Form",
+            text: "Please double check the file and make sure the there is not missing field",
+            icon: "error"
+        });
+    }).catch(err => console.log(err));
 })
 
 
