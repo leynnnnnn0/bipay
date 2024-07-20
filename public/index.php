@@ -1,4 +1,6 @@
 <?php
+
+use app\controller\EmployeeController;
 use app\controller\PageController;
 use app\core\Application;
 
@@ -19,8 +21,8 @@ $config = [
 $app = new Application(dirname(__DIR__), $config);
 $app->router->get('/', [PageController::class, 'dashboard']);
 $app->router->get('/job-desk', [PageController::class, 'jobDesk']);
-$app->router->get('/employee', [PageController::class, 'employee']);
-$app->router->post('/employee', [PageController::class, 'employee']);
+$app->router->get('/employee', [EmployeeController::class, 'employee']);
+$app->router->post('/employee', [EmployeeController::class, 'employee']);
 $app->router->get('/leave', [PageController::class, 'leave']);
 
 $app->run();
