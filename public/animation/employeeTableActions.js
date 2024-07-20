@@ -14,7 +14,7 @@ const viewEmployeeAction = (event, id) => {
     viewEmployeeContainer.classList.remove("hidden");
 }
 
-const deleteEmployee = (event, id) => {
+const deleteEmployee = (event, id, photo) => {
     Swal.fire({
         title: "Are you sure?",
         text: "You won't be able to revert this!",
@@ -28,6 +28,7 @@ const deleteEmployee = (event, id) => {
             const formData = new FormData();
             formData.append('_method', "DELETE");
             formData.append('id', id);
+            formData.append('photo', photo);
             fetch('/employee', {
                 method: "POST",
                 body: formData

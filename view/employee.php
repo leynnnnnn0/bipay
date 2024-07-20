@@ -57,7 +57,7 @@ use app\model\EmployeeModel;
                             <div class="container flex gap-2">
                                 <span id="viewEmployeeAction" onclick="viewEmployeeAction(event, '<?= $employee['id'] ?>')" class="text-indigo-900 cursor-pointer"><i class="bi bi-eye"></i></span>
                                 <span class="text-blue-500 cursor-pointer" onclick="showEditForm('<?= $employee['id'] ?>')"><i class="bi bi-pencil-square"></i></span>
-                                <span class="text-red-500 cursor-pointer" onclick="deleteEmployee(event, '<?= $employee['id'] ?>')"><i class="bi bi-trash"></i></span>
+                                <span class="text-red-500 cursor-pointer" onclick="deleteEmployee(event, '<?= $employee['id'] ?>', '<?= $employee['photo'] ?>')"><i class="bi bi-trash"></i></span>
                             </div>
                         </th>
                     </tr>

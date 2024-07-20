@@ -6,6 +6,7 @@ namespace app\controller;
 use app\core\Application;
 use app\core\Controller;
 use app\core\FileReader;
+use app\core\Image;
 use app\core\Request;
 use app\model\EmployeeModel;
 
@@ -26,10 +27,12 @@ class EmployeeController extends Controller
         // For deleting an employee
         if(Request::method() === 'POST' && Request::customMethod() === 'DELETE')
         {
+            $imageName = $_POST['photo'];
+            Image::remove(Application::$ROOT_PATH . "/public/avatar/$imageName");
             return json_encode(['success' => $employeeModel->removeById($_POST['id'])]);
         }
         // For adding an employee with an employee form
-        if(Request::method() === 'POST' && $_FILES['file'])
+        if(Request::method() === 'POST' && isset($_FILES['file']))
         {
             $userData = FileReader::readAndExplode($_FILES['file']['tmp_name']);
             $employeeModel->loadData($userData);
