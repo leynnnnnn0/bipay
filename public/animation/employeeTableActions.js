@@ -1,13 +1,16 @@
 const viewEmployeeContainer = document.getElementById("viewEmployeeContainer");
-// const viewEmployeeAction = document.getElementById("viewEmployeeAction");
-const hideEmployeeDetails = document.getElementById("hideEmployeeDetails");
-
-const viewEmployeeAction = (event, id) => {
-    event.preventDefault();
-    viewEmployeeContainer.classList.remove("hidden")
-}
-hideEmployeeDetails.addEventListener('click', () => {
+const hideEmployeeDetails = () => {
     viewEmployeeContainer.classList.add("hidden")
+}
+const viewEmployeeAction = (event, id) => {
+    const params = new URLSearchParams({ id: id });
+    fetch(`/employee?${params.toString()}`, {
+        method: "GET",
+    }).then(response => response.text())
+        .then(result => {
+            viewEmployeeContainer.innerHTML = result;
+        })
 
-})
+    viewEmployeeContainer.classList.remove("hidden");
+}
 

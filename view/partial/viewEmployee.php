@@ -1,20 +1,20 @@
 <?php
 use app\model\EmployeeModel;
 /**
- * @var $model EmployeeModel
+ * @var $employee EmployeeModel
  **/
 
 ?>
-<div class="absolute h-full w-full flex items-center justify-center">
+<div class="absolute h-full w-full flex items-center justify-center z-10">
     <div class="flex flex-col gap-4 w-[600px] h-auto bg-white drop-shadow-xl p-5">
         <section class="flex items-center gap-5">
             <img src="/image/speed.jpg" class="h-[80px] w-[80px] rounded-full" alt="profile">
             <div class="container flex flex-col gap-1 w-auto">
-                <h1 class="text-black text-lg font-bold"><?= $model[2]['firstName'] ?></h1>
+                <h1 class="text-black text-lg font-bold"><?= $employee['firstName'] . " " . $employee['lastName']?></h1>
                 <p class="text-gray-500">Streamer</p>
             </div>
             <div class="flex-1 flex flex-col items-end h-full">
-                <span id="hideEmployeeDetails" class="cursor-pointer text-red-500"><i class="bi bi-x-circle"></i></span>
+                <span onclick="hideEmployeeDetails()" class="cursor-pointer text-red-500"><i class="bi bi-x-circle"></i></span>
             </div>
         </section>
         <section class="flex flex-col gap-5">
@@ -68,7 +68,7 @@ use app\model\EmployeeModel;
                             <i class="bi bi-envelope"></i>
                         </span>
                     <div>
-                        <h1 class="text-black font-semibold text-sm">speed@gmail.com</h1>
+                        <h1 class="text-black font-semibold text-sm"><?= $employee['email'] ?></h1>
                         <p class="text-gray-500 text-[10px]">email</p>
                     </div>
                 </div>
@@ -77,7 +77,7 @@ use app\model\EmployeeModel;
                             <i class="bi bi-phone"></i>
                         </span>
                     <div>
-                        <h1 class="text-text font-semibold text-sm">+639266887267</h1>
+                        <h1 class="text-text font-semibold text-sm">+63<?= $employee['phoneNumber'] ?></h1>
                         <p class="text-gray-500 text-[10px]">Phone</p>
                     </div>
                 </div>
@@ -91,7 +91,7 @@ use app\model\EmployeeModel;
                             <i class="bi bi-geo-alt"></i>
                         </span>
                     <div>
-                        <h1 class="text-black font-semibold text-sm">General Trias</h1>
+                        <h1 class="text-black font-semibold text-sm"><?= $employee['city'] ?></h1>
                         <p class="text-gray-500 text-[10px]">City</p>
                     </div>
                 </div>
@@ -100,7 +100,7 @@ use app\model\EmployeeModel;
                              <i class="bi bi-map"></i>
                         </span>
                     <div>
-                        <h1 class="text-text font-semibold text-sm">Cavite</h1>
+                        <h1 class="text-text font-semibold text-sm"><?= $employee['state'] ?></h1>
                         <p class="text-gray-500 text-[10px]">State</p>
                     </div>
                 </div>

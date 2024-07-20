@@ -25,10 +25,10 @@ abstract class DbModel extends Model
     public function fetchById(string $id): array
     {
         $tableName = $this->tableName();
-        $query = "SELECT * FROM $tableName WHERE :$id";
+        $query = "SELECT * FROM $tableName WHERE id = :id";
         $database = Application::$application->database;
         $statement = $database->pdo->prepare($query);
-        $statement->bindValue(":$id", $id);
+        $statement->bindValue(":id", $id);
         $statement->execute();
         return $statement->fetch();
     }

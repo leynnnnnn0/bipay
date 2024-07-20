@@ -11,7 +11,7 @@ use app\model\EmployeeModel;
         <?php require_once Application::$ROOT_PATH . "/view/partial/addEmployeeForm.php"?>
     </div>
     <div id="viewEmployeeContainer" class="hidden">
-        <?php require_once Application::$ROOT_PATH . "/view/partial/viewEmployee.php"?>
+
     </div>
     <div class="flex items-center justify-between">
         <h1 class="text-gray-800 text-xl text-black font-bold">All Employee</h1>
