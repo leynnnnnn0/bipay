@@ -23,8 +23,6 @@ class PageController extends Controller
         return $this->render('jobDesk', ['model' =>  $employee]);
     }
 
-
-
     public function leave(): bool|array|string
     {
         $employeeModel = new EmployeeModel();

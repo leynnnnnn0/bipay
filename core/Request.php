@@ -9,9 +9,14 @@ class Request
         return parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
     }
 
-    public static function method()
+    public static function method() : string
     {
         return $_SERVER['REQUEST_METHOD'];
+    }
+
+    public static function customMethod() : string | bool
+    {
+        return $_POST['_method'] ?? false;
     }
 
 }

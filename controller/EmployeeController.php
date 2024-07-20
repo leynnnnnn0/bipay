@@ -14,6 +14,11 @@ class EmployeeController extends Controller
     public function employee(): bool|array|string
     {
         $employeeModel = new EmployeeModel();
+        // For deleting an employee
+        if(Request::method() === 'POST' && Request::customMethod() === 'DELETE')
+        {
+            return json_encode(['success' => $employeeModel->removeById($_POST['id'])]);
+        }
         // For adding an employee with an employee form
         if(Request::method() === 'POST' && $_FILES['file'])
         {
@@ -36,7 +41,6 @@ class EmployeeController extends Controller
                     return json_encode(['success' => true]);
             }
             return json_encode($employeeModel->errors);
-
         }
         // For viewing an employee details
         if(Request::method() === 'GET' && $_GET['id'])

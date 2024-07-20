@@ -41,4 +41,15 @@ abstract class DbModel extends Model
         $statement->execute();
         return $statement->fetchAll();
     }
+
+    public function removeById(string $id): bool
+    {
+        $tableName = $this->tableName();
+        $query = "DELETE FROM $tableName WHERE id = :id";
+        $database = Application::$application->database;
+        $statement = $database->pdo->prepare($query);
+        $statement->bindValue(":id", $id);
+        $statement->execute();
+        return $statement->rowCount() > 0;
+    }
 }
