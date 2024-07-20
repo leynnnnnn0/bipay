@@ -167,7 +167,17 @@
                     </div>
                 </div>
             </div>
+            <div class="container flex flex-col gap-2">
+                <h1 class="text-gray-800 font-medium text-md">Photo</h1>
+                <label for="photo" class="text-gray-500 text-xs">Photo</label>
+                <input class="border border-gray-300 rounded-md"
+                       id="photo"
+                       name="photo"
+                       type="file">
+                <p id="photo" class="text-red-500 text-sm"></p>
+            </div>
         </div>
+
         <div class="container flex justify-end items-center p-5 gap-3">
             <span id="addEmployeeCancelButton" class="cursor-pointer px-4 py-2 rounded-lg text-semibold text-sm border border-gray-500 text-gray-500">Cancel</span>
             <button type="submit"

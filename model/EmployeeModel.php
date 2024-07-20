@@ -7,7 +7,7 @@ use app\core\DbModel;
 
 class EmployeeModel extends DbModel
 {
-    public string $photo = '';
+    public string $photo = 'empty.png';
     public string $firstName = '';
     public string $middleName = '';
     public string $lastName = '';
@@ -22,6 +22,9 @@ class EmployeeModel extends DbModel
     public string $zipCode = '';
     public string $email = '';
     public string $phoneNumber = '';
+    public string $status = 'ONBOARDING';
+    public string $department = 'N/A';
+    public string $role  = 'N/A';
 
     public function attributes(): array
     {
@@ -37,7 +40,10 @@ class EmployeeModel extends DbModel
             'state' => [FormError::REQUIRED],
             'zipCode' => [FormError::REQUIRED],
             'email' => [FormError::REQUIRED, FormError::VALID_EMAIL, [FormError::UNIQUE, 'email' => self::class]],
-            'phoneNumber' => [FormError::REQUIRED, FormError::VALID_PHONE_NUMBER]
+            'phoneNumber' => [FormError::REQUIRED, FormError::VALID_PHONE_NUMBER],
+            'status' => [],
+            'department' => [],
+            'role' => []
         ];
     }
 

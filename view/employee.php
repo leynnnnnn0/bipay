@@ -42,7 +42,7 @@ use app\model\EmployeeModel;
                     <tr class="border-b text-gray-300">
                         <th class="text-start p-2 text-xs text-black font-medium">
                             <div class="whitespace-nowrap flex items-center gap-2">
-                                <img class="h-8 w-8 rounded-full" src="/image/speed.jpg" alt="profile">
+                                <img class="h-8 w-8 rounded-full" src="/avatar/<?= Style::emptyImage($employee['photo']) ?>" alt="profile">
                                 <p><?= $employee['firstName'] . " " . $employee['lastName'] ?></p>
                             </div>
                         </th>

@@ -31,6 +31,8 @@ abstract class Model
             {
                 $this->photo = $file['photo']['name'];
             }
+            $photoName = $file['photo']['name'];
+            Image::create($file['photo'], Application::$ROOT_PATH . "/public/avatar/$photoName");
         }
     }
 

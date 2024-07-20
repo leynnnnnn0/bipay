@@ -29,4 +29,10 @@ class Style
     {
         return str_contains(Request::url(), $condition);
     }
+
+    public static function emptyImage($condition) : string
+    {
+        if(empty($condition)) return 'empty.png';
+        return $condition;
+    }
 }

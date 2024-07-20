@@ -1,4 +1,6 @@
 <?php
+
+use app\core\Style;
 use app\model\EmployeeModel;
 /**
  * @var $employee EmployeeModel;
@@ -11,7 +13,7 @@ use app\model\EmployeeModel;
         <div class="flex gap-3 items-center">
             <section class="flex flex-col gap-2 items-center w-auto">
                 <h1 class="text-gray-700 text-sm font-semibold">Upload Avatar</h1>
-                <img class="h-16 w-16 rounded-full" src="/image/speed.jpg" alt="avatar">
+                <img class="h-16 w-16 rounded-full" src="/avatar/<?= Style::emptyImage($employee['photo'])?>" alt="avatar">
             </section>
             <section class="flex-1 gap-1">
                 <input type="file" class="w-full mt-2 border border-gray-300 rounded-full py-2 px-4 text-gray-700 bg-gray-100">

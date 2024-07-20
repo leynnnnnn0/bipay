@@ -1,4 +1,6 @@
 <?php
+
+use app\core\Style;
 use app\model\EmployeeModel;
 /**
  * @var $model EmployeeModel
@@ -10,7 +12,7 @@ use app\model\EmployeeModel;
         <section class="flex flex-col gap-5 bg-white rounded-lg w-64 p-5">
             <!--        Personal Information-->
             <div class="container flex items-center gap-2 bg-white">
-                <img class="h-10 w-10 rounded-full" src="/image/speed.jpg" alt="profile">
+                <img class="h-10 w-10 rounded-full" src="/avatar/<?= Style::emptyImage($model['photo']) ?>" alt="profile">
                 <div>
                     <h1 class="text-black font-bold text-sm"><?= $model['firstName'] . " " . $model['lastName'] ?></h1>
                     <p class="text-gray-500 text-[12px]">Streamer</p>
