@@ -14,6 +14,15 @@ class EmployeeController extends Controller
     public function employee(): bool|array|string
     {
         $employeeModel = new EmployeeModel();
+        // For updating an employee detail
+        if(Request::method() === 'POST' && Request::customMethod() === 'PUT')
+        {
+            $employee = $employeeModel->fetchById($_POST['id']);
+            require_once Application::$ROOT_PATH . "/view/partial/editEmployeeForm.php";
+            exit;
+
+        }
+
         // For deleting an employee
         if(Request::method() === 'POST' && Request::customMethod() === 'DELETE')
         {

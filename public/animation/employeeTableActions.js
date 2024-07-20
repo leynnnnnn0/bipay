@@ -53,4 +53,24 @@ const deleteEmployee = (event, id) => {
     });
 }
 
+const editEmployeeContainer = document.getElementById("editEmployeeContainer");
+const showEditForm = (id) => {
+    editEmployeeContainer.classList.toggle('hidden');
+    const formData = new FormData();
+    formData.append("_method", "PUT");
+    formData.append('id', id);
+    fetch('/employee', {
+        method: 'POST',
+        body: formData
+    }).then(response => response.text())
+        .then(result => {
+            editEmployeeContainer.innerHTML = result;
+        })
+        .catch(err => console.log(err))
+}
+
+const hideEditForm = () => {
+    editEmployeeContainer.classList.toggle('hidden');
+}
+
 

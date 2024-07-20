@@ -11,7 +11,8 @@ use app\model\EmployeeModel;
         <?php require_once Application::$ROOT_PATH . "/view/partial/addEmployeeForm.php"?>
     </div>
     <div id="viewEmployeeContainer" class="hidden">
-
+    </div>
+    <div id="editEmployeeContainer" class="hidden">
     </div>
     <div class="flex items-center justify-between">
         <h1 class="text-gray-800 text-xl text-black font-bold">All Employee</h1>
@@ -55,7 +56,7 @@ use app\model\EmployeeModel;
                         <th class="text-black relative">
                             <div class="container flex gap-2">
                                 <span id="viewEmployeeAction" onclick="viewEmployeeAction(event, '<?= $employee['id'] ?>')" class="text-indigo-900 cursor-pointer"><i class="bi bi-eye"></i></span>
-                                <span class="text-blue-500 cursor-pointer"><i class="bi bi-pencil-square"></i></span>
+                                <span class="text-blue-500 cursor-pointer" onclick="showEditForm('<?= $employee['id'] ?>')"><i class="bi bi-pencil-square"></i></span>
                                 <span class="text-red-500 cursor-pointer" onclick="deleteEmployee(event, '<?= $employee['id'] ?>')"><i class="bi bi-trash"></i></span>
                             </div>
                         </th>
