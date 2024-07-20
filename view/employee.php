@@ -1,5 +1,6 @@
 <?php
 use app\core\Application;
+use app\core\Style;
 use app\model\EmployeeModel;
 /**
  * @var $model EmployeeModel
@@ -8,6 +9,9 @@ use app\model\EmployeeModel;
 <div class="flex flex-col gap-5 h-full relative">
     <div id="addEmployeeContainer" class="hidden">
         <?php require_once Application::$ROOT_PATH . "/view/partial/addEmployeeForm.php"?>
+    </div>
+    <div id="viewEmployeeContainer" class="hidden">
+        <?php require_once Application::$ROOT_PATH . "/view/partial/viewEmployee.php"?>
     </div>
     <div class="flex items-center justify-between">
         <h1 class="text-gray-800 text-xl text-black font-bold">All Employee</h1>
@@ -28,7 +32,8 @@ use app\model\EmployeeModel;
                     <th class="text-start p-2 text-xs text-black font-medium border-r border-gray-300">Status</th>
                     <th class="text-start p-2 text-xs text-black font-medium border-r border-gray-300">Department</th>
                     <th class="text-start p-2 text-xs text-black font-medium border-r border-gray-300">Joining Date</th>
-                    <th class="text-start p-2 text-xs text-black font-medium">Role</th>
+                    <th class="text-start p-2 text-xs text-black font-medium border-r border-gray-300">Role</th>
+                    <th class="text-start p-2 text-xs text-black font-medium">Action</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -42,11 +47,18 @@ use app\model\EmployeeModel;
                         </th>
                         <th class="text-start p-2 text-xs text-black font-medium">#<?= $employee['id']?></th>
                         <th class="text-start p-2 text-xs text-black font-medium">
-                            <span class="text-center px-3 py-1 text-black font-medium bg-yellow-500 rounded-full">Part-time</span>
+                            <span class="text-center px-3 py-1 font-medium rounded-full <?= Style::statusStyle($employee['status']) ?>"><?= $employee['status'] ?></span>
                         </th>
-                        <th class="text-start p-2 text-xs text-black font-medium">HR</th>
-                        <th class="text-start p-2 text-xs text-black font-medium">09/16/2023</th>
-                        <th class="text-start p-2 text-xs text-black font-medium">Streamer</th>
+                        <th class="text-start p-2 text-xs text-black font-medium"><?= $employee['department'] ?? "N/A" ?></th>
+                        <th class="text-start p-2 text-xs text-black font-medium"><?= explode(" ", $employee['joiningDate'])[0] ?></th>
+                        <th class="text-start p-2 text-xs text-black font-medium"><?= $employee['role'] ?? "N/A" ?></th>
+                        <th class="text-black relative">
+                            <div class="container flex gap-2">
+                                <span id="viewEmployeeAction" onclick="viewEmployeeAction(event, '<?= $employee['id'] ?>')" class="text-indigo-900 cursor-pointer"><i class="bi bi-eye"></i></span>
+                                <span class="text-blue-500 cursor-pointer"><i class="bi bi-pencil-square"></i></span>
+                                <span class="text-red-500 cursor-pointer"><i class="bi bi-trash"></i></span>
+                            </div>
+                        </th>
                     </tr>
                 <?php endforeach; ?>
                 </tbody>
@@ -54,4 +66,5 @@ use app\model\EmployeeModel;
         </div>
     </div>
 </div>
-<script src="animation/Form.js"></script>
+<script src="animation/form.js"></script>
+<script src="animation/employeeTableActions.js"></script>

@@ -60,6 +60,27 @@ const displayErrorMessage = (error, element) => {
     }
 }
 
+const uploadEmployeeFile = document.getElementById("uploadEmployeeFile");
+const fileInput = document.getElementById("fileInput");
+uploadEmployeeFile.addEventListener("click", () => {
+    fileInput.click();
+})
+
+fileInput.addEventListener("change", (event) => {
+    const file = event.target.files[0];
+    const formData = new FormData();
+    formData.append('file', file);
+    fetch('/employee', {
+        method: 'POST',
+        body: formData
+    })
+        .then(response => response.text())
+        .then(result => {
+            console.log(result);
+        }).catch(err => console.log(err));
+})
+
+
 
 
 

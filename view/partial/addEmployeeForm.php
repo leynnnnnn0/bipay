@@ -1,8 +1,9 @@
-<div id="addEmployeeContainer" class="absolute h-full w-full flex items-center justify-center drop-shadow-2xl">
+<div id="addEmployeeContainer" class="absolute h-full w-full flex items-center justify-center drop-shadow-2xl z-10">
     <form id="addEmployeeForm" class="container flex flex-col gap-1 bg-white rounded-lg w-[750px]" enctype="multipart/form-data">
         <div class="container border-b border-gray-300 p-5">
             <h1 class="font-bold text-gray-800 text-2xl">New Employee Form</h1>
-            <p class="text-gray-500 font-medium text-sm">Fill out the form carefully or <span class="underline text-indigo-900">Upload Employee File</span></p>
+            <p class="text-gray-500 font-medium text-sm">Fill out the form carefully or <span id="uploadEmployeeFile" class="underline cursor-pointer text-indigo-900">Upload Employee File</span></p>
+            <input type="file" hidden id="fileInput">
         </div>
         <div class="container p-5 flex flex-col gap-4">
             <!--  First Row-->

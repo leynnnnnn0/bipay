@@ -11,4 +11,4 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <title>Bipay</title>
 </head>
-<body class="h-full">
+<body class="h-full relative">

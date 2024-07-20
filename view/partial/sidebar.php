@@ -1,4 +1,5 @@
-<?php use \app\core\Application; ?>
+<?php use \app\core\Application;
+use app\core\Style; ?>
 <div class="flex flex-col gap-2 w-64 bg-gray-200 border-r border-gray-300">
     <div class="flex items-center h-14 font-semibold px-5 text-gray-800 cursor-pointer <?= Application::$application->style->sideBarButton('/') ?>">
         <a href="/"><span class="mr-3"><i class="bi bi-house-door"></i></span> Dashboard</a>
@@ -13,7 +14,7 @@
         <a href="/leave"><span class="mr-3"><i class="bi bi-box-arrow-left"></i></span> Leave</a>
         <span id="leaveOptions" class="mr-3"><i class="bi bi-chevron-down"></i></span>
     </div>
-    <div id="leaveOptionsContainer" class="container bg-gray-200">
+    <div id="leaveOptionsContainer" class="container bg-gray-200 <?= Style::isOptionsVisible("/leave") ? '' : 'hidden' ?>">
         <div class="flex rounded-lg h-10 items-center text-sm font-semibold px-5 text-gray-800 cursor-pointer <?= Application::$application->style->sideBarButton('/leave') ?>">
             <a href="/leave">Summary</a>
         </div>

@@ -26,6 +26,11 @@ class PageController extends Controller
     public function employee(): bool|array|string
     {
         $employeeModel = new EmployeeModel();
+        if(Request::method() === 'POST' && $_FILES['file'])
+        {
+            var_dump($_FILES);
+            exit;
+        }
         if(Request::method() === 'POST')
         {
             $employeeModel->loadData($_POST, $_FILES);
