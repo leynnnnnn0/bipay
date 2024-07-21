@@ -10,7 +10,17 @@ use app\model\EmployeeModel;
 
 class EmployeeController extends Controller
 {
-
+    public function createEmployee()
+    {
+        $employeeModel = new EmployeeModel();
+        $employeeModel->loadData($_POST, $_FILES);
+        if($employeeModel->validate())
+        {
+            if($employeeModel->insertAndSave())
+                return json_encode(['success' => true]);
+        }
+        return json_encode($employeeModel->errors);
+    }
     public function deleteEmployee(): bool|string
     {
         $employeeModel = new EmployeeModel();
@@ -19,35 +29,32 @@ class EmployeeController extends Controller
         return json_encode(['success' => $employeeModel->removeById($_POST['id'])]);
     }
 
+    public function updateEmployee()
+    {
+        $employeeModel = new EmployeeModel();
+        if(isset($_POST['_update']) && $_POST['_update'] === 'true')
+        {
+            $employeeModel->loadData($_POST, $_FILES);
+            if($employeeModel->validate(['email' => $_POST['currentEmail']]))
+            {
+                $employeeModel->updateById($_POST['id'], $employeeModel->attributes(), $_POST['currentPhoto']);
+                Image::update($_POST['currentPhoto'], $_FILES['photo'], Application::$ROOT_PATH ."/public/avatar");
+                return json_encode(['success' => true]);
+            }
+            return json_encode($employeeModel->errors);
+        }
+        $employee = $employeeModel->findById($_POST['id']);
+        require_once Application::$ROOT_PATH . "/view/partial/editEmployeeForm.php";
+        exit;
+
+    }
+
+
+
     public function employee(): bool|array|string
     {
         $employeeModel = new EmployeeModel();
-        // For updating an employee detail
-        if(Request::method() === 'POST' && Request::customMethod() === 'PUT')
-        {
-            if(isset($_POST['_update']) && $_POST['_update'] === 'true')
-            {
-                $employeeModel->loadData($_POST, $_FILES);
-                if($employeeModel->validate(['email' => $_POST['currentEmail']]))
-                {
-                    // The goal is to not check the email if it's already existing if it is different from the current email
-                    $employeeModel->updateById($_POST['id'], $employeeModel->attributes(), $_POST['currentPhoto']);
-                    Image::update($_POST['currentPhoto'], $_FILES['photo'], Application::$ROOT_PATH ."/public/avatar");
-                    return json_encode(['success' => true]);
-                }
-                return json_encode($employeeModel->errors);
-            }
-            $employee = $employeeModel->findById($_POST['id']);
-            require_once Application::$ROOT_PATH . "/view/partial/editEmployeeForm.php";
-            exit;
-        }
-//        // For deleting an employee
-//        if(Request::method() === 'POST' && Request::customMethod() === 'DELETE')
-//        {
-//            $imageName = $_POST['photo'];
-//            Image::remove($imageName, Application::$ROOT_PATH . "/public/avatar/");
-//            return json_encode(['success' => $employeeModel->removeById($_POST['id'])]);
-//        }
+
         // For adding an employee with an employee form
         if(Request::method() === 'POST' && isset($_FILES['file']))
         {
@@ -61,16 +68,16 @@ class EmployeeController extends Controller
             return json_encode($employeeModel->errors);
         }
         // For adding an employee manually
-        if(Request::method() === 'POST')
-        {
-            $employeeModel->loadData($_POST, $_FILES);
-            if($employeeModel->validate())
-            {
-                if($employeeModel->insertAndSave())
-                    return json_encode(['success' => true]);
-            }
-            return json_encode($employeeModel->errors);
-        }
+//        if(Request::method() === 'POST')
+//        {
+//            $employeeModel->loadData($_POST, $_FILES);
+//            if($employeeModel->validate())
+//            {
+//                if($employeeModel->insertAndSave())
+//                    return json_encode(['success' => true]);
+//            }
+//            return json_encode($employeeModel->errors);
+//        }
         // For viewing an employee details
         if(Request::method() === 'GET' && $_GET['id'])
         {

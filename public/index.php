@@ -21,10 +21,11 @@ $config = [
 $app = new Application(dirname(__DIR__), $config);
 $app->router->get('/', [PageController::class, 'dashboard']);
 $app->router->get('/job-desk', [PageController::class, 'jobDesk']);
-$app->router->get('/employee', [EmployeeController::class, 'employee']);
-$app->router->post('/employee', [EmployeeController::class, 'employee']);
 $app->router->get('/leave', [PageController::class, 'leave']);
 
+$app->router->get('/employee', [EmployeeController::class, 'employee']);
+$app->router->post('/employee', [EmployeeController::class, 'createEmployee']);
 $app->router->delete('/employee', [EmployeeController::class, 'deleteEmployee']);
+$app->router->put('/employee', [EmployeeController::class, 'updateEmployee']);
 
 $app->run();

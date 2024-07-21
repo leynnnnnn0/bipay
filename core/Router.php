@@ -21,12 +21,16 @@ class Router
         $this->routes['DELETE'][$path] = $callback;
     }
 
+    public function put($path, $callback): void
+    {
+        $this->routes['PUT'][$path] = $callback;
+    }
+
     public function resolve()
     {
         $uri = Request::url();
         $method = Request::method();
         $callback = $this->routes[$method][$uri] ?? false;
-        var_dump($method);
         if(is_string($callback)) return $callback;
         if(!$callback)
         {
