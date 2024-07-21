@@ -23,8 +23,8 @@ class EmployeeController extends Controller
                 $employeeModel->loadData($_POST, $_FILES);
                 if($employeeModel->validate())
                 {
-                    $employeeModel->updateById($_POST['id'], $employeeModel->attributes());
-
+                    $employeeModel->updateById($_POST['id'], $employeeModel->attributes(), $_POST['currentPhoto']);
+                    Image::update($_POST['currentPhoto'], $_FILES['photo'], Application::$ROOT_PATH ."/public/avatar");
                     return json_encode(['success' => true]);
                 }
                 return json_encode(['success' => false]);
@@ -39,7 +39,7 @@ class EmployeeController extends Controller
         if(Request::method() === 'POST' && Request::customMethod() === 'DELETE')
         {
             $imageName = $_POST['photo'];
-            Image::remove(Application::$ROOT_PATH . "/public/avatar/$imageName");
+            Image::remove($imageName, Application::$ROOT_PATH . "/public/avatar/");
             return json_encode(['success' => $employeeModel->removeById($_POST['id'])]);
         }
         // For adding an employee with an employee form

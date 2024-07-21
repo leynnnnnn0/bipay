@@ -8,7 +8,7 @@ use app\model\EmployeeModel;
 ?>
 <div class="flex items-center justify-center h-full w-full drop-shadow-2xl absolute z-10">
     <form id="updateEmployeeForm" class="flex flex-col gap-5 w-[800px] bg-white h-auto rounded-xl p-5">
-        <input type="text" hidden value="<?= $employee['photo'] ?>" name="current_photo">
+        <input type="text" hidden value="<?= $employee['photo'] ?>" name="currentPhoto">
         <input type="text" hidden value="<?= $employee['id'] ?>" name="id">
         <h1 class="text-gray-800 text-2xl font-bold">Personal Information</h1>
         <!--        Profile photo-->

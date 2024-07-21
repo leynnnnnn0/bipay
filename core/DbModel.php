@@ -53,7 +53,7 @@ abstract class DbModel extends Model
         return $statement->rowCount() > 0;
     }
 
-    public function updateById(string $id, array $attributes) : bool
+    public function updateById(string $id, array $attributes, $currentImage) : bool
     {
         $tableName = $this->tableName();
         $keys = array_keys($attributes);
@@ -62,6 +62,14 @@ abstract class DbModel extends Model
         $database = Application::$application->database;
         $statement = $database->pdo->prepare($query);
         foreach ($keys as $key) {
+            if($key === 'photo')
+            {
+                if($currentImage !== 'empty.png' && $this->{$key} === 'empty.png')
+                {
+                    $statement->bindValue(":$key", $currentImage);
+                    continue;
+                }
+            }
             $statement->bindValue(":$key", $this->{$key});
         }
         $statement->bindValue(":id", $id);
@@ -69,3 +77,6 @@ abstract class DbModel extends Model
         return $statement->rowCount() > 0;
     }
 }
+
+// If the current image is not equals to empty.png and new photo is equals to empty.png
+// photo = current image
