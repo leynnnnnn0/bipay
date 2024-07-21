@@ -18,6 +18,17 @@ class EmployeeController extends Controller
         // For updating an employee detail
         if(Request::method() === 'POST' && Request::customMethod() === 'PUT')
         {
+            if(isset($_POST['_update']) && $_POST['_update'] === 'true')
+            {
+                $employeeModel->loadData($_POST, $_FILES);
+                if($employeeModel->validate())
+                {
+                    $employeeModel->updateById($_POST['id'], $employeeModel->attributes());
+
+                    return json_encode(['success' => true]);
+                }
+                return json_encode(['success' => false]);
+            }
             $employee = $employeeModel->fetchById($_POST['id']);
             require_once Application::$ROOT_PATH . "/view/partial/editEmployeeForm.php";
             exit;

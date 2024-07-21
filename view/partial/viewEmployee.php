@@ -8,7 +8,7 @@ use app\model\EmployeeModel;
 <div class="absolute h-full w-full flex items-center justify-center z-10">
     <div class="flex flex-col gap-4 w-[600px] h-auto bg-white drop-shadow-xl p-5">
         <section class="flex items-center gap-5">
-            <img src="/image/speed.jpg" class="h-[80px] w-[80px] rounded-full" alt="profile">
+            <img src="/avatar/<?= $employee['photo'] ?>" class="h-[80px] w-[80px] rounded-full" alt="profile">
             <div class="container flex flex-col gap-1 w-auto">
                 <h1 class="text-black text-lg font-bold"><?= $employee['firstName'] . " " . $employee['lastName']?></h1>
                 <p class="text-gray-500">Streamer</p>

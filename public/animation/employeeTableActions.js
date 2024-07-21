@@ -74,4 +74,35 @@ const hideEditForm = () => {
     editEmployeeContainer.classList.toggle('hidden');
 }
 
+const updateEmployeeDetails = (event) => {
+    event.preventDefault();
+    const form = document.getElementById("updateEmployeeForm");
+    const formData = new FormData(form);
+    formData.append("_update", "true");
+    formData.append("_method", "PUT");
+    fetch('/employee', {
+        method: 'POST',
+        body: formData
+    }).then(response => response.json())
+        .then(result => {
+            if(result.success) {
+                Swal.fire({
+                    title: "Success!",
+                    text: "New Employee Added!",
+                    icon: "success"
+                }).then(result => {
+                        window.location.reload();
+                    }
+                );
+                return;
+            }
+            Swal.fire({
+                title: "Error!",
+                text: "Internal Server Error!",
+                icon: "error"
+            })
+        })
+        .catch(err => console.log(err));
+}
+
 

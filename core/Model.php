@@ -20,7 +20,7 @@ abstract class Model
             $dateOfBirth = "$this->birthYear/$this->birthMonth/$this->birthDate";
             $this->dateOfBirth = date("Y-m-d", strtotime($dateOfBirth));
         }
-        if(!empty($file)) {
+        if(!empty($file['photo']['name'])) {
             $valid = ["jpg", "jpeg", "png"];
             $type = explode('/', $file['photo']['type'])[1];
             if(!in_array($type, $valid)) {

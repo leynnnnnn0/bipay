@@ -7,7 +7,9 @@ use app\model\EmployeeModel;
  **/
 ?>
 <div class="flex items-center justify-center h-full w-full drop-shadow-2xl absolute z-10">
-    <div class="flex flex-col gap-5 w-[800px] bg-white h-auto rounded-xl p-5">
+    <form id="updateEmployeeForm" class="flex flex-col gap-5 w-[800px] bg-white h-auto rounded-xl p-5">
+        <input type="text" hidden value="<?= $employee['photo'] ?>" name="current_photo">
+        <input type="text" hidden value="<?= $employee['id'] ?>" name="id">
         <h1 class="text-gray-800 text-2xl font-bold">Personal Information</h1>
         <!--        Profile photo-->
         <div class="flex gap-3 items-center">
@@ -16,7 +18,7 @@ use app\model\EmployeeModel;
                 <img class="h-16 w-16 rounded-full" src="/avatar/<?= Style::emptyImage($employee['photo'])?>" alt="avatar">
             </section>
             <section class="flex-1 gap-1">
-                <input type="file" class="w-full mt-2 border border-gray-300 rounded-full py-2 px-4 text-gray-700 bg-gray-100">
+                <input type="file" name="photo" class="w-full mt-2 border border-gray-300 rounded-full py-2 px-4 text-gray-700 bg-gray-100">
                 <p class="text-xs text-gray-500">PNG, JPG, JPEG</p>
             </section>
         </div>
@@ -36,6 +38,10 @@ use app\model\EmployeeModel;
             <div class="flex flex-col gap-2">
                 <label class="text-gray-700 text-sm font-semibold" for="dateOfBirth">Date of Birth</label>
                 <input class=" border border-gray-300 rounded-lg bg-gray-100" id="dateOfBirth" type="date" name="dateOfBirth" value="<?= $employee['dateOfBirth'] ?>">
+            </div>
+            <div class="flex flex-col gap-2">
+                <label class="text-gray-700 text-sm font-semibold" for="gender">Gender</label>
+                <input class=" border border-gray-300 rounded-lg bg-gray-100" id="gender" type="text" name="gender" value="<?= $employee['gender'] ?>">
             </div>
         </section>
         <h1 class="text-gray-800 text-2xl font-bold">Contact Information</h1>
@@ -102,10 +108,10 @@ use app\model\EmployeeModel;
         </section>
         <div class="container flex justify-end items-center p-5 gap-3">
             <span onclick="hideEditForm()" class="cursor-pointer px-4 py-2 rounded-lg text-semibold text-sm border border-gray-500 text-gray-500">Cancel</span>
-            <button type="submit"
+            <button onclick="updateEmployeeDetails(event)"
                     class="px-4 py-2 rounded-lg text-semibold text-sm bg-indigo-900 text-white transition ease-in-out duration-300 hover:bg-indigo-500">
                 Update
             </button>
         </div>
-    </div>
+    </form>
 </div>

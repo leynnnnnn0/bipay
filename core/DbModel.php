@@ -52,4 +52,20 @@ abstract class DbModel extends Model
         $statement->execute();
         return $statement->rowCount() > 0;
     }
+
+    public function updateById(string $id, array $attributes) : bool
+    {
+        $tableName = $this->tableName();
+        $keys = array_keys($attributes);
+        $values = implode(", ", array_map(fn($value) => "$value = :$value", $keys));
+        $query = "UPDATE $tableName SET $values WHERE id = :id";
+        $database = Application::$application->database;
+        $statement = $database->pdo->prepare($query);
+        foreach ($keys as $key) {
+            $statement->bindValue(":$key", $this->{$key});
+        }
+        $statement->bindValue(":id", $id);
+        $statement->execute();
+        return $statement->rowCount() > 0;
+    }
 }
