@@ -5,7 +5,6 @@ use app\core\Application;
 use app\core\Controller;
 use app\core\FileReader;
 use app\core\Image;
-use app\core\Request;
 use app\model\EmployeeModel;
 
 class EmployeeController extends Controller
@@ -64,7 +63,7 @@ class EmployeeController extends Controller
     {
         $employeeModel = new EmployeeModel();
         // For viewing an employee details
-        if(Request::method() === 'GET' && $_GET['id'])
+        if($_GET['id'])
         {
             $employee = $employeeModel->findById($_GET['id']);
             require_once Application::$ROOT_PATH . '/view/partial/viewEmployee.php';
@@ -74,3 +73,4 @@ class EmployeeController extends Controller
         return $this->render('employee', ['model' => $employees]);
     }
 }
+

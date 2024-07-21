@@ -60,8 +60,9 @@ class Router
 
     public function viewLayout(): bool|string
     {
+        $viewLayout = Application::$application->controller->layout;
         ob_start();
-        require Application::$ROOT_PATH . "\\view\\layout\\main.php";
+        require Application::$ROOT_PATH . "\\view\\layout\\$viewLayout.php";
         return ob_get_clean();
     }
 

@@ -67,6 +67,9 @@ abstract class Model
                     $result = $instance->find($key, $value);
                     if($result) $this->addError($key, "This $key has been already used.");
                 }
+
+                if($error === FormError::MIN && strlen($value) < $temp['min'])
+                    $this->addError($key, "$key should contain at least $temp[min] characters.");
             }
         }
         return empty($this->errors);

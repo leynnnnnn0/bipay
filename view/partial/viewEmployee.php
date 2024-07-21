@@ -25,7 +25,7 @@ use app\model\EmployeeModel;
                             <i class="bi bi-clipboard"></i>
                         </span>
                     <div>
-                        <h1 class="text-black font-semibold text-md">Admin & HRM</h1>
+                        <h1 class="text-black font-semibold text-md"><?= $employee['department'] ?></h1>
                         <p class="text-gray-500 text-xs ">Department</p>
                     </div>
                 </div>

@@ -1,5 +1,6 @@
 <?php
 
+use app\controller\AuthController;
 use app\controller\EmployeeController;
 use app\controller\PageController;
 use app\core\Application;
@@ -27,5 +28,9 @@ $app->router->get('/employee', [EmployeeController::class, 'employee']);
 $app->router->post('/employee', [EmployeeController::class, 'createEmployee']);
 $app->router->delete('/employee', [EmployeeController::class, 'deleteEmployee']);
 $app->router->put('/employee', [EmployeeController::class, 'updateEmployee']);
+
+$app->router->get('/register', [AuthController::class, 'register']);
+$app->router->post('/register', [AuthController::class, 'registerAccount']);
+
 
 $app->run();

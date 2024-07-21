@@ -4,11 +4,7 @@ namespace app\core;
 
 class Controller
 {
-
-    function __construct()
-    {
-
-    }
+    public string $layout = 'main';
 
     public function render($view, $params = []): bool|array|string
     {

@@ -12,3 +12,4 @@
     <title>Bipay</title>
 </head>
 <body class="h-full relative">
+

@@ -11,4 +11,7 @@ enum FormError
     case VALID_PHOTO;
     case UNIQUE;
     case NUMBER;
+    case REGISTERED;
+    case MIN;
+    case MAX;
 }
