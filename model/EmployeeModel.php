@@ -38,9 +38,9 @@ class EmployeeModel extends DbModel
             'streetAddress' => [FormError::REQUIRED],
             'city' => [FormError::REQUIRED],
             'state' => [FormError::REQUIRED],
-            'zipCode' => [FormError::REQUIRED],
-            'email' => [FormError::REQUIRED, FormError::VALID_EMAIL, [FormError::UNIQUE, 'email' => self::class]],
-            'phoneNumber' => [FormError::REQUIRED, FormError::VALID_PHONE_NUMBER],
+            'zipCode' => [FormError::REQUIRED, FormError::NUMBER],
+            'email' => [FormError::REQUIRED, FormError::VALID_EMAIL, [FormError::UNIQUE, 'class' => self::class]],
+            'phoneNumber' => [FormError::REQUIRED, FormError::NUMBER, FormError::VALID_PHONE_NUMBER],
             'status' => [],
             'department' => [],
             'role' => []

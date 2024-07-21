@@ -43,16 +43,28 @@ abstract class Model
         {
             $value = $this->{$key};
             foreach($errors as $error) {
+                $temp = $error;
                 if(is_array($error)) $error = $error[0];
                 if($error === FormError::REQUIRED && empty($value))
                     $this->addError($key, "This field is required");
-//                || !preg_match('/^9{10}$/', $value)
+
+                if($error === FormError::NUMBER && !is_numeric($value))
+                    $this->addError($key, "This field must be a number");
+
                 if($error === FormError::VALID_PHONE_NUMBER)
-                    if(!is_numeric($value))
+                    if(!is_numeric($value) || strlen($value) != 10)
                         $this->addError($key, "Please input a valid phone number");
 
                 if($error === FormError::VALID_EMAIL && !filter_var($value, FILTER_VALIDATE_EMAIL))
                     $this->addError($key, "Please input a valid email address");
+
+                if($error === FormError::UNIQUE)
+                {
+                    $instance = new $temp['class'];
+                    $result = $instance->find($key, $value);
+                    if($result) $this->addError($key, "This $key has been already used.");
+
+                }
             }
         }
         return empty($this->errors);

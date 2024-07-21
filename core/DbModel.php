@@ -22,13 +22,24 @@ abstract class DbModel extends Model
         return $statement->rowCount() > 0;
     }
 
-    public function fetchById(string $id): array
+    public function findById(string $id): array
     {
         $tableName = $this->tableName();
         $query = "SELECT * FROM $tableName WHERE id = :id";
         $database = Application::$application->database;
         $statement = $database->pdo->prepare($query);
         $statement->bindValue(":id", $id);
+        $statement->execute();
+        return $statement->fetch();
+    }
+
+    public function find(string $key, string $value): array | bool
+    {
+        $tableName = $this->tableName();
+        $query = "SELECT * FROM $tableName WHERE $key = :$key";
+        $database = Application::$application->database;
+        $statement = $database->pdo->prepare($query);
+        $statement->bindValue(":$key", $value);
         $statement->execute();
         return $statement->fetch();
     }

@@ -29,7 +29,7 @@ class EmployeeController extends Controller
                 }
                 return json_encode(['success' => false]);
             }
-            $employee = $employeeModel->fetchById($_POST['id']);
+            $employee = $employeeModel->findById($_POST['id']);
             require_once Application::$ROOT_PATH . "/view/partial/editEmployeeForm.php";
             exit;
 
@@ -68,7 +68,7 @@ class EmployeeController extends Controller
         // For viewing an employee details
         if(Request::method() === 'GET' && $_GET['id'])
         {
-            $employee = $employeeModel->fetchById($_GET['id']);
+            $employee = $employeeModel->findById($_GET['id']);
             require_once Application::$ROOT_PATH . '/view/partial/viewEmployee.php';
             exit;
         }

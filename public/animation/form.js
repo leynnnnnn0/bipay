@@ -18,7 +18,9 @@ addEmployeeForm.addEventListener('submit', (e) => {
         method: 'POST',
         body: formData
     })
-        .then(response => response.json())
+        .then(response => {
+            return response.json()
+        })
         .then(result => {
             return result;
         })

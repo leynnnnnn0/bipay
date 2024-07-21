@@ -12,14 +12,14 @@ class PageController extends Controller
     public function dashboard(): bool|array|string
     {
         $employeeModel = new EmployeeModel();
-        $employee = $employeeModel->fetchById('1');
+        $employee = $employeeModel->findById('33');
         return $this->render('dashboard', ['model' => $employee]);
     }
 
     public function jobDesk(): bool|array|string
     {
         $employeeModel = new EmployeeModel();
-        $employee = $employeeModel->fetchById('1');
+        $employee = $employeeModel->findById('33');
         return $this->render('jobDesk', ['model' =>  $employee]);
     }
 
