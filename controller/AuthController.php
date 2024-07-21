@@ -3,6 +3,8 @@
 namespace app\controller;
 
 use app\core\Controller;
+use app\core\Response;
+use app\model\AccountModel;
 
 class AuthController extends Controller
 {
@@ -17,8 +19,19 @@ class AuthController extends Controller
 
     public function registerAccount(): bool|array|string
     {
-        var_dump($_POST);
+        $accountModel = new AccountModel();
+        $accountModel->loadData($_POST);
+        if($accountModel->validate()){
+            $accountModel->insertAndSave();
+            Response::redirect('/login');
+        };
+        var_dump($accountModel->errors);
         exit;
+    }
+
+    public function login(): bool|array|string
+    {
+        return $this->render('login');
     }
 
 }

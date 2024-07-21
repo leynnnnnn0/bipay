@@ -32,5 +32,6 @@ $app->router->put('/employee', [EmployeeController::class, 'updateEmployee']);
 $app->router->get('/register', [AuthController::class, 'register']);
 $app->router->post('/register', [AuthController::class, 'registerAccount']);
 
+$app->router->get('/login', [AuthController::class, 'login']);
 
 $app->run();

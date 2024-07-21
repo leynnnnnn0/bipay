@@ -70,6 +70,17 @@ abstract class Model
 
                 if($error === FormError::MIN && strlen($value) < $temp['min'])
                     $this->addError($key, "$key should contain at least $temp[min] characters.");
+
+                if($error === FormError::REGISTERED)
+                {
+                    $instance = new $temp['class'];
+                    $result = $instance->find($key, $value);
+                    if(!$result)
+                    {
+                        $this->addError($key, "$key is not recognized. Please use your work email.");
+                    }
+
+                }
             }
         }
         return empty($this->errors);

@@ -12,13 +12,13 @@ class AccountModel extends DbModel
     public string $password;
     function tableName(): string
     {
-        return 'account';
+        return 'accounts';
     }
 
     public function attributes(): array
     {
         return [
-            'email' => [FormError::REQUIRED, FormError::REGISTERED],
+            'email' => [FormError::REQUIRED, FormError::VALID_EMAIL, [FormError::REGISTERED, 'class' => EmployeeModel::class]],
             'username' => [FormError::REQUIRED],
             'password' => [FormError::REQUIRED, [FormError::MIN, 'min' => 8]],
         ];

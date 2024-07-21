@@ -16,6 +16,11 @@ abstract class DbModel extends Model
         $database = Application::$application->database;
         $statement = $database->pdo->prepare($query);
         foreach ($properties as $property) {
+            if($property === 'password')
+            {
+                $statement->bindValue(":$property", password_hash($this->{$property}, PASSWORD_BCRYPT));
+                continue;
+            }
             $statement->bindValue(":$property", $this->{$property});
         }
         $statement->execute();
