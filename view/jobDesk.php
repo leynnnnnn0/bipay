@@ -118,7 +118,7 @@ use app\model\EmployeeModel;
                 </div>
             </div>
         </section>
-        <section class="flex-1 bg-white rounded-lg flex items-center justify-center">
+        <section class="flex-1 bg-white rounded-lg flex items-center justify-center min-w-[800px]">
             <h1 class="text-black text-xl font-bold">COMING SOON....</h1>
         </section>
     </main>

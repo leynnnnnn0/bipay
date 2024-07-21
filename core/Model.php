@@ -37,8 +37,9 @@ abstract class Model
     }
 
 
-    public function validate(): bool
+    public function validate($existing = []): bool
     {
+        extract($existing);
         foreach($this->attributes() as $key => $errors)
         {
             $value = $this->{$key};
@@ -60,10 +61,11 @@ abstract class Model
 
                 if($error === FormError::UNIQUE)
                 {
+                    if(Request::customMethod() === 'PUT' && $key === 'email')
+                        if($email === $value) continue;
                     $instance = new $temp['class'];
                     $result = $instance->find($key, $value);
                     if($result) $this->addError($key, "This $key has been already used.");
-
                 }
             }
         }

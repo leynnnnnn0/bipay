@@ -25,4 +25,6 @@ $app->router->get('/employee', [EmployeeController::class, 'employee']);
 $app->router->post('/employee', [EmployeeController::class, 'employee']);
 $app->router->get('/leave', [PageController::class, 'leave']);
 
+$app->router->delete('/employee', [EmployeeController::class, 'deleteEmployee']);
+
 $app->run();

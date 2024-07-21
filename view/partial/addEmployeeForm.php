@@ -174,7 +174,7 @@
                        id="photo"
                        name="photo"
                        type="file">
-                <p id="photo" class="text-red-500 text-sm"></p>
+                <p id="photoError" class="text-red-500 text-sm"></p>
             </div>
         </div>
 

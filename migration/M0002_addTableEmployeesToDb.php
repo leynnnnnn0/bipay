@@ -4,7 +4,7 @@ class M0002_addTableEmployeesToDb
 {
     public function up()
     {
-        $query = "CREATE TABLE employees (
+        $query = "CREATE TABLE employees (        
             id INT AUTO_INCREMENT PRIMARY KEY,
             photo VARCHAR(255),
             firstName VARCHAR(225) NOT NULL,

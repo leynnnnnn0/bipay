@@ -22,7 +22,7 @@ use app\model\EmployeeModel;
             Add Employee
         </button>
     </div>
-    <div class="container flex flex-col h-full bg-white p-3 rounded-lg gap-3">
+    <div class="container flex flex-col h-full bg-white p-3 rounded-lg gap-3 min-w-[700px]">
         <h1 class="text-black text-md text-black font-bold">Employees</h1>
         <div class="overflow-hidden rounded-lg">
             <table class="table-auto w-full ">

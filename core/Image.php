@@ -17,7 +17,7 @@ class Image
 
     public static function update(string $current, array $file, string $path) : void
     {
-        if($current === 'empty.png' && empty($file['name'])) return;
+        if($current === 'empty.png' && empty($file['name']) || $current !== 'empty.png' && empty($file['name'])) return;
         self::remove($current, $path);
         self::create($file, $path);
     }

@@ -84,8 +84,8 @@ const updateEmployeeDetails = (event) => {
         method: 'POST',
         body: formData
     }).then(response => response.json())
-        .then(result => {
-            if(result.success) {
+        .then(error => {
+            if(error.success) {
                 Swal.fire({
                     title: "Success!",
                     text: "New Employee Added!",
@@ -104,5 +104,6 @@ const updateEmployeeDetails = (event) => {
         })
         .catch(err => console.log(err));
 }
+
 
 
