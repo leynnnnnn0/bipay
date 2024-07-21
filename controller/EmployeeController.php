@@ -10,9 +10,22 @@ use app\model\EmployeeModel;
 
 class EmployeeController extends Controller
 {
-    public function createEmployee()
+    public function createEmployee(): bool|string
     {
         $employeeModel = new EmployeeModel();
+        // For adding an employee with an employee form
+        if(isset($_FILES['file']))
+        {
+            $userData = FileReader::readAndExplode($_FILES['file']['tmp_name']);
+            $employeeModel->loadData($userData);
+            if($employeeModel->validate())
+            {
+                if($employeeModel->insertAndSave())
+                    return json_encode(['success' => true]);
+            }
+            return json_encode($employeeModel->errors);
+        }
+        // Manual Adding
         $employeeModel->loadData($_POST, $_FILES);
         if($employeeModel->validate())
         {
@@ -28,7 +41,6 @@ class EmployeeController extends Controller
         Image::remove($imageName, Application::$ROOT_PATH . "/public/avatar/");
         return json_encode(['success' => $employeeModel->removeById($_POST['id'])]);
     }
-
     public function updateEmployee()
     {
         $employeeModel = new EmployeeModel();
@@ -48,36 +60,9 @@ class EmployeeController extends Controller
         exit;
 
     }
-
-
-
     public function employee(): bool|array|string
     {
         $employeeModel = new EmployeeModel();
-
-        // For adding an employee with an employee form
-        if(Request::method() === 'POST' && isset($_FILES['file']))
-        {
-            $userData = FileReader::readAndExplode($_FILES['file']['tmp_name']);
-            $employeeModel->loadData($userData);
-            if($employeeModel->validate())
-            {
-                if($employeeModel->insertAndSave())
-                    return json_encode(['success' => true]);
-            }
-            return json_encode($employeeModel->errors);
-        }
-        // For adding an employee manually
-//        if(Request::method() === 'POST')
-//        {
-//            $employeeModel->loadData($_POST, $_FILES);
-//            if($employeeModel->validate())
-//            {
-//                if($employeeModel->insertAndSave())
-//                    return json_encode(['success' => true]);
-//            }
-//            return json_encode($employeeModel->errors);
-//        }
         // For viewing an employee details
         if(Request::method() === 'GET' && $_GET['id'])
         {
