@@ -8,29 +8,60 @@ class Router
 
     public function get($path, $callback): void
     {
-        $this->routes['GET'][$path] = $callback;
+        $this->routes[] = [
+            'method' => 'GET',
+            'uri' => $path,
+            'callback' => $callback,
+            'middleware' => null
+        ];
     }
 
     public function post($path, $callback): void
     {
-        $this->routes['POST'][$path] = $callback;
+        $this->routes[] = [
+            'method' => 'POST',
+            'uri' => $path,
+            'callback' => $callback,
+            'middleware' => null
+        ];
     }
 
     public function delete($path, $callback): void
     {
-        $this->routes['DELETE'][$path] = $callback;
+        $this->routes[] = [
+            'method' => 'DELETE',
+            'uri' => $path,
+            'callback' => $callback,
+            'middleware' => null
+        ];
     }
 
     public function put($path, $callback): void
     {
-        $this->routes['PUT'][$path] = $callback;
+        $this->routes[] = [
+            'method' => 'PUT',
+            'uri' => $path,
+            'callback' => $callback,
+            'middleware' => null
+        ];
+    }
+
+    public function only()
+    {
+
     }
 
     public function resolve()
     {
         $uri = Request::url();
         $method = Request::method();
-        $callback = $this->routes[$method][$uri] ?? false;
+        $callback = false;
+        foreach ($this->routes as $route) {
+            if ($route['method'] === $method && $route['uri'] === $uri)
+            {
+                $callback = $route['callback'];
+            }
+        }
         if(is_string($callback)) return $callback;
         if(!$callback)
         {

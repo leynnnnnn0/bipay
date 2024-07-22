@@ -4,7 +4,6 @@ namespace app\core;
 
 class Application
 {
-    public static $count = 1;
     public static string $ROOT_PATH;
     public static Application $application;
     public Router $router;
@@ -33,7 +32,6 @@ class Application
             self::login();
 
 
-
     }
 
     public function login(): void
@@ -50,6 +48,7 @@ class Application
 
     public function run(): void
     {
+//        debug($this->router->routes);
         echo $this->router->resolve();
     }
 }
