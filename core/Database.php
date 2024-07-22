@@ -19,6 +19,13 @@ class Database
         ]);
     }
 
+    public function query(string $query, array $params = []): bool|\PDOStatement
+    {
+        $statement = $this->pdo->prepare($query);
+        $statement->execute($params);
+        return $statement;
+    }
+
     public function initializeMigration(): void
     {
         $this->createMigrationTable();

@@ -10,7 +10,7 @@
             <span><i class="bi bi-bell"></i></span>
         </li>
         <li class="cursor-pointer">
-            <img class="h-8 w-8 rounded-full" src="/image/speed.jpg" alt="profile">
+            <img class="h-8 w-8 rounded-full" src="/avatar/<?= \app\core\Style::emptyImage(\app\core\Application::$application->applicationUser->getPhoto()) ?>" alt="profile">
         </li>
     </ul>
 </nav>

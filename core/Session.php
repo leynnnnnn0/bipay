@@ -17,6 +17,17 @@ class Session
         $_SESSION[self::$FLASH_KEY] = $flashMessages;
     }
 
+    public static function set($key, $value): void
+    {
+        $_SESSION[$key] = $value;
+    }
+
+    public static function get($key): string | array | bool
+    {
+        return $_SESSION[$key] ?? false;
+    }
+
+
     public static function set_flash($key, $value): void
     {
         $_SESSION[self::$FLASH_KEY][$key] = [

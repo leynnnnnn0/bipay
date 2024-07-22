@@ -5,6 +5,7 @@ use app\controller\RegisterController;
 use app\controller\EmployeeController;
 use app\controller\PageController;
 use app\core\Application;
+use app\model\EmployeeInformationModel;
 
 require_once '../functions.php';
 require_once __DIR__ . '/../vendor/autoload.php';
@@ -13,6 +14,7 @@ $dotenv = Dotenv\Dotenv::createImmutable(dirname(__DIR__));
 $dotenv->safeLoad();
 
 $config = [
+    'userClass' => EmployeeInformationModel::class,
     'database' => [
         'dsn' => $_ENV['DB_DSN'],
         'user' => $_ENV['DB_USER'],

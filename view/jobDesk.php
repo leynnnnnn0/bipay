@@ -1,5 +1,6 @@
 <?php
 
+use app\core\Application;
 use app\core\Style;
 use app\model\EmployeeModel;
 /**
@@ -12,10 +13,10 @@ use app\model\EmployeeModel;
         <section class="flex flex-col gap-5 bg-white rounded-lg w-64 p-5">
             <!--        Personal Information-->
             <div class="container flex items-center gap-2 bg-white">
-                <img class="h-10 w-10 rounded-full" src="/avatar/<?= Style::emptyImage($model['photo']) ?>" alt="profile">
+                <img class="size-10 rounded-full" src="/avatar/<?= Style::emptyImage(Application::$application->applicationUser->getPhoto()) ?>" alt="profile">
                 <div>
-                    <h1 class="text-black font-bold text-sm"><?= $model['firstName'] . " " . $model['lastName'] ?></h1>
-                    <p class="text-gray-500 text-[12px]">Streamer</p>
+                    <h1 class="text-black font-bold text-sm"><?= Application::$application->applicationUser->getFirstName() . " " . Application::$application->applicationUser->getLastName() ?></h1>
+                    <p class="text-gray-500 text-[12px]"><?= $model['role'] ?></p>
                 </div>
             </div>
 <!--            Info-->
@@ -27,7 +28,7 @@ use app\model\EmployeeModel;
                             <i class="bi bi-clipboard"></i>
                         </span>
                         <div>
-                            <h1 class="text-black font-semibold text-sm">Admin & HRM</h1>
+                            <h1 class="text-black font-semibold text-sm"><?= Application::$application->applicationUser->getDepartment() ?></h1>
                             <p class="text-gray-500 text-[10px]">Department</p>
                         </div>
                     </div>
@@ -45,7 +46,7 @@ use app\model\EmployeeModel;
                             <i class="bi bi-clock"></i>
                         </span>
                         <div>
-                            <h1 class="text-black font-semibold text-sm">Regular</h1>
+                            <h1 class="text-black font-semibold text-sm"><?= Application::$application->applicationUser->getStatus() ?></h1>
                             <p class="text-gray-500 text-[10px]">Work Shift</p>
                         </div>
                     </div>
@@ -69,7 +70,7 @@ use app\model\EmployeeModel;
                             <i class="bi bi-envelope"></i>
                         </span>
                         <div>
-                            <h1 class="text-black font-semibold text-sm"><?= $model['email'] ?></h1>
+                            <h1 class="text-black font-semibold text-sm"><?= Application::$application->applicationUser->getEmail() ?></h1>
                             <p class="text-gray-500 text-[10px]">email</p>
                         </div>
                     </div>
@@ -78,7 +79,7 @@ use app\model\EmployeeModel;
                             <i class="bi bi-phone"></i>
                         </span>
                         <div>
-                            <h1 class="text-text font-semibold text-sm">+63<?= $model['phoneNumber'] ?></h1>
+                            <h1 class="text-text font-semibold text-sm">+63<?= Application::$application->applicationUser->getPhoneNumber() ?></h1>
                             <p class="text-gray-500 text-[10px]">Phone</p>
                         </div>
                     </div>
@@ -93,7 +94,7 @@ use app\model\EmployeeModel;
                             <i class="bi bi-geo-alt"></i>
                         </span>
                         <div>
-                            <h1 class="text-black font-semibold text-sm"><?= $model['city'] ?></h1>
+                            <h1 class="text-black font-semibold text-sm"><?= Application::$application->applicationUser->getCity() ?></h1>
                             <p class="text-gray-500 text-[10px]">City</p>
                         </div>
                     </div>
@@ -102,7 +103,7 @@ use app\model\EmployeeModel;
                             <i class="bi bi-map"></i>
                         </span>
                         <div>
-                            <h1 class="text-text font-semibold text-sm"><?= $model['state'] ?></h1>
+                            <h1 class="text-text font-semibold text-sm"><?= Application::$application->applicationUser->getState() ?></h1>
                             <p class="text-gray-500 text-[10px]">State</p>
                         </div>
                     </div>
