@@ -17,16 +17,17 @@ class Application
     {
         self::$ROOT_PATH = $rootPath;
         self::$application = $this;
+        $this->session = new Session();
         $this->request = new Request();
         $this->response = new Response();
         $this->router = new Router();
         $this->controller = new Controller();
         $this->style = new Style();
         $this->database = new Database($config['database']);
-        $this->session = new Session();
+
     }
 
-    public function run()
+    public function run(): void
     {
         echo $this->router->resolve();
     }

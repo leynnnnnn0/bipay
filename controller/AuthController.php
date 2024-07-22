@@ -2,8 +2,10 @@
 
 namespace app\controller;
 
+use app\core\Application;
 use app\core\Controller;
 use app\core\Response;
+use app\core\Session;
 use app\model\AccountModel;
 
 class AuthController extends Controller
@@ -25,8 +27,8 @@ class AuthController extends Controller
             $accountModel->insertAndSave();
             Response::redirect('/login');
         };
-        var_dump($accountModel->errors);
-        exit;
+        Session::set_flash('details', $accountModel);
+        Response::redirect('/register');
     }
 
     public function login(): bool|array|string

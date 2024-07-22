@@ -77,7 +77,7 @@ abstract class Model
                     $result = $instance->find($key, $value);
                     if(!$result)
                     {
-                        $this->addError($key, "$key is not recognized. Please use your work email.");
+                        $this->addError($key, ucfirst($key) . " is not recognized. Please use your work email.");
                     }
 
                 }
