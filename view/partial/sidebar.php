@@ -34,5 +34,10 @@ use app\core\Style; ?>
     <div class="flex items-center h-14 font-semibold px-5 text-gray-800 cursor-pointer <?= Application::$application->style->sideBarButton('/setting') ?>">
         <span class="mr-3"><i class="bi bi-gear"></i></span> Setting
     </div>
+    <div class="flex-1 flex items-end">
+        <div class="flex items-center h-14 font-semibold px-5 text-gray-800 cursor-pointer">
+            <a href="/logout"><span class="mr-3"><i class="bi bi-box-arrow-left"></i></span>Log out</a>
+        </div>
+    </div>
 </div>
 <script src="/animation/sidebar.js"></script>

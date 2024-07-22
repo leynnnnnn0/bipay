@@ -1,6 +1,7 @@
 <?php
 
 use app\controller\LoginController;
+use app\controller\LogoutController;
 use app\controller\RegisterController;
 use app\controller\EmployeeController;
 use app\controller\PageController;
@@ -37,6 +38,8 @@ $app->router->post('/register', [RegisterController::class, 'registerAccount'])-
 
 $app->router->get('/login', [LoginController::class, 'login'])->only('guest');
 $app->router->post('/login', [LoginController::class, 'authenticate'])->only('guest');
+
+$app->router->get('/logout', [LogoutController::class, 'logout'])->only('auth');
 
 
 $app->run();

@@ -7,7 +7,7 @@ use app\core\Session;
 
 class Guest
 {
-    public static function handle($route)
+    public static function handle($route): void
     {
         if($route === 'guest' && Session::get('email'))
         {

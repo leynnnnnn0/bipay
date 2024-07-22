@@ -2,6 +2,8 @@
 
 namespace app\core;
 
+use JetBrains\PhpStorm\NoReturn;
+
 class Application
 {
     public static string $ROOT_PATH;
@@ -30,10 +32,6 @@ class Application
         $this->applicationUser = new $config['userClass']();
         if(Session::get('email'))
             self::login();
-
-
-
-
     }
 
     public function login(): void
@@ -46,7 +44,6 @@ class Application
         $result = $statement->fetch();
         $this->applicationUser->loadData($result);
     }
-
 
     public function run(): void
     {

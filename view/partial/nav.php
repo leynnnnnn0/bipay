@@ -1,3 +1,9 @@
+<?php
+
+use app\core\Application;
+use app\core\Style;
+
+?>
 <nav class="flex bg-red-white h-[50px] px-10 items-center justify-between">
     <div class="logo-area">
         <img class="cursor-pointer" src="image/mainLogo.png" alt="logo">
@@ -10,7 +16,7 @@
             <span><i class="bi bi-bell"></i></span>
         </li>
         <li class="cursor-pointer">
-            <img class="h-8 w-8 rounded-full" src="/avatar/<?= \app\core\Style::emptyImage(\app\core\Application::$application->applicationUser->getPhoto()) ?>" alt="profile">
+            <img class="h-8 w-8 rounded-full" src="/avatar/<?= Style::emptyImage(Application::$application->applicationUser->getPhoto()) ?>" alt="profile">
         </li>
     </ul>
 </nav>
