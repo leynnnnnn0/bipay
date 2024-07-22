@@ -15,5 +15,6 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="bootstrap-icons" level="application" />
     <orderEntry type="library" name="sweetalert2" level="application" />
+    <orderEntry type="library" name="alertifyjs" level="application" />
   </component>
 </module>

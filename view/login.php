@@ -10,7 +10,7 @@ use app\core\Session;
     </div>
 
     <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-        <form class="space-y-6" method="POST">
+        <form id="loginForm" class="space-y-6" method="POST">
             <div>
                 <label for="email" class="block text-sm font-medium leading-6 text-gray-900">Email address</label>
                 <div class="mt-2">
@@ -37,7 +37,7 @@ use app\core\Session;
             </div>
 
             <div>
-                <button type="submit"
+                <button id="loginButton" type="submit"
                         class="flex w-full justify-center rounded-md bg-indigo-900 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
                     Login
                 </button>

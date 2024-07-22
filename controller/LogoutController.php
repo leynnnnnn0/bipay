@@ -15,6 +15,7 @@ class LogoutController extends Controller
     {
         Application::$application->applicationUser = null;
         Session::clean();
+        Session::set_flash('success', 'Logout successfully.');
         Response::redirect('/login');
     }
 }

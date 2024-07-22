@@ -5,3 +5,4 @@ document.addEventListener("DOMContentLoaded", () => {
         document.getElementById("leaveOptionsContainer").classList.toggle("hidden");
     })
 });
+

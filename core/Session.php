@@ -38,7 +38,7 @@ class Session
 
     public static function get_flash($key) : string | bool | array
     {
-        return $_SESSION[self::$FLASH_KEY][$key] ?? false;
+        return $_SESSION["_flash"][$key] ?? false;
     }
 
 
@@ -70,6 +70,7 @@ class Session
                 $params["secure"], $params["httponly"]
             );
         }
+        session_start();
     }
 
     function __destruct()
