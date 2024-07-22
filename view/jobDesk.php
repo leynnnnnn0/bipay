@@ -16,7 +16,7 @@ use app\model\EmployeeModel;
                 <img class="size-10 rounded-full" src="/avatar/<?= Style::emptyImage(Application::$application->applicationUser->getPhoto()) ?>" alt="profile">
                 <div>
                     <h1 class="text-black font-bold text-sm"><?= Application::$application->applicationUser->getFirstName() . " " . Application::$application->applicationUser->getLastName() ?></h1>
-                    <p class="text-gray-500 text-[12px]"><?= $model['role'] ?></p>
+                    <p class="text-gray-500 text-[12px]"><?= Application::$application->applicationUser->getRole() ?></p>
                 </div>
             </div>
 <!--            Info-->

@@ -2,11 +2,14 @@
 
 namespace app\core;
 
+use app\middleware\Auth;
+use app\middleware\Guest;
+
 class Router
 {
     public array $routes = [];
 
-    public function get($path, $callback): void
+    public function get($path, $callback): static
     {
         $this->routes[] = [
             'method' => 'GET',
@@ -14,9 +17,10 @@ class Router
             'callback' => $callback,
             'middleware' => null
         ];
+        return $this;
     }
 
-    public function post($path, $callback): void
+    public function post($path, $callback): static
     {
         $this->routes[] = [
             'method' => 'POST',
@@ -24,9 +28,10 @@ class Router
             'callback' => $callback,
             'middleware' => null
         ];
+        return $this;
     }
 
-    public function delete($path, $callback): void
+    public function delete($path, $callback): static
     {
         $this->routes[] = [
             'method' => 'DELETE',
@@ -34,9 +39,10 @@ class Router
             'callback' => $callback,
             'middleware' => null
         ];
+        return $this;
     }
 
-    public function put($path, $callback): void
+    public function put($path, $callback): static
     {
         $this->routes[] = [
             'method' => 'PUT',
@@ -44,11 +50,13 @@ class Router
             'callback' => $callback,
             'middleware' => null
         ];
+
+        return $this;
     }
 
-    public function only()
+    public function only($key)
     {
-
+        $this->routes[array_key_last($this->routes)]['middleware'] = $key;
     }
 
     public function resolve()
@@ -59,6 +67,12 @@ class Router
         foreach ($this->routes as $route) {
             if ($route['method'] === $method && $route['uri'] === $uri)
             {
+                if($route['middleware'] != null)
+                {
+                    Auth::handle($route['middleware']);
+                    Guest::handle($route['middleware']);
+
+                }
                 $callback = $route['callback'];
             }
         }

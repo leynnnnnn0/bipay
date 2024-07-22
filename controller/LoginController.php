@@ -6,7 +6,6 @@ use app\core\Application;
 use app\core\Controller;
 use app\core\Response;
 use app\core\Session;
-use app\model\EmployeeInformationModel;
 use app\model\LoginModel;
 use JetBrains\PhpStorm\NoReturn;
 

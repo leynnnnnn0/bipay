@@ -13,7 +13,7 @@ class Application
     public Style $style;
     public Database $database;
     public Session $session;
-    public ?DbModel $applicationUser;
+    public ?DbModel $applicationUser = null;
 
 
     function __construct(string $rootPath, $config)
@@ -28,8 +28,10 @@ class Application
         $this->style = new Style();
         $this->database = new Database($config['database']);
         $this->applicationUser = new $config['userClass']();
-        if($this->applicationUser)
+        if(Session::get('email'))
             self::login();
+
+
 
 
     }
@@ -48,7 +50,6 @@ class Application
 
     public function run(): void
     {
-//        debug($this->router->routes);
         echo $this->router->resolve();
     }
 }

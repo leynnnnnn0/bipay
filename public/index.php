@@ -23,20 +23,20 @@ $config = [
 ];
 
 $app = new Application(dirname(__DIR__), $config);
-$app->router->get('/', [PageController::class, 'dashboard']);
-$app->router->get('/job-desk', [PageController::class, 'jobDesk']);
-$app->router->get('/leave', [PageController::class, 'leave']);
+$app->router->get('/', [PageController::class, 'dashboard'])->only('auth');
+$app->router->get('/job-desk', [PageController::class, 'jobDesk'])->only('auth');
+$app->router->get('/leave', [PageController::class, 'leave'])->only('auth');
 
-$app->router->get('/employee', [EmployeeController::class, 'employee']);
-$app->router->post('/employee', [EmployeeController::class, 'createEmployee']);
-$app->router->delete('/employee', [EmployeeController::class, 'deleteEmployee']);
-$app->router->put('/employee', [EmployeeController::class, 'updateEmployee']);
+$app->router->get('/employee', [EmployeeController::class, 'employee'])->only('auth');
+$app->router->post('/employee', [EmployeeController::class, 'createEmployee'])->only('auth');
+$app->router->delete('/employee', [EmployeeController::class, 'deleteEmployee'])->only('auth');
+$app->router->put('/employee', [EmployeeController::class, 'updateEmployee'])->only('auth');
 
-$app->router->get('/register', [RegisterController::class, 'register']);
-$app->router->post('/register', [RegisterController::class, 'registerAccount']);
+$app->router->get('/register', [RegisterController::class, 'register'])->only('guest');
+$app->router->post('/register', [RegisterController::class, 'registerAccount'])->only('guest');
 
-$app->router->get('/login', [LoginController::class, 'login']);
-$app->router->post('/login', [LoginController::class, 'authenticate']);
+$app->router->get('/login', [LoginController::class, 'login'])->only('guest');
+$app->router->post('/login', [LoginController::class, 'authenticate'])->only('guest');
 
 
 $app->run();
