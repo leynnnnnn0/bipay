@@ -2,11 +2,13 @@
 
 namespace app\model;
 
-use app\core\DbModel;
+use app\constant\FormError;
+use app\core\Validator;
 
-class LoginModel extends DbModel
+class LoginModel extends Validator
 {
-
+    public string $email = '';
+    public string $password = '';
     function tableName(): string
     {
         return 'accounts';
@@ -15,8 +17,8 @@ class LoginModel extends DbModel
     public function attributes(): array
     {
         return [
-          'email' => [],
-          'password' => [],
+          'email' => [FormError::REQUIRED, [FormError::REGISTERED, 'class' => self::class]],
+          'password' => [FormError::REQUIRED],
         ];
     }
 }

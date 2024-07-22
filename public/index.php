@@ -34,5 +34,7 @@ $app->router->get('/register', [RegisterController::class, 'register']);
 $app->router->post('/register', [RegisterController::class, 'registerAccount']);
 
 $app->router->get('/login', [LoginController::class, 'login']);
+$app->router->post('/login', [LoginController::class, 'authenticate']);
+
 
 $app->run();
