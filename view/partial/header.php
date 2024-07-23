@@ -14,6 +14,7 @@
     <!-- Bootstrap theme -->
     <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.14.0/build/css/themes/bootstrap.min.css"/>
     <script src="/animation/notifications.js"></script>
+    <link rel="icon" type="image/png" href="image/mainLogo.png">
     <title>Bipay</title>
 </head>
 <body class="h-full relative">
