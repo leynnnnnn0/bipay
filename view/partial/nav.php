@@ -22,7 +22,7 @@ use app\core\Style;
                 <img class="h-8 w-8 rounded-full" src="/avatar/<?= Style::emptyImage(Application::$application->applicationUser->getPhoto()) ?>" alt="profile">
             </li>
         </ul>
-        <div>
+        <div id="taggingContainer" class="<?php if(!Session::get('PUNCH IN') || Session::get('PUNCH OUT')) echo 'hidden' ?>">
             <select name="aux" id="aux" class="h-8 text-xs">
                 <?php foreach (AuxTag::getAux() as $aux): ?>
                     <?php if(Session::get('aux') && Session::get('aux') == $aux): ?>

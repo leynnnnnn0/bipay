@@ -12,7 +12,7 @@ class AdminDashboardController extends Controller
         $auxTag = new AuxModel();
         $query = "SELECT a.*, e.firstName, e.lastName
                   FROM aux a
-                  JOIN employees e ON a.employeeId = e.id";
+                  JOIN employees e ON a.id = e.id";
         $result = $auxTag->customQuery($query);
         return $this->render('adminDashboard', ['employees' => $result->fetchAll()]);
     }

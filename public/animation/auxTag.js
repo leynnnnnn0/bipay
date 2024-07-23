@@ -11,6 +11,7 @@ document.addEventListener('DOMContentLoaded', () =>  {
             .then(result => {
                 console.log(result)
                 document.getElementById("punchInTime").innerText = result.time
+                document.getElementById("taggingContainer").classList.remove("hidden");
             })
             .catch(err => console.log(err));
 
@@ -26,6 +27,7 @@ document.addEventListener('DOMContentLoaded', () =>  {
         }).then(response => response.json())
             .then(result => {
                 document.getElementById("punchOutTime").innerText = result.time
+                document.getElementById("taggingContainer").classList.add("hidden");
             })
             .catch(err => console.log(err));
 
