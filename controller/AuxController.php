@@ -2,7 +2,6 @@
 
 namespace app\controller;
 
-use app\core\Application;
 use app\core\Controller;
 use app\core\Session;
 use app\model\AuxModel;
@@ -15,9 +14,11 @@ class AuxController extends Controller
         $auxModel = new AuxModel();
         $auxModel->loadData($_POST);
         $auxModel->updateById();
+
         $tagModel = new TagModel();
         $tagModel->loadData($_POST);
         $tagModel->insertAndSave();
+
         Session::set('aux', $auxModel->aux);
     }
 

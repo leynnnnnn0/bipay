@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', () =>  {
             body: formData
         }).then(response => response.json())
             .then(result => {
+                console.log(result)
                 document.getElementById("punchInTime").innerText = result.time
             })
             .catch(err => console.log(err));

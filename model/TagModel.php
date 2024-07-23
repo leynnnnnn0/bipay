@@ -14,6 +14,7 @@ class TagModel extends DbModel
     {
         $this->id = Application::$application->applicationUser->getId();
         $this->timestamp = date('Y-m-d H:i:s');
+
     }
 
     function tableName(): string
