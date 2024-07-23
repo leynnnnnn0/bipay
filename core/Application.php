@@ -2,8 +2,6 @@
 
 namespace app\core;
 
-use JetBrains\PhpStorm\NoReturn;
-
 class Application
 {
     public static string $ROOT_PATH;
