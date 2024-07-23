@@ -1,5 +1,6 @@
 <?php
 
+use app\controller\AuxController;
 use app\controller\LoginController;
 use app\controller\LogoutController;
 use app\controller\RegisterController;
@@ -41,5 +42,6 @@ $app->router->post('/login', [LoginController::class, 'authenticate'])->only('gu
 
 $app->router->get('/logout', [LogoutController::class, 'logout'])->only('auth');
 
+$app->router->post('/aux', [AuxController::class, 'aux'])->only('auth');
 
 $app->run();

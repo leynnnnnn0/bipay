@@ -1,6 +1,8 @@
 <?php
 
+use app\constant\AuxTag;
 use app\core\Application;
+use app\core\Session;
 use app\core\Style;
 
 ?>
@@ -22,12 +24,12 @@ use app\core\Style;
         </ul>
         <div>
             <select name="aux" id="aux" class="h-8 text-xs">
-                <option class="border-b border-gray-500 px-3 py-2 font-bold h-10" value="READY" selected>NOT READY</option>
-                <option class="border-b border-gray-500 px-3 py-2 font-bold h-10" value="READY">WORKING</option>
-                <option class="border-b border-gray-500 px-3 py-2 font-bold h-10" value="READY">PERSONAL TIME</option>
-                <option class="border-b border-gray-500 px-3 py-2 font-bold h-10" value="READY">BREAK</option>
-                <option class="border-b border-gray-500 px-3 py-2 font-bold h-10" value="READY">MEAL BREAK</option>
-                <option class="border-b border-gray-500 px-3 py-2 font-bold h-10" value="READY">MEETING</option>
+                <?php foreach (AuxTag::getAux() as $aux): ?>
+                    <?php if(Session::get('aux') && Session::get('aux') == $aux): ?>
+                        <option class="border-b border-gray-500 px-3 py-2 font-bold h-10" value="<?= $aux ?>" selected><?= $aux ?></option>
+                    <?php continue; endif; ?>
+                    <option class="border-b border-gray-500 px-3 py-2 font-bold h-10" value="<?= $aux ?>"><?= $aux ?></option>
+                <?php endforeach; ?>
             </select>
 
         </div>
