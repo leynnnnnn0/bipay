@@ -1,4 +1,6 @@
 <?php
+
+use app\core\Session;
 use app\model\EmployeeModel;
 /**
  * @var $model EmployeeModel
@@ -10,7 +12,7 @@ use app\model\EmployeeModel;
         <h1 class="font-bold text-xl text-gray-800">Dashboard</h1>
         <div class="flex items-center gap-2">
             <button class="bg-indigo-900 text-white text-xs text-semibold rounded-lg px-3 h-7 text-center"><span><i class="bi bi-plus"></i></span> Buddy Punching</button>
-            <button class="bg-white text-black text-xs text-bold rounded-lg px-3 h-7 text-center border border-gray-300">Manager POV</button>
+            <a href="/admin" class="bg-white text-black text-xs text-bold rounded-lg px-3 py-1 h-7 text-center border border-gray-300">Manager POV</a>
         </div>
     </div>
 <!--    Second Container-->
@@ -20,17 +22,17 @@ use app\model\EmployeeModel;
             <p class="text-[12px] text-gray-500">You came 25 minutes early today.</p>
         </div>
         <div class="flex gap-2 items-center">
-            <div class="flex items-center w-24 gap-1">
-                <span class="text-xl text-green-700 bg-green-100 rounded-md h-10 w-10 flex items-center justify-center cursor-pointer"><i class="bi bi-box-arrow-in-up-left"></i></span>
+            <div class="flex items-center w-32 gap-1">
+                <button id="punchIn" <?php if(Session::get('PUNCH IN')) echo "disabled"?> class="cursor-pointer hover:bg-opacity-75 text-xl text-green-700 bg-green-200 rounded-md h-10 w-10 flex items-center justify-center cursor-pointer"><i class="bi bi-box-arrow-in-up-left"></i></button>
                 <div class="">
-                    <p class="text-[10px] text-gray-700 font-semibold">7:14 AM</p>
+                    <p id="punchInTime" class="text-[10px] text-gray-700 font-semibold"><?= Session::get('PUNCH IN')?></p>
                     <p class="text-[10px] text-gray-500 font-semibold">Punch in</p>
                 </div>
             </div>
-            <div class="flex items-center w-24 gap-1">
-                <span class="text-xl text-red-700 bg-red-100 rounded-md h-10 w-10 flex items-center justify-center cursor-pointer"><i class="bi bi-box-arrow-in-up-right"></i></span>
+            <div class="flex items-center w-32 gap-1">
+                <button id="punchOut" <?php if(!Session::get('PUNCH IN') || Session::get('PUNCH OUT')) echo "disabled" ?>  class="cursor-pointer text-xl text-red-700 bg-red-100 rounded-md h-10 w-10 flex items-center justify-center cursor-pointer"><i class="bi bi-box-arrow-in-up-right"></i></button>
                 <div class="">
-                    <p class="text-[10px] text-gray-700 font-semibold">5:00 PM</p>
+                    <p id="punchOutTime" class="text-[10px] text-gray-700 font-semibold"><?= Session::get('PUNCH OUT')?></p>
                     <p class="text-[10px] text-gray-500 font-semibold">Punch out</p>
                 </div>
             </div>

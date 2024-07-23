@@ -18,6 +18,7 @@ class Application
 
     function __construct(string $rootPath, $config)
     {
+        date_default_timezone_set('Asia/Manila');
         self::$ROOT_PATH = $rootPath;
         self::$application = $this;
         $this->session = new Session();

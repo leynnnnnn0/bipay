@@ -8,7 +8,7 @@ enum Role : string
     case WEB_DESIGNER = 'WEB DESIGNER';
     case WEB_DEVELOPER = 'WEB DEVELOPER';
 
-    public static function getRole()
+    public static function getRole(): array
     {
         return [
             self::ADMIN->value,

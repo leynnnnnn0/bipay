@@ -31,7 +31,7 @@ use app\core\Style;
                     <option class="border-b border-gray-500 px-3 py-2 font-bold h-10" value="<?= $aux ?>"><?= $aux ?></option>
                 <?php endforeach; ?>
             </select>
-
+            <span id="timer">00:00:00</span>
         </div>
     </div>
 </nav>

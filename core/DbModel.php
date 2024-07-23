@@ -6,6 +6,11 @@ abstract class DbModel extends Model
 {
     abstract function tableName(): string;
 
+    public function customQuery($query, $params = [])
+    {
+        $database = Application::$application->database;
+        return $database->query($query, $params);
+    }
     public function insertAndSave(): bool
     {
         $tableName = $this->tableName();
@@ -93,6 +98,3 @@ abstract class DbModel extends Model
         return $statement->rowCount() > 0;
     }
 }
-
-// If the current image is not equals to empty.png and new photo is equals to empty.png
-// photo = current image

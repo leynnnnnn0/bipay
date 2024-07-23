@@ -35,4 +35,17 @@ class Style
         if(empty($condition)) return 'empty.png';
         return $condition;
     }
+
+    public static function auxTag(string $status): string
+    {
+        return match ($status) {
+            "NOT READY" => "text-black bg-gray-300",
+            "BREAK" => "text-black bg-yellow-500",
+            "MEAL BREAK" => "text-black bg-yellow-300",
+            "PERSONAL TIME" => "text-white bg-red-400",
+            "MEETING" => "text-white bg-blue-500",
+            "WORKING" => "text-black bg-green-300",
+            default => "",
+        };
+    }
 }

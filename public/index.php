@@ -1,5 +1,6 @@
 <?php
 
+use app\controller\AdminDashboardController;
 use app\controller\AuxController;
 use app\controller\LoginController;
 use app\controller\LogoutController;
@@ -43,5 +44,9 @@ $app->router->post('/login', [LoginController::class, 'authenticate'])->only('gu
 $app->router->get('/logout', [LogoutController::class, 'logout'])->only('auth');
 
 $app->router->post('/aux', [AuxController::class, 'aux'])->only('auth');
+$app->router->post('/punch-in', [AuxController::class, 'punchIn'])->only('auth');
+$app->router->post('/punch-out', [AuxController::class, 'punchOut'])->only('auth');
+$app->router->get('/admin', [AdminDashboardController::class, 'admin'])->only('auth');
+
 
 $app->run();
