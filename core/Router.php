@@ -2,6 +2,7 @@
 
 namespace app\core;
 
+use app\middleware\Admin;
 use app\middleware\Auth;
 use app\middleware\Guest;
 
@@ -71,6 +72,7 @@ class Router
                 {
                     Auth::handle($route['middleware']);
                     Guest::handle($route['middleware']);
+                    Admin::handle($route['middleware']);
 
                 }
                 $callback = $route['callback'];

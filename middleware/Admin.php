@@ -10,9 +10,9 @@ class Admin
 {
     public static function handle($route): void
     {
-        if($route === 'admin' && Application::$application->applicationUser->getRole() === 'ADMIN' )
+        if($route === 'admin' && Application::$application->applicationUser->getRole() !== 'ADMIN' )
         {
-            Response::setStatusCode(301);
+            Response::setStatusCode(401);
             Response::redirect('/');
         }
     }

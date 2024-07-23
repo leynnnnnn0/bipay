@@ -46,7 +46,7 @@ $app->router->get('/logout', [LogoutController::class, 'logout'])->only('auth');
 $app->router->post('/aux', [AuxController::class, 'aux'])->only('auth');
 $app->router->post('/punch-in', [AuxController::class, 'punchIn'])->only('auth');
 $app->router->post('/punch-out', [AuxController::class, 'punchOut'])->only('auth');
-$app->router->get('/admin', [AdminDashboardController::class, 'admin'])->only('auth');
+$app->router->get('/admin', [AdminDashboardController::class, 'admin'])->only('admin');
 
 
 $app->run();
