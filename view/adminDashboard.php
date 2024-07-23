@@ -1,10 +1,9 @@
 <?php
-
 use app\core\Session;
 use app\core\Style;
-use app\model\AuxTag;
+use app\model\AuxModel;
 /**
-*@var $employees AuxTag;
+*@var $employees AuxModel;
  **/
 ?>
 <div class="flex flex-col gap-5 h-full">
@@ -47,7 +46,7 @@ use app\model\AuxTag;
                     </section>
                     <section>
                         <p class="text-xs text-gray-800 font-bold">Working</p>
-                        <h1 class="text-indigo-900 font-bold text-xl">32</h1>
+                        <h1 class="text-indigo-900 font-bold text-xl">0</h1>
                     </section>
                 </div>
                 <div class="flex items-center gap-3 p-5 bg-white rounded-lg">
@@ -56,7 +55,7 @@ use app\model\AuxTag;
                     </section>
                     <section>
                         <p class="text-xs text-gray-800 font-bold">Break / Meal</p>
-                        <h1 class="text-indigo-900 font-bold text-xl">32</h1>
+                        <h1 class="text-indigo-900 font-bold text-xl">0</h1>
                     </section>
                 </div>
                 <div class="flex items-center gap-3 p-5 bg-white rounded-lg">
@@ -65,7 +64,7 @@ use app\model\AuxTag;
                     </section>
                     <section>
                         <p class="text-xs text-gray-800 font-bold">Personal Time</p>
-                        <h1 class="text-indigo-900 font-bold text-xl">32</h1>
+                        <h1 class="text-indigo-900 font-bold text-xl">0</h1>
                     </section>
                 </div>
                 <div class="flex items-center gap-3 p-5 bg-white rounded-lg">
@@ -74,7 +73,7 @@ use app\model\AuxTag;
                     </section>
                     <section>
                         <p class="text-xs text-gray-800 font-bold">Meeting</p>
-                        <h1 class="text-indigo-900 font-bold text-xl">32</h1>
+                        <h1 class="text-indigo-900 font-bold text-xl">0</h1>
                     </section>
                 </div>
             </section>

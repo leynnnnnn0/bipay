@@ -6,6 +6,7 @@ use app\core\Application;
 use app\core\Controller;
 use app\core\Response;
 use app\core\Session;
+use app\model\AuxModel;
 use app\model\LoginModel;
 use JetBrains\PhpStorm\NoReturn;
 
@@ -31,6 +32,8 @@ class LoginController extends Controller
         }
         Session::set_flash('success', 'Login successfully.');
         Application::$application->login();
+        $auxModel = new AuxModel();
+        $auxModel->insertAndSave();
         Response::redirect('/');
     }
 }

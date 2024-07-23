@@ -3,13 +3,13 @@
 namespace app\controller;
 
 use app\core\Controller;
-use app\model\AuxTag;
+use app\model\AuxModel;
 
 class AdminDashboardController extends Controller
 {
     public function admin()
     {
-        $auxTag = new AuxTag();
+        $auxTag = new AuxModel();
         $query = "SELECT a.*, e.firstName, e.lastName
                   FROM aux a
                   JOIN employees e ON a.employeeId = e.id";

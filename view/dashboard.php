@@ -12,7 +12,7 @@ use app\model\EmployeeModel;
         <h1 class="font-bold text-xl text-gray-800">Dashboard</h1>
         <div class="flex items-center gap-2">
             <button class="bg-indigo-900 text-white text-xs text-semibold rounded-lg px-3 h-7 text-center"><span><i class="bi bi-plus"></i></span> Buddy Punching</button>
-            <a href="/admin" class="bg-white text-black text-xs text-bold rounded-lg px-3 py-1 h-7 text-center border border-gray-300">Manager POV</a>
+            <a href="/admin" class="bg-white text-black text-xs text-bold rounded-lg px-3 py-1 h-7 text-center border border-gray-300">Admin POV</a>
         </div>
     </div>
 <!--    Second Container-->

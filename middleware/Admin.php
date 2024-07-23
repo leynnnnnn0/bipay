@@ -4,7 +4,6 @@ namespace app\middleware;
 
 use app\core\Application;
 use app\core\Response;
-use app\core\Session;
 
 class Admin
 {
