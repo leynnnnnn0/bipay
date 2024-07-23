@@ -63,13 +63,16 @@ abstract class DbModel extends Model
         return $statement->fetchAll();
     }
 
-    public function removeById(string $id): bool
+    public function removeById(string $id = ''): bool
     {
         $tableName = $this->tableName();
         $query = "DELETE FROM $tableName WHERE id = :id";
         $database = Application::$application->database;
         $statement = $database->pdo->prepare($query);
-        $statement->bindValue(":id", $id);
+        if(!empty($id))
+            $statement->bindValue(":id", $id);
+        if(property_exists($this, 'id'))
+            $statement->bindValue(":id", $this->id);
         $statement->execute();
         return $statement->rowCount() > 0;
     }

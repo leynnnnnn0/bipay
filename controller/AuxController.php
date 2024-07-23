@@ -6,47 +6,40 @@ use app\core\Application;
 use app\core\Controller;
 use app\core\Session;
 use app\model\AuxModel;
+use app\model\TagModel;
 
 class AuxController extends Controller
 {
-    public function aux()
+    public function aux(): void
     {
         $auxModel = new AuxModel();
         $auxModel->loadData($_POST);
         $auxModel->updateById();
-
-
-//        $employeeId = Application::$application->applicationUser->getId();
-//        $aux = $_POST['aux'];
-
-//        $query = "INSERT INTO tags (employeeId, tag) VALUES(:employeeId, :tag);";
-//        $statement = Application::$application->database->
-//        query($query, [':id' => $employeeId, ':tag' => $aux]);
-//        $statement->closeCursor();
-
+        $tagModel = new TagModel();
+        $tagModel->loadData($_POST);
+        $tagModel->insertAndSave();
         Session::set('aux', $auxModel->aux);
     }
 
     public function punchIn(): string|bool
     {
-        $employeeId = Application::$application->applicationUser->getId();
-        $query = "INSERT INTO tags (employeeId, tag) VALUES(:employeeId, :tag);";
-        $statement = Application::$application->database->
-        query($query, [':employeeId' => $employeeId, ':tag' => 'PUNCH IN']);
-        $statement->closeCursor();
+        $tagModel = new TagModel();
+        $tagModel->loadData($_POST);
+        $tagModel->insertAndSave();
         Session::set('PUNCH IN', date('h:i:s A'));
         return json_encode(['time' => date('h:i:s A')]);
     }
 
     public function punchOut(): string|bool
     {
-        $employeeId = Application::$application->applicationUser->getId();
-        $statement = Application::$application->database->query("DELETE FROM aux WHERE id = :id;", [":id" => $employeeId]);
-        $statement->closeCursor();
-        $query = "INSERT INTO tags (employeeId, tag) VALUES(:employeeId, :tag);";
-        $statement = Application::$application->database->
-        query($query, [':employeeId' => $employeeId, ':tag' => 'PUNCH OUT']);
-        $statement->closeCursor();
+        $auxModel = new AuxModel();
+        $auxModel->loadData($_POST);
+        $auxModel->removeById();
+
+        $tagModel = new TagModel();
+        $tagModel->loadData($_POST);
+        $tagModel->insertAndSave();
+
         Session::set('PUNCH OUT', date('h:i:s A'));
         return json_encode(['time' => date('h:i:s A')]);
     }

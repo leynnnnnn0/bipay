@@ -2,8 +2,11 @@ document.addEventListener('DOMContentLoaded', () =>  {
 
     document.getElementById("punchIn").addEventListener('click', function()  {
         this.disabled = true;
+        const formData = new FormData();
+        formData.append('tag', 'PUNCH IN');
         fetch('/punch-in', {
             method: 'POST',
+            body: formData
         }).then(response => response.json())
             .then(result => {
                 document.getElementById("punchInTime").innerText = result.time
@@ -14,8 +17,11 @@ document.addEventListener('DOMContentLoaded', () =>  {
 
     document.getElementById("punchOut").addEventListener('click', function()  {
         this.disabled = true;
+        const formData = new FormData();
+        formData.append('tag', 'PUNCH OUT');
         fetch('/punch-out', {
             method: 'POST',
+            body: formData
         }).then(response => response.json())
             .then(result => {
                 document.getElementById("punchOutTime").innerText = result.time
@@ -29,6 +35,7 @@ document.addEventListener('DOMContentLoaded', () =>  {
     document.getElementById("aux").addEventListener('change', (event) => {
         const formData = new FormData();
         formData.append('aux', event.target.value)
+        formData.append('tag', event.target.value)
         fetch('/aux', {
             method: 'POST',
             body: formData
