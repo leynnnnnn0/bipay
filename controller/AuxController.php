@@ -5,25 +5,26 @@ namespace app\controller;
 use app\core\Application;
 use app\core\Controller;
 use app\core\Session;
+use app\model\AuxModel;
 
 class AuxController extends Controller
 {
     public function aux()
     {
-        $database = Application::$application->database;
-        $employeeId = Application::$application->applicationUser->getId();
-        $aux = $_POST['aux'];
+        $auxModel = new AuxModel();
+        $auxModel->loadData($_POST);
+        $auxModel->updateById();
 
-        $update = "UPDATE aux SET aux = :aux, timestamp = CURRENT_TIMESTAMP WHERE employeeId = :employeeId;";
-        $statement = $database->query($update, [':employeeId' => $employeeId, ':aux' => $aux]);
-        $statement->closeCursor();
 
-        $query = "INSERT INTO tags (employeeId, tag) VALUES(:employeeId, :tag);";
-        $statement = Application::$application->database->
-        query($query, [':employeeId' => $employeeId, ':tag' => $aux]);
-        $statement->closeCursor();
+//        $employeeId = Application::$application->applicationUser->getId();
+//        $aux = $_POST['aux'];
 
-        Session::set('aux', $aux);
+//        $query = "INSERT INTO tags (employeeId, tag) VALUES(:employeeId, :tag);";
+//        $statement = Application::$application->database->
+//        query($query, [':id' => $employeeId, ':tag' => $aux]);
+//        $statement->closeCursor();
+
+        Session::set('aux', $auxModel->aux);
     }
 
     public function punchIn(): string|bool
@@ -40,7 +41,7 @@ class AuxController extends Controller
     public function punchOut(): string|bool
     {
         $employeeId = Application::$application->applicationUser->getId();
-        $statement = Application::$application->database->query("DELETE FROM aux WHERE employeeId = :employeeId;", [":employeeId" => $employeeId]);
+        $statement = Application::$application->database->query("DELETE FROM aux WHERE id = :id;", [":id" => $employeeId]);
         $statement->closeCursor();
         $query = "INSERT INTO tags (employeeId, tag) VALUES(:employeeId, :tag);";
         $statement = Application::$application->database->

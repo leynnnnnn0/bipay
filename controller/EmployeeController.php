@@ -48,7 +48,7 @@ class EmployeeController extends Controller
             $employeeModel->loadData($_POST, $_FILES);
             if($employeeModel->validate(['email' => $_POST['currentEmail']]))
             {
-                $employeeModel->updateById($_POST['id'], $employeeModel->attributes(), $_POST['currentPhoto']);
+                $employeeModel->updateById($_POST['id'], $_POST['currentPhoto']);
                 Image::update($_POST['currentPhoto'], $_FILES['photo'], Application::$ROOT_PATH ."/public/avatar");
                 return json_encode(['success' => true]);
             }

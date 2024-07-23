@@ -74,10 +74,10 @@ abstract class DbModel extends Model
         return $statement->rowCount() > 0;
     }
 
-    public function updateById(string $id, array $attributes, $currentImage) : bool
+    public function updateById(string $id = '', $currentImage = '') : bool
     {
         $tableName = $this->tableName();
-        $keys = array_keys($attributes);
+        $keys = array_keys($this->attributes());
         $values = implode(", ", array_map(fn($value) => "$value = :$value", $keys));
         $query = "UPDATE $tableName SET $values WHERE id = :id";
         $database = Application::$application->database;
@@ -93,7 +93,8 @@ abstract class DbModel extends Model
             }
             $statement->bindValue(":$key", $this->{$key});
         }
-        $statement->bindValue(":id", $id);
+        if(!empty($id))
+            $statement->bindValue(":id", $id);
         $statement->execute();
         return $statement->rowCount() > 0;
     }

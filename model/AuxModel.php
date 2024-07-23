@@ -6,13 +6,14 @@ use app\core\DbModel;
 
 class AuxModel extends DbModel
 {
-    public string $employeeId;
+    public string $id;
     public string $aux = 'NOT READY';
-    public string $timestamp = 'CURRENT_TIMESTAMP';
+    public string $timestamp;
 
     function __construct()
     {
-        $this->employeeId = Application::$application->applicationUser->getId();
+        $this->id = Application::$application->applicationUser->getId();
+        $this->timestamp = date('Y-m-d H:i:s');
     }
 
     function tableName(): string
@@ -23,7 +24,7 @@ class AuxModel extends DbModel
     public function attributes(): array
     {
         return [
-            'employeeId' => [],
+            'id' => [],
             'aux' => [],
             'timestamp' => [],
         ];

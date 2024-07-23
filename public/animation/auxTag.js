@@ -33,6 +33,7 @@ document.addEventListener('DOMContentLoaded', () =>  {
             method: 'POST',
             body: formData
         }).then(response => {
+            console.log(response.text())
             clearTimer()
             startCounting(timerElement)
         }).catch(err => console.log(err))
