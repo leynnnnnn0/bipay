@@ -152,8 +152,8 @@ use app\model\EmployeeModel;
                                 <tr class="border-b text-gray-300">
                                     <th class="text-start p-2 text-xs text-black font-medium"><?= $key ?></th>
                                     <th class="text-start p-2 text-xs text-black font-medium"><?= Style::time($value[0]['PUNCH IN']) ?></th>
-                                    <th class="text-start p-2 text-xs text-black font-medium"><?= Style::time($value[1]['PUNCH OUT']) ?></th>
-                                    <th class="text-start p-2 text-xs <?= Style::adherence($value['adherence']) ?> font-medium"><?= $value['adherence'] ?>%</th>
+                                    <th class="text-start p-2 text-xs text-black font-medium"><?= isset($value[1]['PUNCH OUT']) ? Style::time($value[1]['PUNCH OUT']) : ""  ?></th>
+                                    <th class="text-start p-2 text-xs <?= Style::adherence($value['adherence']) ?> font-medium"><?= isset($value[2]['adherence']) ? $value[2]['adherence'] . "%" : "" ?></th>
                                 </tr>
                             <?php endforeach; ?>
                         </tbody>

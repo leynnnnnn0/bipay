@@ -26,11 +26,12 @@ class AttendanceModel extends DbModel
         $times = self::getAllTime($data);
         foreach ($times as $time => $value)
         {
+            if(!$value[1]) continue;
             $punchIn = new DateTime($value[0]);
             $punchOut = new DateTime($value[1]);
             $interval = $punchIn->diff($punchOut);
             $totalMinutes = ($interval->days * 24 * 60) + ($interval->h * 60) + $interval->i;
-            $data[$time] = ['adherence' => number_format(self::calculateAdherence($totalMinutes), 2, '.', '')];
+            $data[$time][] = ['adherence' => number_format(self::calculateAdherence($totalMinutes), 2, '.', '')];
         }
         return $data;
     }
