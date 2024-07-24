@@ -7,8 +7,9 @@ use app\core\DbModel;
 
 class BenefitsModel extends DbModel
 {
-    public string $sickLeave = '7';
-    public string $paidLeave = '7';
+    public string $id = '';
+    public string $sickLeave = '0';
+    public string $paidLeave = '0';
     function tableName(): string
     {
         return 'benefits';
@@ -19,6 +20,7 @@ class BenefitsModel extends DbModel
         return [
           'sickLeave' => [FormError::REQUIRED],
           'paidLeave' => [FormError::REQUIRED],
+            'id' => [FormError::REQUIRED],
         ];
     }
 }

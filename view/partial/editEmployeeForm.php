@@ -138,6 +138,17 @@ use app\model\EmployeeModel;
                 <label class="text-gray-700 text-sm font-semibold" for="joiningDate">Joining Date</label>
                 <input class=" border border-gray-300 rounded-lg bg-gray-100" id="joiningDate" type="date" name="joiningDate" value="2024-07-20">
             </div>
+            <div class="flex flex-col gap-2">
+                <p class="text-gray-700 text-sm font-semibold">Apply All Benefits</p>
+                <div class="flex items-center gap-3">
+                    <input class=" border border-gray-300 rounded-lg bg-gray-100" type="radio" id="true" name="benefits" value="true">
+                    <label class="text-gray-700 text-xs font-semibold" for="true">Yes</label>
+                    <input class=" border border-gray-300 rounded-lg bg-gray-100" type="radio" id="false" name="benefits" value="false" checked>
+                    <label class="text-gray-700 text-xs font-semibold" for="false">No</label>
+
+
+                </div>
+            </div>
         </section>
         <div class="container flex justify-end items-center p-5 gap-3">
             <span onclick="hideEditForm()" class="cursor-pointer px-4 py-2 rounded-lg text-semibold text-sm border border-gray-500 text-gray-500">Cancel</span>

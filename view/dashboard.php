@@ -1,10 +1,10 @@
 <?php
-
 use app\core\Session;
-use app\model\EmployeeModel;
+use app\model\BenefitsModel;
+
 /**
- * @var $model EmployeeModel
- **/
+ * @var $benefits BenefitsModel
+**/
 ?>
 <div class="flex flex-col gap-5 h-full">
 <!--    First container-->
@@ -41,20 +41,20 @@ use app\model\EmployeeModel;
 <!--    Third Container-->
     <div class="h-24 bg-white rounded-lg flex p-3 items-center gap-3">
         <div class="container border-r-2 border-gray-300">
-            <h3 class="text-gray-800 font-semibold text-xs">Total leave allowance</h3>
-            <h1 class="text-blue-400 font-bold text-2xl">34</h1>
+            <h3 class="text-gray-800 font-semibold text-xs">Paid Leave Available</h3>
+            <h1 class="text-blue-400 font-bold text-2xl"><?= $benefits->paidLeave ?></h1>
         </div>
         <div class="container border-r-2 border-gray-300">
-            <h3 class="text-gray-800 font-semibold text-xs">Total leave taken</h3>
-            <h1 class="text-blue-400 font-bold text-2xl">20</h1>
+            <h3 class="text-gray-800 font-semibold text-xs">Sick Leave Available</h3>
+            <h1 class="text-blue-400 font-bold text-2xl"><?= $benefits->sickLeave ?></h1>
         </div>
         <div class="container border-r-2 border-gray-300">
             <h3 class="text-gray-800 font-semibold text-xs">Total leave available</h3>
-            <h1 class="text-blue-400 font-bold text-2xl">16</h1>
+            <h1 class="text-blue-400 font-bold text-2xl">0</h1>
         </div>
         <div class="container">
             <h6 class="text-gray-800 font-semibold text-xs">Total leave request</h6>
-            <h1 class="text-blue-400 font-bold text-2xl">4</h1>
+            <h1 class="text-blue-400 font-bold text-2xl">0</h1>
         </div>
     </div>
 <!--    Fourth Container-->

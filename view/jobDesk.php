@@ -119,8 +119,59 @@ use app\model\EmployeeModel;
                 </div>
             </div>
         </section>
-        <section class="flex-1 bg-white rounded-lg flex items-center justify-center min-w-[800px]">
-            <h1 class="text-black text-xl font-bold">COMING SOON....</h1>
+        <section class="flex-1 bg-white rounded-lg flex h-full min-w-[800px] p-5">
+            <div class="flex flex-col gap-4 w-full">
+                <h1 class="text-black text-md font-bold">Attendance</h1>
+                <div class="grid grid-cols-5 h-24 border border-gray-300 rounded-lg min-w-full p-3">
+                    <section class="border-r border-bray-300 p-2">
+                        <p class="text-lg text-blue-500 font-medium">132:00:00</p>
+                        <p class="text-xs text-gray-500 font-light">Total Schedule Hour</p>
+                    </section>
+                    <section class="border-r border-bray-300 p-2">
+                        <p class="text-lg text-green-500 font-medium">32:00:00</p>
+                        <p class="text-xs text-gray-500 font-light">Worked Hours</p>
+                    </section>
+                    <section class="border-r border-bray-300 p-2">
+                        <p class="text-lg text-red-500 font-medium">00:09:00</p>
+                        <p class="text-xs text-gray-500 font-light">Late</p>
+                    </section>
+                    <section class="border-r border-bray-300 p-2">
+                        <p class="text-lg text-red-500 font-medium">00:03:00</p>
+                        <p class="text-xs text-gray-500 font-light">Over break</p>
+                    </section>
+                    <section class="p-2">
+                        <p class="text-lg text-green-500 font-medium">93%</p>
+                        <p class="text-xs text-gray-500 font-light">Adherence</p>
+                    </section>
+                </div>
+                <div class="overflow-hidden rounded-lg flex flex-col gap-2">
+                    <h1 class="text-sm text-gray-800 font-bold">History</h1>
+                    <table class="table-auto w-full ">
+                        <thead class="bg-gray-100 ">
+                        <tr class="border-b text-gray-300">
+                            <th class="text-start p-2 text-xs text-black font-medium ">Date</th>
+                            <th class="text-start p-2 text-xs text-black font-medium ">Punched In</th>
+                            <th class="text-start p-2 text-xs text-black font-medium">Punched Out</th>
+                            <th class="text-start p-2 text-xs text-black font-medium">Adherance</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="border-b text-gray-300">
+                                <th class="text-start p-2 text-xs text-black font-medium">07/24/24</th>
+                                <th class="text-start p-2 text-xs text-black font-medium">8:00 AM</th>
+                                <th class="text-start p-2 text-xs text-black font-medium">5:12 AM</th>
+                                <th class="text-start p-2 text-xs text-green-500 font-medium">93%</th>
+                            </tr>
+                            <tr class="border-b text-gray-300">
+                                <th class="text-start p-2 text-xs text-black font-medium">07/25/24</th>
+                                <th class="text-start p-2 text-xs text-black font-medium">9:25 AM</th>
+                                <th class="text-start p-2 text-xs text-black font-medium">5:12 AM</th>
+                                <th class="text-start p-2 text-xs text-orange-500 font-medium">72%</th>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </section>
     </main>
 </div>

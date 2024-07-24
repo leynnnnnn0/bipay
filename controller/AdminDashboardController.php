@@ -14,6 +14,7 @@ class AdminDashboardController extends Controller
                   FROM aux a
                   JOIN employees e ON a.id = e.id";
         $result = $auxTag->customQuery($query);
+        debug($result->fetchAll());
         return $this->render('adminDashboard', ['employees' => $result->fetchAll()]);
     }
 }

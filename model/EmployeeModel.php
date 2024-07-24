@@ -47,6 +47,7 @@ class EmployeeModel extends DbModel
         ];
     }
 
+
     function tableName(): string
     {
         return "employees";

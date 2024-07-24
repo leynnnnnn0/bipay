@@ -35,6 +35,7 @@ class Application
 
     public function login(): void
     {
+        // ERROR HERE
         $query = "SELECT e.*, a.username, a.password
                   FROM employees e
                   JOIN accounts a ON e.email = a.email

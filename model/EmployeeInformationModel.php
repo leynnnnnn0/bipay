@@ -7,25 +7,43 @@ use app\core\DbModel;
 
 class EmployeeInformationModel extends DbModel
 {
-    public string $id;
-    public string $photo;
-    public string $firstName;
-    public string $middleName;
-    public string $lastName;
-    public string $dateOfBirth;
-    public string $gender;
-    public string $streetAddress;
-    public string $city;
-    public string $state;
-    public string $zipCode;
-    public string $email;
-    public string $phoneNumber;
-    public string $status;
-    public string $joiningDate;
-    public string $department;
-    public string $role;
-    public string $username;
-    public string $password;
+    public string $id = '';
+    public string $photo = '';
+    public string $firstName = '';
+    public string $middleName = '';
+    public string $lastName = '';
+    public string $dateOfBirth = '';
+    public string $gender = '';
+    public string $streetAddress = '';
+    public string $city = '';
+    public string $state = '';
+    public string $zipCode = '';
+    public string $email = '';
+    public string $phoneNumber = '';
+    public string $status = '';
+    public string $joiningDate = '';
+    public string $department = '';
+    public string $role = '';
+    public string $username = '';
+    public string $password = '';
+    public string $sickLeave = '';
+    public string $paidLeave = '';
+
+    /**
+     * @return string
+     */
+    public function getSickLeave(): string
+    {
+        return $this->sickLeave;
+    }
+
+    /**
+     * @return string
+     */
+    public function getPaidLeave(): string
+    {
+        return $this->paidLeave;
+    }
 
     /**
      * @return string
@@ -208,7 +226,9 @@ class EmployeeInformationModel extends DbModel
             'department',
             'role',
             'username',
-            'password'
+            'password',
+            'sickLeave',
+            'paidLeave',
         ];
     }
 

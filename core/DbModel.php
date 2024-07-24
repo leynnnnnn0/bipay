@@ -32,7 +32,7 @@ abstract class DbModel extends Model
         return $statement->rowCount() > 0;
     }
 
-    public function findById(string $id): array
+    public function findById(string $id): array | bool
     {
         $tableName = $this->tableName();
         $query = "SELECT * FROM $tableName WHERE id = :id";
@@ -101,4 +101,5 @@ abstract class DbModel extends Model
         $statement->execute();
         return $statement->rowCount() > 0;
     }
+
 }
