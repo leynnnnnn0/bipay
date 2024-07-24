@@ -152,7 +152,7 @@ use app\model\EmployeeModel;
                                 <tr class="border-b text-gray-300">
                                     <th class="text-start p-2 text-xs text-black font-medium"><?= $key ?></th>
                                     <th class="text-start p-2 text-xs text-black font-medium"><?= Style::time($value[0]['PUNCH IN']) ?></th>
-                                    <th class="text-start p-2 text-xs text-black font-medium"><?= Style::time($value[0]['PUNCH OUT']) ?></th>
+                                    <th class="text-start p-2 text-xs text-black font-medium"><?= Style::time($value[1]['PUNCH OUT']) ?></th>
                                     <th class="text-start p-2 text-xs text-green-500 font-medium">93%</th>
                                 </tr>
                             <?php endforeach; ?>
