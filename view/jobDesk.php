@@ -5,6 +5,7 @@ use app\core\Style;
 use app\model\EmployeeModel;
 /**
  * @var $model EmployeeModel
+ * @var $data array
  */
 ?>
 <div class="flex flex-col gap-5 h-full w-full">
@@ -107,15 +108,6 @@ use app\model\EmployeeModel;
                             <p class="text-gray-500 text-[10px]">State</p>
                         </div>
                     </div>
-                    <div class="container flex items-center gap-2 bg-white">
-                        <span class="h-8 w-8 rounded-lg bg-gray-200 flex items-center justify-center text-black">
-                            <i class="bi bi-globe-americas"></i>
-                        </span>
-                        <div>
-                            <h1 class="text-text font-semibold text-sm">The United States</h1>
-                            <p class="text-gray-500 text-[10px]">Country</p>
-                        </div>
-                    </div>
                 </div>
             </div>
         </section>
@@ -156,18 +148,14 @@ use app\model\EmployeeModel;
                         </tr>
                         </thead>
                         <tbody>
-                            <tr class="border-b text-gray-300">
-                                <th class="text-start p-2 text-xs text-black font-medium">07/24/24</th>
-                                <th class="text-start p-2 text-xs text-black font-medium">8:00 AM</th>
-                                <th class="text-start p-2 text-xs text-black font-medium">5:12 AM</th>
-                                <th class="text-start p-2 text-xs text-green-500 font-medium">93%</th>
-                            </tr>
-                            <tr class="border-b text-gray-300">
-                                <th class="text-start p-2 text-xs text-black font-medium">07/25/24</th>
-                                <th class="text-start p-2 text-xs text-black font-medium">9:25 AM</th>
-                                <th class="text-start p-2 text-xs text-black font-medium">5:12 AM</th>
-                                <th class="text-start p-2 text-xs text-orange-500 font-medium">72%</th>
-                            </tr>
+                            <?php foreach($data as $key => $value): ?>
+                                <tr class="border-b text-gray-300">
+                                    <th class="text-start p-2 text-xs text-black font-medium"><?= $key ?></th>
+                                    <th class="text-start p-2 text-xs text-black font-medium"><?= Style::time($value[0]['PUNCH IN']) ?></th>
+                                    <th class="text-start p-2 text-xs text-black font-medium"><?= Style::time($value[0]['PUNCH OUT']) ?></th>
+                                    <th class="text-start p-2 text-xs text-green-500 font-medium">93%</th>
+                                </tr>
+                            <?php endforeach; ?>
                         </tbody>
                     </table>
                 </div>

@@ -43,7 +43,7 @@ abstract class DbModel extends Model
         return $statement->fetch();
     }
 
-    public function find(string $key, string $value): array | bool
+    public function find(string $key, string $value): bool| array
     {
         $tableName = $this->tableName();
         $query = "SELECT * FROM $tableName WHERE $key = :$key";

@@ -8,6 +8,7 @@ use app\core\Request;
 use app\core\Response;
 use app\model\BenefitsModel;
 use app\model\EmployeeModel;
+use app\model\TagModel;
 
 class PageController extends Controller
 {
@@ -21,9 +22,19 @@ class PageController extends Controller
 
     public function jobDesk(): bool|array|string
     {
-        $employeeModel = new EmployeeModel();
-        $employee = $employeeModel->findById('33');
-        return $this->render('jobDesk', ['model' =>  $employee]);
+        $tagModel = new TagModel();
+        $query = "SELECT * FROM tags WHERE (tag = 'PUNCH IN' OR tag = 'PUNCH OUT') AND id = :id ORDER BY tagId ASC";
+        $statement = $tagModel->customQuery($query, ['id' => Application::$application->applicationUser->getId()]);
+        $result = $statement->fetchAll();
+        $data = [];
+        foreach ($result as $key => $value)
+        {
+            $data[explode(" ", $value['timestamp'])[0]][] = [
+                $value['tag'] => explode(" ", $value['timestamp'])[1]
+            ];
+        }
+
+        return $this->render('jobDesk', ['data' => $data]);
     }
 
     public function leave(): bool|array|string

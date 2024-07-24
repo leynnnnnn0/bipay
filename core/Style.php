@@ -2,6 +2,8 @@
 
 namespace app\core;
 
+use DateTime;
+
 class Style
 {
     public function sideBarButton(string $route): bool|string
@@ -34,6 +36,15 @@ class Style
     {
         if(empty($condition)) return 'empty.png';
         return $condition;
+    }
+
+    public static function time($value): string
+    {
+        try {
+            return (new DateTime($value))->format('h:i:s A');
+        } catch (\Exception $e) {
+            return '';
+        }
     }
 
     public static function auxTag(string $status): string
