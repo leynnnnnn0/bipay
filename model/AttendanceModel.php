@@ -3,57 +3,40 @@
 namespace app\model;
 
 use app\core\DbModel;
+use DateTime;
 
 class AttendanceModel extends DbModel
 {
 
     public function groupByDate($data): array
     {
-        // Putting the date as the key for tags
-        //"2024-07-24" => ['tag' => 'time', 'tag' => 'time']
         $result = [];
         foreach ($data as $key => $value)
         {
-            $result[explode(" ", $value['timestamp'])[0]][] = [
-                $value['tag'] => explode(" ", $value['timestamp'])[1]
+            $date = explode(" ", $value['timestamp'])[0];
+            $time = explode(" ", $value['timestamp'])[1];
+            $result[$date][] = [
+                $value['tag'] => $time
             ];
         }
         return $result;
     }
-
-    public function getTotalTime($toCompute)
+    public function getAdherence(array $data): array
     {
-        foreach ($toCompute as $date => $time) {
-            $total = (int) implode("", explode(":", $time[0]));
-            for($i = 1; $i < count($time); $i++)
-            {
-                $total -= implode("", explode(":", $time[$i]));
-            }
-            // Formatting the time from 0000 to 00:00
-            $totalTime = (string) abs($total);
-            $count = strlen($totalTime);
-            $array= [];
-            $index = 0;
-
-            while($index < $count) {
-                if($count % 2 != 0 && $index == 0) {
-                    $array[] = $totalTime[$index];
-                    $index++;
-                    continue;
-                }
-                $array[] = $totalTime[$index] . $totalTime[$index + 1];
-                $index += 2;
-            }
-            $toCompute[$date] = implode(":", $array);
+        $times = self::getAllTime($data);
+        foreach ($times as $time => $value)
+        {
+            $punchIn = new DateTime($value[0]);
+            $punchOut = new DateTime($value[1]);
+            $interval = $punchIn->diff($punchOut);
+            $totalMinutes = ($interval->days * 24 * 60) + ($interval->h * 60) + $interval->i;
+            $data[$time] = ['adherence' => number_format(self::calculateAdherence($totalMinutes), 2, '.', '')];
         }
-
-        return $toCompute;
+        return $data;
     }
 
     public function getAllTime($data): array
     {
-        // Extracting time from tag
-        // "2024-07-24" => ['time', 'time']
         $toCompute = [];
         foreach ($data as $key => $value) {
             for($i = 0; $i < count($value); $i++) {

@@ -47,7 +47,7 @@ class Style
         }
     }
 
-    public static function adherence($time)
+    public static function adherence($time): string
     {
         return match ($time) {
             (int) $time > 95 => 'text-green-500',

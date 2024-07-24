@@ -9,8 +9,6 @@ use app\core\Response;
 use app\model\AttendanceModel;
 use app\model\BenefitsModel;
 use app\model\EmployeeModel;
-use app\model\TagModel;
-use DateTime;
 
 class PageController extends Controller
 {
@@ -27,15 +25,7 @@ class PageController extends Controller
         $attendanceModel = new AttendanceModel();
         $result = $attendanceModel->fetchTags(Application::$application->applicationUser->getId(), ['PUNCH IN', 'PUNCH OUT']);
         $data = $attendanceModel->groupByDate($result);
-        $times = $attendanceModel->getAllTime($data);
-        foreach ($times as $time => $value)
-        {
-            $punchIn = new DateTime($value[0]);
-            $punchOut = new DateTime($value[1]);
-            $interval = $punchIn->diff($punchOut);
-            $totalMinutes = ($interval->days * 24 * 60) + ($interval->h * 60) + $interval->i;
-            $data[$time] = ['adherence' => number_format($attendanceModel->calculateAdherence($totalMinutes), 2, '.', '')];
-        }
+        $data = $attendanceModel->getAdherence($data);
         return $this->render('jobDesk', ['data' => $data]);
     }
 

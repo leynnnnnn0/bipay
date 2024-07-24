@@ -144,7 +144,7 @@ use app\model\EmployeeModel;
                             <th class="text-start p-2 text-xs text-black font-medium ">Date</th>
                             <th class="text-start p-2 text-xs text-black font-medium ">Punched In</th>
                             <th class="text-start p-2 text-xs text-black font-medium">Punched Out</th>
-                            <th class="text-start p-2 text-xs text-black font-medium">Adherance</th>
+                            <th class="text-start p-2 text-xs text-black font-medium">Adherence</th>
                         </tr>
                         </thead>
                         <tbody>
