@@ -58,7 +58,6 @@ class Database
             id INT AUTO_INCREMENT PRIMARY KEY,
             migration VARCHAR(255) NOT NULL UNIQUE,
             created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP)";
-
          $statement = $this->pdo->prepare($query);
          $statement->execute();
      }

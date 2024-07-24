@@ -5,6 +5,7 @@ use app\core\Application;
 use app\core\Controller;
 use app\core\FileReader;
 use app\core\Image;
+use app\model\BenefitsModel;
 use app\model\EmployeeModel;
 
 class EmployeeController extends Controller
