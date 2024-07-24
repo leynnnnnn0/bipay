@@ -153,7 +153,7 @@ use app\model\EmployeeModel;
                                     <th class="text-start p-2 text-xs text-black font-medium"><?= $key ?></th>
                                     <th class="text-start p-2 text-xs text-black font-medium"><?= Style::time($value[0]['PUNCH IN']) ?></th>
                                     <th class="text-start p-2 text-xs text-black font-medium"><?= Style::time($value[1]['PUNCH OUT']) ?></th>
-                                    <th class="text-start p-2 text-xs text-green-500 font-medium">93%</th>
+                                    <th class="text-start p-2 text-xs <?= Style::adherence($value['adherence']) ?> font-medium"><?= $value['adherence'] ?>%</th>
                                 </tr>
                             <?php endforeach; ?>
                         </tbody>

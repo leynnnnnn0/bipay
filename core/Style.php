@@ -47,6 +47,16 @@ class Style
         }
     }
 
+    public static function adherence($time)
+    {
+        return match ($time) {
+            (int) $time > 95 => 'text-green-500',
+            (int) $time > 75 => 'text-yellow-500',
+            (int) $time > 60 => 'text-orange-500',
+            default => 'text-red-500'
+        };
+    }
+
     public static function auxTag(string $status): string
     {
         return match ($status) {
