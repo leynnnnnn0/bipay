@@ -101,7 +101,6 @@ use app\model\AuxModel;
                                 <p class="w-fit text-center px-4 py-2 rounded-full <?= Style::auxTag($employee['aux']) ?>"><?= $employee['aux'] ?></p>
                             </th>
                             <th class="text-start p-2 text-xs text-black font-medium">...</th>
-
                         </tr>
                     <?php endforeach; ?>
                     </tbody>

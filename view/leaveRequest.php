@@ -20,6 +20,8 @@ use app\model\LeaveRequestModel;
                     <th class="text-start p-2 text-xs text-black font-medium">Type</th>
                     <th class="text-start p-2 text-xs text-black font-medium">Status</th>
                     <th class="text-start p-2 text-xs text-black font-medium">Attachment</th>
+                    <th class="text-start p-2 text-xs text-black font-medium">Action</th>
+
                 </tr>
                 </thead>
                 <tbody>
@@ -39,6 +41,17 @@ use app\model\LeaveRequestModel;
                                 <button type="submit" class="cursor-pointer underline"><?= $request['attachment'] ?></button>
                             </form>
                         </th>
+                        <th class="text-start p-2 text-xs text-black font-medium">
+                            <div id="requestListOptions" class="relative">
+                                <button onclick="showRequestListOptions('<?= $request['attachment'] ?>')" class="container">
+                                    <i class="bi bi-three-dots-vertical"></i>
+                                </button>
+                                <div id="<?= $request['attachment'] ?>" class="hidden flex flex-col absolute drop-shadow-lg bg-white z-10" style="top: 100%; right: 30px;">
+                                    <button class="py-2 px-4 border-b border-gray-300 hover:bg-gray-100">Approve</button>
+                                    <button class="py-2 px-4 hover:bg-gray-100 ">Decline</button>
+                                </div>
+                            </div>
+                        </th>
                     </tr>
                 <?php endforeach; ?>
 
@@ -47,4 +60,4 @@ use app\model\LeaveRequestModel;
         </div>
     </div>
 </div>
-
+<script src="/animation/requestTableActions.js"></script>
