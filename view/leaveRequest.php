@@ -1,5 +1,6 @@
 <div class="flex flex-col gap-5 size-full">
     <h1 class="font-bold text-xl text-gray-800">Leave Requests</h1>
+    <div class="flex justify-between"></div>
     <div class="size-full flex flex-col gap-3 rounded-lg bg-white p-5">
         <div class="overflow-hidden rounded-lg">
             <h1 class="text-black text-md text-black font-bold mb-3">Requests List</h1>
