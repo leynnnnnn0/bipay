@@ -16,6 +16,12 @@ class Style
         return false;
     }
 
+    public static function underline(string $param) : bool | string
+    {
+        if($param === Request::param()) return 'underline decoration-2';
+        return false;
+    }
+
     public static function statusStyle(string $status): string
     {
         return match ($status) {

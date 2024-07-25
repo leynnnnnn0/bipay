@@ -8,7 +8,10 @@ class Request
     {
         return parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
     }
-
+    public static function param()
+    {
+        return parse_url($_SERVER['REQUEST_URI'], PHP_URL_QUERY);
+    }
     public static function method() : string
     {
         return $_POST['_method'] ?? $_SERVER['REQUEST_METHOD'];
