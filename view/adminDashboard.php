@@ -1,9 +1,13 @@
 <?php
+
+use app\constant\AuxTag;
+use app\core\Application;
 use app\core\Session;
 use app\core\Style;
 use app\model\AuxModel;
 /**
-*@var $employees AuxModel;
+*@var $employees AuxModel
+ * @var $tags AuxTag
  **/
 ?>
 <div class="flex flex-col gap-5 h-full">
@@ -17,7 +21,7 @@ use app\model\AuxModel;
     <!--    Second Container-->
     <div class="flex justify-between items-center bg-white rounded-lg p-3">
         <div class="container">
-            <h1 class="text-md font-bold text-black">Good to see you, <?= \app\core\Application::$application->applicationUser->getUsername() ?> &#128075;</h1>
+            <h1 class="text-md font-bold text-black">Good to see you, <?= Application::$application->applicationUser->getUsername() ?> &#128075;</h1>
             <p class="text-[12px] text-gray-500">You came 25 minutes early today.</p>
         </div>
         <div class="flex gap-2 items-center">
@@ -46,7 +50,7 @@ use app\model\AuxModel;
                     </section>
                     <section>
                         <p class="text-xs text-gray-800 font-bold">Working</p>
-                        <h1 class="text-indigo-900 font-bold text-xl">0</h1>
+                        <h1 class="text-indigo-900 font-bold text-xl"><?= $tags['WORKING'] ?? 0 ?></h1>
                     </section>
                 </div>
                 <div class="flex items-center gap-3 p-5 bg-white rounded-lg">
@@ -55,7 +59,7 @@ use app\model\AuxModel;
                     </section>
                     <section>
                         <p class="text-xs text-gray-800 font-bold">Break / Meal</p>
-                        <h1 class="text-indigo-900 font-bold text-xl">0</h1>
+                        <h1 class="text-indigo-900 font-bold text-xl"><?= ($tags['BREAK'] + $tags['MEAL BREAK']) ?? 0  ?></h1>
                     </section>
                 </div>
                 <div class="flex items-center gap-3 p-5 bg-white rounded-lg">
@@ -64,7 +68,7 @@ use app\model\AuxModel;
                     </section>
                     <section>
                         <p class="text-xs text-gray-800 font-bold">Personal Time</p>
-                        <h1 class="text-indigo-900 font-bold text-xl">0</h1>
+                        <h1 class="text-indigo-900 font-bold text-xl"><?= $tags['PERSONAL TIME'] ?? 0 ?></h1>
                     </section>
                 </div>
                 <div class="flex items-center gap-3 p-5 bg-white rounded-lg">
@@ -73,7 +77,7 @@ use app\model\AuxModel;
                     </section>
                     <section>
                         <p class="text-xs text-gray-800 font-bold">Meeting</p>
-                        <h1 class="text-indigo-900 font-bold text-xl">0</h1>
+                        <h1 class="text-indigo-900 font-bold text-xl"><?= $tags['MEETING'] ?? 0 ?></h1>
                     </section>
                 </div>
             </section>

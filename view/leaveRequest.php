@@ -48,16 +48,3 @@ use app\model\LeaveRequestModel;
     </div>
 </div>
 
-<!--<tr class="border-b text-gray-300">-->
-<!--    <th class="text-start p-2 text-xs text-black font-medium">-->
-<!--        <div class="whitespace-nowrap flex items-center gap-2">-->
-<!--            <img class="h-8 w-8 rounded-full" src="/avatar/empty.png" alt="profile">-->
-<!--            <p>Darren Watkins</p>-->
-<!--        </div>-->
-<!--    </th>-->
-<!--    <th class="text-start p-2 text-xs text-black font-medium">Dec 4, 2023</th>-->
-<!--    <th class="text-start p-2 text-xs text-black font-medium">Dec 6, 2023</th>-->
-<!--    <th class="text-start p-2 text-xs text-black font-medium">HR</th>-->
-<!--    <th class="text-start p-2 text-xs text-black font-medium">Sick Leave</th>-->
-<!--    <th class="text-start p-2 text-xs text-black font-medium">leave.pdf</th>-->
-<!--</tr>-->

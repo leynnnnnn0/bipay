@@ -10,8 +10,8 @@ const hideRequestForm = (event) => {
 
 const sendForm = async (e) => {
     e.preventDefault();
-    const leaveRequestForm = document.getElementById("leaveRequestForm");
     const formData = new FormData(leaveRequestForm);
+    const leaveRequestForm = document.getElementById("leaveRequestForm");
     fetch('/leave-request', {
         method: "POST",
         body: formData
@@ -19,11 +19,16 @@ const sendForm = async (e) => {
         .then(result => {
             if(result.success)
             {
-                window.location.reload();
-                alertify.success("Request Submitted")
+                leaveRequestForm.classList.add("hidden")
+                alertify.success("Request Submitted", function ()  {
+                    window.location.reload();
+                })
             }
             if(!result.success)
-                alertify.error("Request failed to submit.")
+            {
+                alertify.error("Error");
+                leaveRequestForm.classList.add("hidden")
+            }
     }).catch(err => console.log(err));
 
 }
