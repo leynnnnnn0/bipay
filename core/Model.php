@@ -36,6 +36,16 @@ abstract class Model
         }
     }
 
+    public function loadFile(array $file, string $key): void
+    {
+        if(property_exists($this, $key)) {
+            $this->$key = $file[$key]['name'];
+            $fileName = $file[$key]['name'];
+            File::create($file[$key], Application::$ROOT_PATH . "/public/attachment/$fileName");
+        }
+    }
+
+
 
     public function validate($existing = []): bool
     {

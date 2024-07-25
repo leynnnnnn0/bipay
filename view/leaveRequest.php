@@ -1,3 +1,9 @@
+<?php
+use app\model\LeaveRequestModel;
+/**
+ * @var $requests LeaveRequestModel;
+**/
+?>
 <div class="flex flex-col gap-5 size-full">
     <h1 class="font-bold text-xl text-gray-800">Leave Requests</h1>
     <div class="flex justify-between"></div>
@@ -12,25 +18,46 @@
                     <th class="text-start p-2 text-xs text-black font-medium">End date</th>
                     <th class="text-start p-2 text-xs text-black font-medium">Department</th>
                     <th class="text-start p-2 text-xs text-black font-medium">Type</th>
+                    <th class="text-start p-2 text-xs text-black font-medium">Status</th>
                     <th class="text-start p-2 text-xs text-black font-medium">Attachment</th>
                 </tr>
                 </thead>
                 <tbody>
-                <tr class="border-b text-gray-300">
-                    <th class="text-start p-2 text-xs text-black font-medium">
-                        <div class="whitespace-nowrap flex items-center gap-2">
-                            <img class="h-8 w-8 rounded-full" src="/avatar/empty.png" alt="profile">
-                            <p>Darren Watkins</p>
-                        </div>
-                    </th>
-                    <th class="text-start p-2 text-xs text-black font-medium">Dec 4, 2023</th>
-                    <th class="text-start p-2 text-xs text-black font-medium">Dec 6, 2023</th>
-                    <th class="text-start p-2 text-xs text-black font-medium">HR</th>
-                    <th class="text-start p-2 text-xs text-black font-medium">Sick Leave</th>
-                    <th class="text-start p-2 text-xs text-black font-medium">leave.pdf</th>
-                </tr>
+                <?php foreach ($requests as $request): ?>
+                    <tr class="border-b text-gray-300">
+                        <th class="text-start p-2 text-xs text-black font-medium">N/A</th>
+                        <th class="text-start p-2 text-xs text-black font-medium"><?= $request['startDate'] ?></th>
+                        <th class="text-start p-2 text-xs text-black font-medium"><?= $request['endDate'] ?></th>
+                        <th class="text-start p-2 text-xs text-black font-medium">N/A</th>
+                        <th class="text-start p-2 text-xs text-black font-medium"><?= $request['leaveType'] ?></th>
+                        <th class="text-start p-2 text-xs text-black font-medium">
+                            <span class="text-center px-3 py-1 font-medium rounded-full bg-gray-500 text-white"><?= $request['status'] ?></span>
+                        </th>
+                        <th class="text-start p-2 text-xs text-black font-medium">
+                            <form action="/download" method="POST">
+                                <input type="text" name="fileName" value="<?= $request['attachment'] ?>" hidden>
+                                <button type="submit" class="cursor-pointer underline"><?= $request['attachment'] ?></button>
+                            </form>
+                        </th>
+                    </tr>
+                <?php endforeach; ?>
+
                 </tbody>
             </table>
         </div>
     </div>
 </div>
+
+<!--<tr class="border-b text-gray-300">-->
+<!--    <th class="text-start p-2 text-xs text-black font-medium">-->
+<!--        <div class="whitespace-nowrap flex items-center gap-2">-->
+<!--            <img class="h-8 w-8 rounded-full" src="/avatar/empty.png" alt="profile">-->
+<!--            <p>Darren Watkins</p>-->
+<!--        </div>-->
+<!--    </th>-->
+<!--    <th class="text-start p-2 text-xs text-black font-medium">Dec 4, 2023</th>-->
+<!--    <th class="text-start p-2 text-xs text-black font-medium">Dec 6, 2023</th>-->
+<!--    <th class="text-start p-2 text-xs text-black font-medium">HR</th>-->
+<!--    <th class="text-start p-2 text-xs text-black font-medium">Sick Leave</th>-->
+<!--    <th class="text-start p-2 text-xs text-black font-medium">leave.pdf</th>-->
+<!--</tr>-->

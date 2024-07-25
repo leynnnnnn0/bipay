@@ -23,7 +23,7 @@ class Image
     }
 }
 
-//For updating user file with no existing photo like an empty photo which is the default
+//For updating user attachment with no existing photo like an empty photo which is the default
 // if current photo is equals to empty.png then do nothing
 // if there is a current photo, and you don't want to update it
 // If there is a current photo and this->photo is equals to empty.png then do nothing

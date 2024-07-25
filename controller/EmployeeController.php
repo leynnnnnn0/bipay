@@ -14,9 +14,9 @@ class EmployeeController extends Controller
     {
         $employeeModel = new EmployeeModel();
         // For adding an employee with an employee form
-        if(isset($_FILES['file']))
+        if(isset($_FILES['attachment']))
         {
-            $userData = FileReader::readAndExplode($_FILES['file']['tmp_name']);
+            $userData = FileReader::readAndExplode($_FILES['attachment']['tmp_name']);
             $employeeModel->loadData($userData);
             if($employeeModel->validate())
             {

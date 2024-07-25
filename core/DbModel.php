@@ -43,6 +43,17 @@ abstract class DbModel extends Model
         return $statement->fetch();
     }
 
+    public function findAllById($id)
+    {
+        $tableName = $this->tableName();
+        $query = "SELECT * FROM $tableName WHERE id = :id";
+        $database = Application::$application->database;
+        $statement = $database->pdo->prepare($query);
+        $statement->bindValue(":id", $id);
+        $statement->execute();
+        return $statement->fetchAll();
+    }
+
     public function find(string $key, string $value): bool| array
     {
         $tableName = $this->tableName();

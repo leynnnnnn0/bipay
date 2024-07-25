@@ -2,6 +2,7 @@
 
 use app\controller\AdminDashboardController;
 use app\controller\AuxController;
+use app\controller\LeaveController;
 use app\controller\LoginController;
 use app\controller\LogoutController;
 use app\controller\RegisterController;
@@ -49,6 +50,10 @@ $app->router->post('/punch-out', [AuxController::class, 'punchOut'])->only('auth
 $app->router->get('/admin', [AdminDashboardController::class, 'admin'])->only('admin');
 
 $app->router->get('/leave-request', [PageController::class, 'leaveRequest'])->only('auth');
+
+$app->router->post('/leave-request', [LeaveController::class, 'leaveRequest'])->only('auth');
+$app->router->post('/download', [LeaveController::class, 'download'])->only('auth');
+
 
 
 $app->run();

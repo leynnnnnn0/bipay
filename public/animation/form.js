@@ -93,7 +93,7 @@ fileInput.addEventListener("change", (event) => {
         }
         Swal.fire({
             title: "Can't Upload Employee Form",
-            text: "Please double check the file and make sure the there is not missing field",
+            text: "Please double check the attachment and make sure the there is not missing field",
             icon: "error"
         });
     }).catch(err => console.log(err));
