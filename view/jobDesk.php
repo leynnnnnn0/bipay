@@ -7,6 +7,7 @@ use app\model\EmployeeModel;
  * @var $model EmployeeModel
  * @var $data array
  */
+
 ?>
 <div class="flex flex-col gap-5 h-full w-full">
     <h1 class="font-bold text-xl text-gray-800">Job Desk</h1>
@@ -153,7 +154,7 @@ use app\model\EmployeeModel;
                                     <th class="text-start p-2 text-xs text-black font-medium"><?= $key ?></th>
                                     <th class="text-start p-2 text-xs text-black font-medium"><?= Style::time($value[0]['PUNCH IN']) ?></th>
                                     <th class="text-start p-2 text-xs text-black font-medium"><?= isset($value[1]['PUNCH OUT']) ? Style::time($value[1]['PUNCH OUT']) : ""  ?></th>
-                                    <th class="text-start p-2 text-xs <?= Style::adherence($value['adherence']) ?> font-medium"><?= isset($value[2]['adherence']) ? $value[2]['adherence'] . "%" : "" ?></th>
+                                    <th class="text-start p-2 text-xs <?= Style::adherence($value[2]['adherence']) ?> font-medium"><?= isset($value[2]['adherence']) ? $value[2]['adherence'] . "%" : "" ?></th>
                                 </tr>
                             <?php endforeach; ?>
                         </tbody>

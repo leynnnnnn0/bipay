@@ -25,7 +25,6 @@ class PageController extends Controller
         $attendanceModel = new AttendanceModel();
         $result = $attendanceModel->fetchTags(Application::$application->applicationUser->getId(), ['PUNCH IN', 'PUNCH OUT']);
         $data = $attendanceModel->groupByDate($result);
-
         $data = $attendanceModel->getAdherence($data);
         return $this->render('jobDesk', ['data' => $data]);
     }

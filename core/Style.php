@@ -49,12 +49,11 @@ class Style
 
     public static function adherence($time): string
     {
-        return match ($time) {
-            (int) $time > 95 => 'text-green-500',
-            (int) $time > 75 => 'text-yellow-500',
-            (int) $time > 60 => 'text-orange-500',
-            default => 'text-red-500'
-        };
+        $time = (float) $time;
+        if($time >= 95.00) return 'text-green-500';
+        if($time >= 75.00) return 'text-yellow-500';
+        if($time >= 60.00) return 'text-orange-500';
+        return 'text-red-500';
     }
 
     public static function auxTag(string $status): string
