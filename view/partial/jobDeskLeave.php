@@ -1,5 +1,6 @@
 <?php
 use app\constant\LeaveType;
+use app\core\Style;
 use app\model\LeaveRequestModel;
 /**
  * @var $requests LeaveRequestModel;
@@ -66,7 +67,7 @@ use app\model\LeaveRequestModel;
                                 </form>
                             </th>
                             <th class="text-start p-2 text-xs text-black font-medium">
-                                <span class="text-center px-3 py-1 font-medium rounded-full bg-gray-500 text-white"><?= $request['status'] ?></span>
+                                <span class="text-center px-3 py-1 font-medium rounded-full <?= Style::requestStatus($request['status']) ?>"><?= $request['status'] ?></span>
                             </th>
                         </tr>
                     <?php endforeach; ?>

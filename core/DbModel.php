@@ -113,4 +113,19 @@ abstract class DbModel extends Model
         return $statement->rowCount() > 0;
     }
 
+    public function update(string $id, array $attribute): bool
+    {
+        $tableName = $this->tableName();
+        $keys = array_keys($attribute);
+        $attributes = implode(", ", array_map(fn($value) => "$value = :$value", $keys));
+        $query = "UPDATE $tableName SET $attributes WHERE leaveId = :id";
+        $database = Application::$application->database;
+        $statement = $database->pdo->prepare($query);
+        foreach ($attribute as $key => $value) {
+            $statement->bindValue(":$key", $value);
+        }
+        $statement->bindValue(":id", $id);
+        return $statement->execute();
+    }
+
 }

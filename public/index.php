@@ -49,10 +49,12 @@ $app->router->post('/punch-in', [AuxController::class, 'punchIn'])->only('auth')
 $app->router->post('/punch-out', [AuxController::class, 'punchOut'])->only('auth');
 $app->router->get('/admin', [AdminDashboardController::class, 'admin'])->only('admin');
 
-$app->router->get('/leave-request', [PageController::class, 'leaveRequest'])->only('auth');
+$app->router->get('/leave-request', [LeaveController::class, 'leaveRequestList'])->only('auth');
 
 $app->router->post('/leave-request', [LeaveController::class, 'leaveRequest'])->only('auth');
 $app->router->post('/download', [LeaveController::class, 'download'])->only('auth');
+
+$app->router->post('/approve-request', [LeaveController::class, 'approve'])->only('auth');
 
 
 

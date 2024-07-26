@@ -49,11 +49,6 @@ class PageController extends Controller
         return $this->render('leave', ['model' => $employeeModel]);
     }
 
-    public function leaveRequest(): bool|array|string
-    {
-        $leaveRequestModel = new LeaveRequestModel();
-        $requests = $leaveRequestModel->fetchAll();
-        return $this->render('leaveRequest', ['requests' => $requests]);
-    }
+
 
 }

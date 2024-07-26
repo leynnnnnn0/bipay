@@ -22,6 +22,16 @@ class Style
         return false;
     }
 
+    public static function requestStatus(string $status): string
+    {
+        return match ($status) {
+            "APPROVED" => "text-white bg-green-500",
+            "PENDING" => "text-white bg-gray-500",
+            "REJECTED" => "text-white bg-red-400",
+            default => "",
+        };
+    }
+
     public static function statusStyle(string $status): string
     {
         return match ($status) {
