@@ -56,6 +56,7 @@ abstract class Model
             foreach($errors as $error) {
                 $temp = $error;
                 if(is_array($error)) $error = $error[0];
+
                 if($error === FormError::REQUIRED && empty($value))
                     $this->addError($key, "This field is required");
 
