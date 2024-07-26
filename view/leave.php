@@ -1,17 +1,23 @@
+<?php
+use app\model\LeaveRequestModel;
+/**
+ * @var $data LeaveRequestModel;
+**/
+?>
 <div class="flex flex-col gap-5 size-full">
     <h1 class="font-bold text-xl text-gray-800">Leave Summary</h1>
     <div class="size-full flex flex-col gap-3 rounded-lg bg-white p-5">
         <div class="grid grid-cols-3 border border-gray-300 rounded-lg w-full h-24 p-3">
             <section class="border-r border-gray-300 p-3">
-                <h1 class="text-2xl text-gray-900 font-bold">12</h1>
+                <h1 class="text-2xl text-gray-900 font-bold">0</h1>
                 <p class="text-xs text-gray-500 text-nowrap">Total leaves hour</p>
             </section>
             <section class="border-r border-gray-300 p-3">
-                <h1 class="text-2xl text-gray-900 font-bold">12</h1>
+                <h1 class="text-2xl text-gray-900 font-bold"><?= count($data) ?></h1>
                 <p class="text-xs text-gray-500 text-nowrap">Leave Requests</p>
             </section>
             <section class="p-3">
-                <h1 class="text-2xl text-gray-900 font-bold">12</h1>
+                <h1 class="text-2xl text-gray-900 font-bold">0</h1>
                 <p class="text-xs text-gray-500 text-nowrap">On leave</p>
             </section>
         </div>

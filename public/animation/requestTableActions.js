@@ -11,5 +11,8 @@ const approveRequest = (id, status) => {
     fetch('/approve-request', {
         method: "POST",
         body: formData
-    }).then(response => response.json()).then(result => console.log(result)).catch(err => console.log(err));
+    }).then(response => response.json()).then(result => {
+        if(result.success)
+            alertify.success(status)
+    }).catch(err => console.log(err));
 }

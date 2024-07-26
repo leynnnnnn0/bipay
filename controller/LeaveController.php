@@ -8,6 +8,13 @@ use app\model\LeaveRequestModel;
 
 class LeaveController extends Controller
 {
+    public function leaveSummary(): bool|array|string
+    {
+        $leaveRequestModel = new LeaveRequestModel();
+        $result = $leaveRequestModel->fetchAll();
+        return $this->render('leave', [ 'data'=> $result]);
+    }
+
     public function leaveRequest(): bool|string
     {
         $leaveRequestModel = new LeaveRequestModel();

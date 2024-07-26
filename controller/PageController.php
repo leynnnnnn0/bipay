@@ -26,28 +26,26 @@ class PageController extends Controller
         $leaveRequestModel = new LeaveRequestModel();
         $requests = $leaveRequestModel->findAllById(Application::$application->applicationUser->getId());
 
+        $requestData = [];
+        foreach ($requests as $request) {
+            $status = $request['status'];
+            if(array_key_exists($status, $requestData))
+            {
+                $requestData[$status] += 1;
+                continue;
+            }
+            $requestData[$status] = 1;
+        }
+
+
         $attendanceModel = new AttendanceModel();
         $result = $attendanceModel->fetchTags(Application::$application->applicationUser->getId(), ['PUNCH IN', 'PUNCH OUT']);
         $data = $attendanceModel->groupByDate($result);
         $data = $attendanceModel->getAdherence($data);
-        return $this->render('jobDesk', ['data' => $data, 'requests' => $requests]);
+
+        return $this->render('jobDesk', ['data' => $data, 'requests' => $requests, 'summary' => $requestData]);
     }
 
-    public function leave(): bool|array|string
-    {
-        $employeeModel = new EmployeeModel();
-        if(Request::method() === 'POST')
-        {
-            $employeeModel->loadData($_POST);
-
-            if($employeeModel->validate())
-            {
-                Response::redirect('dashboard');
-            }
-            return $this->render('leave', ['model' => $employeeModel]);
-        }
-        return $this->render('leave', ['model' => $employeeModel]);
-    }
 
 
 

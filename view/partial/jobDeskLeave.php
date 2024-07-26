@@ -4,8 +4,23 @@ use app\core\Style;
 use app\model\LeaveRequestModel;
 /**
  * @var $requests LeaveRequestModel;
+ * @var $summary LeaveRequestModel;
 **/
 ?>
+<div class="grid grid-cols-3 h-24 border border-gray-300 rounded-lg min-w-full p-3">
+    <section class="border-r border-bray-300 p-2">
+        <p class="text-lg text-blue-500 font-medium">0</p>
+        <p class="text-xs text-gray-500 font-light">Total leaves taken</p>
+    </section>
+    <section class="border-r border-bray-300 p-2">
+        <p class="text-lg text-green-500 font-medium"><?= $summary['APPROVED'] ?? 0 ?></p>
+        <p class="text-xs text-gray-500 font-light">Upcoming Leave</p>
+    </section>
+    <section class="border-r border-bray-300 p-2">
+        <p class="text-lg text-gray-500 font-medium"><?= $summary['PENDING'] ?? 0 ?></p>
+        <p class="text-xs text-gray-500 font-light">Pending Request</p>
+    </section>
+</div>
 <div class="flex flex-col gap-5 size-full relative">
     <div id="leaveRequestContainer" class="hidden flex items-center justify-center absolute size-full">
         <form id="leaveRequestForm" method="POST" class="flex flex-col h-auto w-[300px] drop-shadow-lg rounded-lg bg-white p-4" enctype="multipart/form-data">

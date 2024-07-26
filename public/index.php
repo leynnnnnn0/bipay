@@ -29,7 +29,7 @@ $config = [
 $app = new Application(dirname(__DIR__), $config);
 $app->router->get('/', [PageController::class, 'dashboard'])->only('auth');
 $app->router->get('/job-desk', [PageController::class, 'jobDesk'])->only('auth');
-$app->router->get('/leave', [PageController::class, 'leave'])->only('auth');
+$app->router->get('/leave', [LeaveController::class, 'leaveSummary'])->only('auth');
 
 $app->router->get('/employee', [EmployeeController::class, 'employee'])->only('auth');
 $app->router->post('/employee', [EmployeeController::class, 'createEmployee'])->only('auth');
