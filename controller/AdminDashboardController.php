@@ -4,6 +4,7 @@ namespace app\controller;
 
 use app\core\Controller;
 use app\model\AuxModel;
+use app\model\LeaveRequestModel;
 
 class AdminDashboardController extends Controller
 {
@@ -27,6 +28,12 @@ class AdminDashboardController extends Controller
             $tags[$aux] = 1;
         }
 
-        return $this->render('adminDashboard', ['employees' => $result, 'tags' => $tags]);
+        $leaveRequestModel = new LeaveRequestModel();
+        $query = "SELECT l.startDate, l.endDate, e.firstName, e.lastName
+                  FROM leave_requests l
+                  JOIN employees e ON l.id = e.id AND l.status = 'PENDING'";
+        $statement = $leaveRequestModel->customQuery($query);
+
+        return $this->render('adminDashboard', ['employees' => $result, 'tags' => $tags, 'requests' => $statement->fetchAll()]);
     }
 }

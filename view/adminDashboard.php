@@ -5,9 +5,12 @@ use app\core\Application;
 use app\core\Session;
 use app\core\Style;
 use app\model\AuxModel;
+use app\model\LeaveRequestModel;
+
 /**
 *@var $employees AuxModel
  * @var $tags AuxTag
+ * @var $requests LeaveRequestModel
  **/
 ?>
 <div class="flex flex-col gap-5 h-full">
@@ -42,46 +45,99 @@ use app\model\AuxModel;
         </div>
     </div>
     <div class="flex size-full gap-5">
-        <div class="flex-1">
-            <section class="grid grid-cols-4 gap-5 h-24 w-full ">
-                <div class="flex items-center gap-3 p-5 bg-white rounded-lg">
-                    <section>
-                        <span class="bg-green-300 text-2xl p-2 rounded-lg"><i class="bi bi-person-workspace"></i></span>
-                    </section>
-                    <section>
-                        <p class="text-xs text-gray-800 font-bold">Working</p>
-                        <h1 class="text-indigo-900 font-bold text-xl"><?= $tags['WORKING'] ?? 0 ?></h1>
-                    </section>
+        <div class="flex-1 flex flex-col gap-5 h-full">
+            <div class="container">
+                <section class="grid grid-cols-4 gap-5 h-24 w-full ">
+                    <div class="flex items-center gap-3 p-5 bg-white rounded-lg">
+                        <section>
+                            <span class="bg-green-300 text-2xl p-2 rounded-lg"><i class="bi bi-person-workspace"></i></span>
+                        </section>
+                        <section>
+                            <p class="text-xs text-gray-800 font-bold">Working</p>
+                            <h1 class="text-indigo-900 font-bold text-xl"><?= $tags['WORKING'] ?? 0 ?></h1>
+                        </section>
+                    </div>
+                    <div class="flex items-center gap-3 p-5 bg-white rounded-lg">
+                        <section>
+                            <span class="text-black bg-yellow-300 text-2xl p-2 rounded-lg"><i class="bi bi-person-workspace"></i></span>
+                        </section>
+                        <section>
+                            <p class="text-xs text-gray-800 font-bold">Break / Meal</p>
+                            <h1 class="text-indigo-900 font-bold text-xl"><?= ($tags['BREAK'] + $tags['MEAL BREAK']) ?? 0  ?></h1>
+                        </section>
+                    </div>
+                    <div class="flex items-center gap-3 p-5 bg-white rounded-lg">
+                        <section>
+                            <span class="text-white bg-red-400 text-2xl p-2 rounded-lg"><i class="bi bi-person-workspace"></i></span>
+                        </section>
+                        <section>
+                            <p class="text-xs text-gray-800 font-bold">Personal Time</p>
+                            <h1 class="text-indigo-900 font-bold text-xl"><?= $tags['PERSONAL TIME'] ?? 0 ?></h1>
+                        </section>
+                    </div>
+                    <div class="flex items-center gap-3 p-5 bg-white rounded-lg">
+                        <section>
+                            <span class="text-white bg-blue-500 text-2xl p-2 rounded-lg"><i class="bi bi-person-workspace"></i></span>
+                        </section>
+                        <section>
+                            <p class="text-xs text-gray-800 font-bold">Meeting</p>
+                            <h1 class="text-indigo-900 font-bold text-xl"><?= $tags['MEETING'] ?? 0 ?></h1>
+                        </section>
+                    </div>
+                </section>
+            </div>
+            <section class="flex gap-5 h-full">
+                <div class="w-full bg-white h-full rounded-lg p-5">
+                    <div class="overflow-hidden rounded-lg flex flex-col gap-2">
+                        <h1 class="text-sm text-gray-800 font-bold">Pending Requests</h1>
+                        <table class="table-auto w-full ">
+                            <thead class="bg-gray-100 ">
+                            <tr class="border-b text-gray-300">
+                                <th class="text-start p-2 text-xs text-black font-medium ">Name</th>
+                                <th class="text-start p-2 text-xs text-black font-medium ">Start Date</th>
+                                <th class="text-start p-2 text-xs text-black font-medium">End Date</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <?php foreach ($requests as $request): ?>
+                                <tr class="border-b text-gray-300">
+                                    <th class="text-start p-2 text-xs text-black font-medium"><?= $request['firstName'] . " " . $request['lastName']?></th>
+                                    <th class="text-start p-2 text-xs text-black font-medium">
+                                        <?= $request['startDate'] ?>
+                                    </th>
+                                    <th class="text-start p-2 text-xs text-black font-medium"><?= $request['endDate'] ?></th>
+                                </tr>
+                            <?php endforeach; ?>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
-                <div class="flex items-center gap-3 p-5 bg-white rounded-lg">
-                    <section>
-                        <span class="text-black bg-yellow-300 text-2xl p-2 rounded-lg"><i class="bi bi-person-workspace"></i></span>
-                    </section>
-                    <section>
-                        <p class="text-xs text-gray-800 font-bold">Break / Meal</p>
-                        <h1 class="text-indigo-900 font-bold text-xl"><?= ($tags['BREAK'] + $tags['MEAL BREAK']) ?? 0  ?></h1>
-                    </section>
-                </div>
-                <div class="flex items-center gap-3 p-5 bg-white rounded-lg">
-                    <section>
-                        <span class="text-white bg-red-400 text-2xl p-2 rounded-lg"><i class="bi bi-person-workspace"></i></span>
-                    </section>
-                    <section>
-                        <p class="text-xs text-gray-800 font-bold">Personal Time</p>
-                        <h1 class="text-indigo-900 font-bold text-xl"><?= $tags['PERSONAL TIME'] ?? 0 ?></h1>
-                    </section>
-                </div>
-                <div class="flex items-center gap-3 p-5 bg-white rounded-lg">
-                    <section>
-                        <span class="text-white bg-blue-500 text-2xl p-2 rounded-lg"><i class="bi bi-person-workspace"></i></span>
-                    </section>
-                    <section>
-                        <p class="text-xs text-gray-800 font-bold">Meeting</p>
-                        <h1 class="text-indigo-900 font-bold text-xl"><?= $tags['MEETING'] ?? 0 ?></h1>
-                    </section>
+                <div class="w-full bg-white h-full rounded-lg p-5">
+                    <div class="overflow-hidden rounded-lg flex flex-col gap-2">
+                        <h1 class="text-sm text-gray-800 font-bold">Announcement</h1>
+                        <table class="table-auto w-full ">
+                            <thead class="bg-gray-100 ">
+                            <tr class="border-b text-gray-300">
+                                <th class="text-start p-2 text-xs text-black font-medium ">Title</th>
+                                <th class="text-start p-2 text-xs text-black font-medium ">Start Date</th>
+                                <th class="text-start p-2 text-xs text-black font-medium">End Date</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr class="border-b text-gray-300">
+                                <th class="text-start p-2 text-xs text-black font-medium"></th>
+                                <th class="text-start p-2 text-xs text-black font-medium">
+
+                                </th>
+                                <th class="text-start p-2 text-xs text-black font-medium"></th>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </section>
         </div>
+
         <div class="w-[400px] bg-white rounded-lg p-5">
             <div class="overflow-hidden rounded-lg flex flex-col gap-2">
                 <h1 class="text-sm text-gray-800 font-bold">Tags</h1>
