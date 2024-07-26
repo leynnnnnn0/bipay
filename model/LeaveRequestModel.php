@@ -14,6 +14,14 @@ class LeaveRequestModel extends DbModel
     public string $attachment = 'N/A';
     public string $status = "PENDING";
 
+    public function pendingRequests() : array
+    {
+        $query = "SELECT l.startDate, l.endDate, e.firstName, e.lastName
+                  FROM leave_requests l
+                  JOIN employees e ON l.id = e.id AND l.status = 'PENDING'";
+        $statement = self::customQuery($query);
+        return $statement->fetchAll();
+    }
     public static function employeeLeaveStatusSummary(array $requests): array
     {
         $requestData = [];
