@@ -10,12 +10,12 @@ use app\model\LeaveRequestModel;
     <div class="size-full flex flex-col gap-3 rounded-lg bg-white p-5">
         <div class="grid grid-cols-3 border border-gray-300 rounded-lg w-full h-24 p-3">
             <section class="border-r border-gray-300 p-3">
-                <h1 class="text-2xl text-gray-900 font-bold"><?= $summary['PENDING'] ?? 0 ?></h1>
-                <p class="text-xs text-gray-500 text-nowrap">Pending Requests</p>
-            </section>
-            <section class="border-r border-gray-300 p-3">
                 <h1 class="text-2xl text-gray-900 font-bold"><?= count($data) ?? 0 ?></h1>
                 <p class="text-xs text-gray-500 text-nowrap">Leave Requests</p>
+            </section>
+            <section class="border-r border-gray-300 p-3">
+                <h1 class="text-2xl text-gray-900 font-bold"><?= $summary['PENDING'] ?? 0 ?></h1>
+                <p class="text-xs text-gray-500 text-nowrap">Pending Requests</p>
             </section>
             <section class="p-3">
                 <h1 class="text-2xl text-gray-900 font-bold"><?= $summary['ON LEAVE'] ?? 0 ?></h1>
