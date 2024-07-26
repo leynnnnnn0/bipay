@@ -12,23 +12,7 @@ class LeaveController extends Controller
     {
         $leaveRequestModel = new LeaveRequestModel();
         $result = $leaveRequestModel->fetchAll();
-        $data = [
-            'ON LEAVE' => 0,
-            'PENDING' => 0
-        ];
-        foreach ($result as $value) {
-            $currentDate = new \DateTime();
-            $startDate = \DateTime::createFromFormat('Y-m-d', $value['startDate'])->format('Y-m-d');
-            $endDate = \DateTime::createFromFormat('Y-m-d', $value['endDate'])->format('Y-m-d');
-            if($value['status'] === 'APPROVED')
-            {
-                if($currentDate->format('Y-m-d') >= $startDate && $currentDate->format('Y-m-d') <= $endDate) {
-                    $data['ON LEAVE'] += 1;
-                }
-            }
-            if($value['status'] === 'PENDING')
-                $data['PENDING'] += 1;
-        }
+        $data = $leaveRequestModel->allLeaveSummary($result);
         return $this->render('leave', [ 'data'=> $result, 'summary' => $data]);
     }
 

@@ -1,5 +1,6 @@
 .env
-/migration
+migration
 public/image
 public/attachment
-
+public/avatar
+git rm -r --cached public/avatar
