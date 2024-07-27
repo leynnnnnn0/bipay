@@ -8,7 +8,7 @@ use app\core\Style;
 ?>
 <nav class="flex bg-red-white h-[50px] px-10 items-center justify-between">
     <div class="logo-area">
-        <img class="cursor-pointer" src="image/mainLogo.png" alt="logo">
+        <img class="cursor-pointer w-16" src="image/mainLogo.png" alt="logo">
     </div>
     <div class="flex items-center gap-3">
         <ul class="flex gap-5 text-sm items-center">
