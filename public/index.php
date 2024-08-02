@@ -27,34 +27,34 @@ $config = [
 ];
 
 $app = new Application(dirname(__DIR__), $config);
-$app->router->get('/', [PageController::class, 'dashboard'])->only('auth');
-$app->router->get('/job-desk', [PageController::class, 'jobDesk'])->only('auth');
-$app->router->get('/leave', [LeaveController::class, 'leaveSummary'])->only('auth');
+$app->router->get('/', [PageController::class, 'dashboard'])->middleware('auth');
+$app->router->get('/job-desk', [PageController::class, 'jobDesk'])->middleware('auth');
+$app->router->get('/leave', [LeaveController::class, 'leaveSummary'])->middleware('auth');
 
-$app->router->get('/employee', [EmployeeController::class, 'employee'])->only('auth');
-$app->router->post('/employee', [EmployeeController::class, 'createEmployee'])->only('auth');
-$app->router->delete('/employee', [EmployeeController::class, 'deleteEmployee'])->only('auth');
-$app->router->put('/employee', [EmployeeController::class, 'updateEmployee'])->only('auth');
+$app->router->get('/employee', [EmployeeController::class, 'employee'])->middleware('auth');
+$app->router->post('/employee', [EmployeeController::class, 'createEmployee'])->middleware('auth');
+$app->router->delete('/employee', [EmployeeController::class, 'deleteEmployee'])->middleware('auth');
+$app->router->put('/employee', [EmployeeController::class, 'updateEmployee'])->middleware('auth');
 
-$app->router->get('/register', [RegisterController::class, 'register'])->only('guest');
-$app->router->post('/register', [RegisterController::class, 'registerAccount'])->only('guest');
+$app->router->get('/register', [RegisterController::class, 'register'])->middleware('guest');
+$app->router->post('/register', [RegisterController::class, 'registerAccount'])->middleware('guest');
 
-$app->router->get('/login', [LoginController::class, 'login'])->only('guest');
-$app->router->post('/login', [LoginController::class, 'authenticate'])->only('guest');
+$app->router->get('/login', [LoginController::class, 'login'])->middleware('guest');
+$app->router->post('/login', [LoginController::class, 'authenticate'])->middleware('guest');
 
-$app->router->get('/logout', [LogoutController::class, 'logout'])->only('auth');
+$app->router->get('/logout', [LogoutController::class, 'logout'])->middleware('auth');
 
-$app->router->post('/aux', [AuxController::class, 'aux'])->only('auth');
-$app->router->post('/punch-in', [AuxController::class, 'punchIn'])->only('auth');
-$app->router->post('/punch-out', [AuxController::class, 'punchOut'])->only('auth');
-$app->router->get('/admin', [AdminDashboardController::class, 'admin'])->only('admin');
+$app->router->post('/aux', [AuxController::class, 'aux'])->middleware('auth');
+$app->router->post('/punch-in', [AuxController::class, 'punchIn'])->middleware('auth');
+$app->router->post('/punch-out', [AuxController::class, 'punchOut'])->middleware('auth');
+$app->router->get('/admin', [AdminDashboardController::class, 'admin'])->middleware('admin');
 
-$app->router->get('/leave-request', [LeaveController::class, 'leaveRequestList'])->only('auth');
+$app->router->get('/leave-request', [LeaveController::class, 'leaveRequestList'])->middleware('auth');
 
-$app->router->post('/leave-request', [LeaveController::class, 'leaveRequest'])->only('auth');
-$app->router->post('/download', [LeaveController::class, 'download'])->only('auth');
+$app->router->post('/leave-request', [LeaveController::class, 'leaveRequest'])->middleware('auth');
+$app->router->post('/download', [LeaveController::class, 'download'])->middleware('auth');
 
-$app->router->post('/approve-request', [LeaveController::class, 'approve'])->only('auth');
+$app->router->post('/approve-request', [LeaveController::class, 'approve'])->middleware('auth');
 
 
 
