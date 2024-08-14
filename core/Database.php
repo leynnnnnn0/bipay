@@ -4,7 +4,8 @@ namespace app\core;
 
 use PDO;
 
-class Database
+class
+Database
 {
     public PDO $pdo;
 
