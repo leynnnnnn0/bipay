@@ -15,11 +15,11 @@ BIPAY is a comprehensive application designed to streamline employee management 
 ## Screenshots
 
 <p align="center">
-  <img src="/public/image/bipay-dashboard.png" alt="User Dashboard" width="300" style="margin: 10px;">
-  <img src="/public/image/bipay-job-desk.png" alt="Job Desk" width="300" style="margin: 10px;">
-  <img src="/public/image/bipay-admin-dashboard.png" alt="Admin Dashboard" width="300" style="margin: 10px;">
-  <img src="/public/image/bipay-admin-requests.png" alt="Leave Requests" width="300" style="margin: 10px;">
-  <img src="/public/image/bipay-admin-employees.png" alt="Employee Management" width="300" style="margin: 10px;">
+  <img src="/public/screenshots/bipay-dashboard.png" alt="User Dashboard" width="300" style="margin: 10px;">
+  <img src="/public/screenshots/bipay-job-desk.png" alt="Job Desk" width="300" style="margin: 10px;">
+  <img src="/public/screenshots/bipay-admin-dashboard.png" alt="Admin Dashboard" width="300" style="margin: 10px;">
+  <img src="/public/screenshots/bipay-admin-requests.png" alt="Leave Requests" width="300" style="margin: 10px;">
+  <img src="/public/screenshots/bipay-admin-employees.png" alt="Employee Management" width="300" style="margin: 10px;">
 </p>
 
 ## Getting Started
